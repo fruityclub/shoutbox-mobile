@@ -1,4 +1,5 @@
-$(document).on('pagebeforeshow', '#Connexion1', function() {
+$( document ).delegate("#Connexion1", "pagebeforecreate", function() {
+//$(document).on('pagebeforeshow', '#Connexion1', function() {
 
 	var email = window.localStorage.getItem("email");
 	var password = window.localStorage.getItem("password");
@@ -117,7 +118,7 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 			shoutboxAccess(responseText);
 		},
 		error: function (responseText) {
-			alert('Erreur ' + responseText.responseStatus);
+			alert('Erreur ' + responseText.message);
 		}
 	});
 	
@@ -151,7 +152,7 @@ function checkmembername(serviceURL, email, password, secretkey, local) {
 				checklogin(serviceURL, membername, email, password, secretkey, local);
 			},
 			error: function (responseText) {             
-				alert('Erreur ' + responseText.responseStatus);
+				alert('Erreur ' + responseText.message);
 			}
 		});
 		
@@ -180,12 +181,16 @@ function shoutboxAccess(returndata) {
 
 }
 
-$(document).on('pagebeforeshow', '#ShoutboxList', function(event, data) {
-
+$( document ).delegate("#ShoutboxList", "pagebeforecreate", function(event, data) {
+	
  	var id_shoutbox = window.localStorage.getItem("id_shoutbox");
 	if ( id_shoutbox && data.prevPage.attr('id') != 'ShoutList') {
 		$.mobile.changePage($('#ShoutList'));
 	}
+
+});
+
+$(document).on('pagebeforeshow', '#ShoutboxList', function(event, data) {
 	
 	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
 		clearInterval(refreshIntervalId);
@@ -243,7 +248,7 @@ $(document).on('pagebeforeshow', '#ShoutboxList', function(event, data) {
 
 		},
 		error: function (responseText) {             
-			alert('Erreur ' + responseText.responseStatus);
+			alert('Erreur ' + responseText.message);
 		}
 	});
 	
@@ -318,7 +323,7 @@ function refresh_shoutlist(loading) {
 		complete: function() {
 			if ( loading == true ) { $.mobile.loading( 'hide' ); }
 			$('#ULShoutList').listview('refresh');
-			$("#ULShoutList").animate({ scrollTop: $("#ULShoutList").attr("scrollHeight") }, 3000);
+			$("#ULShoutList").animate({ scrollTop: $("#ShoutList").attr("scrollHeight") }, 3000);
 			
 			var last_update2 = $('#ULShoutList li').last().attr('data-name');
 			$("#last_update").val(last_update2);
@@ -339,7 +344,7 @@ function refresh_shoutlist(loading) {
 			}
 		},
 		error: function (responseText) {             
-			alert('Erreur ' + responseText.responseStatus);
+			alert('Erreur ' + responseText.message);
 		}
 	});	
 
@@ -371,7 +376,7 @@ function get_shoutbox_infos(id_shoutbox) {
 			$("#last_update").val(responseText.last_update);
 		},
 		error: function (responseText) {             
-			alert('Erreur ' + responseText.responseStatus);
+			alert('Erreur ' + responseText.message);
 		}
 	});
 
@@ -403,7 +408,7 @@ $(document).on('click', '#submittext', function() {
 				refresh_shoutlist(loading);				
 			},
 			error: function (responseText) {             
-				alert('Erreur ' + responseText.responseStatus);
+				alert('Erreur ' + responseText.message);
 			}
 		});
 
@@ -459,7 +464,7 @@ $(document).on('click', '#btn_confirmDeleteShout', function() {
 				$('li.LIShoutList[data-name="' + id_shout + '"]').remove();
 			},
 			error: function (responseText) {             
-				alert('Erreur ' + responseText.responseStatus);
+				alert('Erreur ' + responseText.message);
 			}
 		});
 	
