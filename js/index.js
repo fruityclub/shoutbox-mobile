@@ -1,5 +1,4 @@
-$( document ).delegate("#Connexion1", "pagebeforecreate", function() {
-//$(document).on('pagebeforeshow', '#Connexion1', function() {
+$(document).on('pageinit', '#Connexion1', function() {
 
 	var email = window.localStorage.getItem("email");
 	var password = window.localStorage.getItem("password");
