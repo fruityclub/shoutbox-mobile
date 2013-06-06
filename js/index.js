@@ -413,24 +413,25 @@ $(document).on('click', '#submittext', function() {
 });
 
 
-$(".LIShoutList" ).on( 'taphold', function (event) {
+$(".LIShoutList").on('taphold', function (event) {
 	
 	var id_shout = $(this).attr('data-name');
 	var id_group = window.localStorage.getItem("id_group");
 	
-	if ( id_group > 0 && id_group < 3 ) {
-		
-		// affiche un pop-up de confirmation
-		$( "#confirmDeleteShout" ).popup();
-		
+	if ( id_group > 0 && id_group < 3 && id_shout ) {
+
 		// mets à jour id_shout dans le form du popup
-		
+		$('#idShoutHidden').val(id_shout);
+
+		// affiche un pop-up de confirmation
+		$("#confirmDeleteShout").popup("open");
 	
 	}
 	
 });
 
-function deleteShout() {
+// 
+$(document).on('click', '#btn_confirmDeleteShout', function() {
 	
 	var id_group = window.localStorage.getItem("id_group");
 	var id_shout = $('#idShoutHidden').val();
@@ -441,7 +442,7 @@ function deleteShout() {
 		var id_member = window.localStorage.getItem("id_member");
 		var auth_token = window.localStorage.getItem("auth_token");	
 		
-/* 		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutdelete',
+		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutdelete',
 			type: 'post',
 			data: {'auth_token': auth_token, 'id_member': id_member, 'real_name': real_name, 'id_shoutbox': id_shoutbox, 'id_shout': id_shout},
 			async: true,
@@ -451,13 +452,13 @@ function deleteShout() {
 			complete: function() {
 				$.mobile.loading( 'hide' );
 			},
-			success: function (responseText) {				
-				$(this).remove();
+			success: function (responseText) {
+				$('.LIShoutList[data-name="' + id_shout + '"]').remove();
 			},
 			error: function (responseText) {             
 				alert('Erreur ' + responseText.responseStatus);
 			}
-		}); */
+		});
 	
 	}
 }
