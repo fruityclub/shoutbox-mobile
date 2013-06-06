@@ -461,7 +461,7 @@ $(document).on('click', '#btn_confirmDeleteShout', function() {
 		});
 	
 	}
-}
+});
 
 function clearLocalStorage() {
 	window.localStorage.clear();
