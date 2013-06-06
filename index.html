@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
+		<meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>FruityClub ShoutBox Mobile</title>
+    </head>
+    <body>
+		
+		<!-- PAGE CONNEXION -->
+		<div id="Connexion1" data-role="page" data-theme="a" data-title="ShoutBox Connexion" class="app">
+		
+			<div data-role="header" data-position="fixed">
+				<h1>ShoutBox Connexion</h1>
+				<a href="config.html" data-icon="gear" class="ui-btn-right">Options</a>
+			</div>
+		
+			<div data-role="content">
+			
+				<div class="center-wrapper">
+				
+				<div class="ui-body ui-body-a">
+				
+					Connectez-vous ci-dessous pour acc&eacute;der &agrave; la shoutbox. Si vous n'avez pas de compte, vous devez en cr&eacute;er un sur le site http://www.fruityclub.net avant de vous connecter ici.
+
+				</div>
+				
+				<br />
+				
+				<form action="" method="post" id="checkuser">
+					
+					<div class="ui-body ui-body-a">
+					
+						<h3>Connexion par email et mot de passe</h3>					
+						
+						<fieldset data-role="fieldcontain">
+				
+							<label for="email">Email:</label>
+							<input type="email" name="email" id="email" value="" />
+
+							<label for="passlog">Mot de passe:</label>
+							<input type="password" name="passlog" id="passlog" value="" />
+							
+						</fieldset>
+
+					</div>
+					
+					<br />
+					
+					<div class="ui-body ui-body-a">
+					
+						<h3>Connexion par cl&eacute; secr&egrave;te</h3>
+						
+						<fieldset data-role="fieldcontain">
+				
+							<label for="secretkey">Cl&eacute; secr&egrave;te:</label>
+							<input type="number" name="secretkey" id="secretkey" value="" />
+							
+						</fieldset>							
+						
+						<h4>Votre cl&eacute; secr&egrave;te est disponible dans votre profil sur le site, uniquement si vous êtes VIP.</h4>
+						
+					</div>
+					
+					<br />
+					
+					<fieldset data-role="fieldcontain">
+
+						<label for="autolog">Connexion auto:</label>
+							<select name="autolog" id="autolog" data-role="slider" data-theme="c">
+								<option value="0">Non</option>
+								<option value="1">Oui</option>
+							</select>
+					
+					</fieldset>
+					
+					<br />
+					
+					<div id="resultRequest"></div>
+					
+					<input type="hidden" name="did" id="did" value="" />
+					<input type="hidden" name="dplatform" id="dplatform" value="" />
+					
+					<button type="submit" data-theme="c" name="submitlog" id="submitlog" value="submitlog" data-icon="check" data-iconpos="right">Connexion</button>
+					
+					<a href="" onclick="clearLocalStorage();">Vider local storage</a>
+					
+				</form>
+				
+				</div>
+				
+				<div id="resultTest"></div>
+				
+			</div>
+			
+		</div>
+		
+		<!-- PAGE LISTE DES SHOUTBOXS -->
+		<div id="ShoutboxList" data-role="page" data-theme="a" data-title="FruityClub ShoutboxList" class="app">
+		
+			<div data-role="header" data-position="fixed">
+				<h1>FruityClub ShoutboxList</h1>
+				<a href="index.html" data-icon="home" data-iconpos="notext" data-direction="reverse">Accueil</a>
+				<a href="config.html" data-icon="gear" class="ui-btn-right">Options</a>
+			</div>
+		
+			<div data-role="content">
+
+				<div class="ui-body ui-body-a">
+					<div class="ui-grid-b" id="ULMemberInfos">
+						<div style="width:40%;" class="ui-block-a" id="ULMemberInfos1"></div>
+						<div style="width:30%;" class="ui-block-b" id="ULMemberInfos2"></div>
+						<div style="width:30%;" class="ui-block-c" id="ULMemberInfos3"></div>
+					</div>
+				</div>
+
+				<br />
+				
+				<div class="ui-body ui-body-a" id="ShoutboxListTitle">				
+					Choisissez ci-dessous la shoutbox à laquelle vous souhaitez vous connecter. Vous pourrez basculer de l'une à l'autre ensuite.
+				</div>
+				
+				<ul data-role="listview" data-inset="true" id="ULShoutboxList"></ul>
+				
+			</div>
+			
+		</div>
+		
+		<!-- PAGE LISTE DES MESSAGES -->
+		<div id="ShoutList" data-role="page" data-theme="a" data-title="FruityClub ShoutList" class="app">
+		
+			<div data-role="header" data-position="fixed">
+				<h1>FruityClub ShoutList</h1>
+				<a href="index.html" data-icon="home" data-iconpos="notext" data-direction="reverse">Accueil</a>
+				<a href="config.html" data-icon="gear" class="ui-btn-right">Options</a>
+			</div>
+		
+			<div data-role="content">
+			
+				<div class="ui-body ui-body-a">
+					<div class="ui-grid-b" id="ULMemberInfos2">
+						<div style="width:40%;" class="ui-block-a" id="ULMemberInfos12"></div>
+						<div style="width:30%;" class="ui-block-b" id="ULMemberInfos22"></div>
+						<div style="width:30%;" class="ui-block-c" id="ULMemberInfos32"></div>
+					</div>
+				</div>
+
+				<br />
+				
+				<div class="ui-body ui-body-a">
+					<h3 id="ShoutboxTitle"></h3>
+					<div class="error_bbc" id="shoutbox_warning" style="display: none"></div>
+				</div>
+				
+				<br />
+				
+				<ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Filtrer ..." data-filter-theme="a" id="ULShoutList"></ul>
+				
+				<input type="hidden" name="last_update" id="last_update" value="0" />
+				
+				<br /><br />
+				
+			</div>
+			
+			<div data-role="footer" data-position="fixed">
+			
+				<form method="post" action="" class="ui-grid-b">
+					<div style="width:20%;" class="ui-block-a"><a href="#ShoutboxList" data-icon="back" data-role="button">Liste</a></div>
+					<div style="width:60%;" class="ui-block-b"><input style="" data-mini="true" type="text" name="shouttext" id="shouttext" value="" data-theme="a"/></div>
+					<div style="width:20%;" class="ui-block-c"><a name="submittext" id="submittext" href="#" data-role="button">Shout!</a></div>       
+				</form>
+
+			</div>
+			
+		</div>
+		
+		<div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+			<div data-role="header" data-theme="a" class="ui-corner-top">
+				<h1>Delete Page?</h1>
+			</div>
+			<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+				<h3 class="ui-title">Are you sure you want to delete this page?</h3>
+				<p>This action cannot be undone.</p>
+				<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">Cancel</a>    
+				<a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">Delete</a>  
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="cordova-2.7.0.js"></script>
+		<link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.3.1.min.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/sha1.js"></script>
+	
+    </body>
+</html>
