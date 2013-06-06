@@ -412,17 +412,34 @@ $(document).on('click', '#submittext', function() {
 	
 });
 
-$(".LIShoutboxList").bind ("swiperight", function (event) {
+
+$(".LIShoutList" ).on( 'taphold', function (event) {
 	
 	var id_shout = $(this).attr('data-name');
 	var id_group = window.localStorage.getItem("id_group");
 	
 	if ( id_group > 0 && id_group < 3 ) {
+		
+		// affiche un pop-up de confirmation
+		$( "#confirmDeleteShout" ).popup();
+		
+		// mets à jour id_shout dans le form du popup
+		
+	
+	}
+	
+});
+
+function deleteShout() {
+	
+	var id_group = window.localStorage.getItem("id_group");
+	var id_shout = $('#idShoutHidden').val();
+	
+	if ( id_group > 0 && id_group < 3 && id_shout ) {
 	
 		var id_shoutbox = window.localStorage.getItem("id_shoutbox");
-		var auth_token = window.localStorage.getItem("auth_token");
-		
-		$( "#myPopupDiv" ).popup();
+		var id_member = window.localStorage.getItem("id_member");
+		var auth_token = window.localStorage.getItem("auth_token");	
 		
 /* 		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutdelete',
 			type: 'post',
@@ -443,11 +460,6 @@ $(".LIShoutboxList").bind ("swiperight", function (event) {
 		}); */
 	
 	}
-	
-});
-
-function vibrate() {
-    navigator.notification.vibrate();
 }
 
 function clearLocalStorage() {
