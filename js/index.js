@@ -1,4 +1,8 @@
-$(document).on('pageinit', '#Connexion1', function() {
+$(document).on('pagebeforecreate', '#Connexion1', function() {
+	
+	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
+		clearInterval(refreshIntervalId);
+	}
 
 	var email = window.localStorage.getItem("email");
 	var password = window.localStorage.getItem("password");
