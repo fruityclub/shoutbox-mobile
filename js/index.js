@@ -445,7 +445,7 @@ $(document).on('click', '#btn_confirmDeleteShout', function() {
 		
 		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutdelete',
 			type: 'post',
-			data: {'auth_token': auth_token, 'id_member': id_member, 'real_name': real_name, 'id_shoutbox': id_shoutbox, 'id_shout': id_shout},
+			data: {'auth_token': auth_token, 'id_member': id_member, 'id_shout': id_shout, 'id_shoutbox': id_shoutbox},
 			async: true,
 			beforeSend: function() {
 				$.mobile.loading( 'show', { theme: "b", text: "Suppression du message ...", textVisible: true });
