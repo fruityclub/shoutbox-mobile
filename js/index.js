@@ -107,9 +107,11 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 		type: 'post',
 		async: true,
 		beforeSend: function() {
+			$('body').addClass('ui-loading');
 			$.mobile.loading( 'show', { theme: "b", text: "Connexion ...", textVisible: true });
 		},
 		complete: function() {
+			$('body').removeClass('ui-loading');
 			$.mobile.loading( 'hide' );
 		},
 		success: function (responseText) {
@@ -145,9 +147,11 @@ function checkmembername(serviceURL, email, password, secretkey, local) {
 			type: 'post',
 			async: true,
 			beforeSend: function() {
+				$('body').addClass('ui-loading');
 				$.mobile.loading( 'show', { theme: "b", text: "Preparation ...", textVisible: true });
 			},
 			complete: function() {
+				$('body').removeClass('ui-loading');
 				$.mobile.loading( 'hide' );
 			},
 			success: function (responseText) {
