@@ -177,21 +177,16 @@ function shoutboxAccess(returndata) {
 	window.localStorage.setItem("posts", returndata.posts);	
 	window.localStorage.setItem("auth_token", returndata.auth_token);
 	
-	$.mobile.changePage($('#ShoutboxList'));
+ 	var id_shoutbox = window.localStorage.getItem("id_shoutbox");
+	if ( id_shoutbox ) {
+		$.mobile.changePage($('#ShoutList'));
+	} else {	
+		$.mobile.changePage($('#ShoutboxList'));
+	}
 
 }
 
-
-$( document ).on('pageinit', "#ShoutboxList", function(event, data) {
-	
- 	var id_shoutbox = window.localStorage.getItem("id_shoutbox");
-	if ( id_shoutbox && data.prevPage.attr('id') != 'ShoutList') {
-		$.mobile.changePage($('#ShoutList'));
-	}
-
-});
-
-$(document).on('pagebeforeshow', '#ShoutboxList', function(event, data) {
+$(document).on('pageshow', '#ShoutboxList', function(event, data) {
 	
 	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
 		clearInterval(refreshIntervalId);
@@ -263,7 +258,7 @@ $(document).on('vclick', 'li.LIShoutboxList', function() {
 	
 });
 
-$(document).on('pagebeforeshow', '#ShoutList', function(event, data) {
+$(document).on('pageshow', '#ShoutList', function(event, data) {
 	
 	var id_member = window.localStorage.getItem("id_member");
 	var real_name = window.localStorage.getItem("real_name");
@@ -362,7 +357,7 @@ function get_shoutbox_infos(id_shoutbox) {
 		data: {'auth_token': auth_token, 'id_member': id_member, 'id_shoutbox': id_shoutbox},
 		async: true,
 		beforeSend: function() {
-			$.mobile.loading( 'show', { theme: "b", text: "Recuparation d'informations ...", textVisible: true });
+			$.mobile.loading( 'show', { theme: "b", text: "Recuperation d'informations ...", textVisible: true });
 		},
 		complete: function() {
 			$.mobile.loading( 'hide' );
