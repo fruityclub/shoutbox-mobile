@@ -181,7 +181,8 @@ function shoutboxAccess(returndata) {
 
 }
 
-$( document ).delegate("#ShoutboxList", "pagebeforecreate", function(event, data) {
+
+$( document ).on('pageinit', "#ShoutboxList", function(event, data) {
 	
  	var id_shoutbox = window.localStorage.getItem("id_shoutbox");
 	if ( id_shoutbox && data.prevPage.attr('id') != 'ShoutList') {
