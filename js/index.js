@@ -415,7 +415,7 @@ $(document).on('click', '#submittext', function() {
 
 $(".LIShoutList").on('taphold', function (event) {
 	
-	var id_shout = $(this).attr('data-name');
+	var id_shout = $(event.target).attr('data-name');
 	var id_group = window.localStorage.getItem("id_group");
 	
 	if ( id_group > 0 && id_group < 3 && id_shout ) {
@@ -426,6 +426,8 @@ $(".LIShoutList").on('taphold', function (event) {
 		// affiche un pop-up de confirmation
 		$("#confirmDeleteShout").popup("open");
 	
+	} else {
+		alert('Vous n\'avez pas les droits necessaires ou l\'identifiant du message n\'est pas correctement formé.')		
 	}
 	
 });
