@@ -443,6 +443,8 @@ $(document).on('click', '#btn_confirmDeleteShout', function() {
 		var id_member = window.localStorage.getItem("id_member");
 		var auth_token = window.localStorage.getItem("auth_token");
 		
+		$("#confirmDeleteShout").popup("close");
+		
 		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutdelete',
 			type: 'post',
 			data: {'auth_token': auth_token, 'id_member': id_member, 'id_shout': id_shout, 'id_shoutbox': id_shoutbox},
