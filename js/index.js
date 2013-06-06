@@ -441,9 +441,11 @@ $(document).on('click', '#btn_confirmDeleteShout', function() {
 	
 		var id_shoutbox = window.localStorage.getItem("id_shoutbox");
 		var id_member = window.localStorage.getItem("id_member");
-		var auth_token = window.localStorage.getItem("auth_token");	
+		var auth_token = window.localStorage.getItem("auth_token");
 		
-		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutdelete',
+		alert('id_shout=' + id_shout);
+		
+		/*$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutdelete',
 			type: 'post',
 			data: {'auth_token': auth_token, 'id_member': id_member, 'real_name': real_name, 'id_shoutbox': id_shoutbox, 'id_shout': id_shout},
 			async: true,
@@ -459,7 +461,7 @@ $(document).on('click', '#btn_confirmDeleteShout', function() {
 			error: function (responseText) {             
 				alert('Erreur ' + responseText.responseStatus);
 			}
-		});
+		});*/
 	
 	}
 });
