@@ -30,7 +30,7 @@
 	
 		<div id="config1" data-role="page" data-theme="a">
 		
-			<div data-role="header" data-theme="f">
+			<div data-role="header" data-position="fixed">
 				<h1>Configuration</h1>
 				<a href="index.html" data-icon="home" data-iconpos="notext" data-direction="reverse">Accueil</a>
 			</div><!-- /header -->
@@ -39,8 +39,10 @@
 			
 				<ul data-role="listview" data-inset="true">
 					<li data-role="fieldcontain">						
-						<div class="ui-grid-a" id="ULMemberInfos">
-							<div class="ui-block-a"><label for="vibration_msg">Vibrer &agrave; la r&eacute;ception de nouveaux messages</label></div>
+						<div class="ui-grid-a">
+							<div class="ui-block-a">
+								<label for="vibration_msg">Vibrer &agrave; la r&eacute;ception de nouveaux messages</label>
+							</div>
 							<div class="ui-block-b">
 								<select name="vibration_msg" id="vibration_msg" data-role="slider">
 									<option value="0">Off</option>
@@ -50,25 +52,37 @@
 						</div>
 					</li>
 					<li data-role="fieldcontain">
-		        		<label for="autolog">Connexion automatique</label>
-						<select name="autolog" id="autolog" data-role="slider">
-							<option value="off">D&eacute;sactiv&eacute;e</option>
-							<option value="on">Activ&eacute;e</option>
-						</select>
+						<div class="ui-grid-a">
+		        				<div class="ui-block-a">
+		        					<label for="autolog">Connexion automatique</label>
+		        				</div>
+		        				<div class="ui-block-b">
+								<select name="autolog" id="autolog" data-role="slider">
+									<option value="off">D&eacute;sactiv&eacute;e</option>
+									<option value="on">Activ&eacute;e</option>
+								</select>
+							</div>
+						</div>
 					</li>
 					<li data-role="fieldcontain">
-		        		<label for="msg_size">Taille de la police des messages</label>
-				         	<input type="radio" name="msg_size-1" id="msg_size-1" value="10" />
-				         	<label for="msg_size-1">Petite</label>
-	
-				         	<input type="radio" name="msg_size-2" id="msg_size-2" value="12" checked="checked"  />
-				         	<label for="msg_size-2">Normale</label>
-	
-				         	<input type="radio" name="msg_size-3" id="msg_size-3" value="14"  />
-				         	<label for="msg_size-3">Grande</label>
-	
-				         	<input type="radio" name="msg_size-4" id="msg_size-4" value="16"  />
-				         	<label for="msg_size-4">Tres grande</label>
+						<div class="ui-grid-a">
+							<div class="ui-block-a">
+		        					<label for="msg_size">Taille de la police des messages</label>
+		        				</div>
+		        				<div class="ui-block-b">
+						         	<input type="radio" name="msg_size-1" id="msg_size-1" value="10" />
+						         	<label for="msg_size-1">Petite</label>
+			
+						         	<input type="radio" name="msg_size-2" id="msg_size-2" value="12" checked="checked"  />
+						         	<label for="msg_size-2">Normale</label>
+			
+						         	<input type="radio" name="msg_size-3" id="msg_size-3" value="14"  />
+						         	<label for="msg_size-3">Grande</label>
+			
+						         	<input type="radio" name="msg_size-4" id="msg_size-4" value="16"  />
+						         	<label for="msg_size-4">Tres grande</label>
+						         </div>
+						</div>
 					</li>
 					
 				</ul>
