@@ -338,8 +338,15 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 
 });
 
+$(document).on('pagehide', '#ShoutList', function() {
+
+	clearInterval(refreshIntervalId);
+
+});
+
 $(document).on('click', '#btn_refreshShouts', function() {
 	
+	var loading = true;
 	refresh_shoutlist(loading);
 	
 });
