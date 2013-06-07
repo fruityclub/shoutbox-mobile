@@ -296,12 +296,7 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	
 	var countNbshouts = $('#ULShoutList li').size();
 	if ( countNbshouts == 0 ) {
-		var noShouts = '<li id="li_refreshShoutlist" data-inset="true">';
-		noShouts += '<a href="#"><img src="css/images/ajax-loader.gif" width="80" />';
-		noShouts += '<b>Chargement des messages en cours ...</b>';
-		noShouts += 'Vous attendez depuis trop longtemps ? Appuyez ici pour les afficher plus vite !';
-		noShouts += '</a></li>';
-		$("#ULShoutList").append(noShouts);		
+		$("#loadingMessages").popup("open");				
 	}
 	
 	$('.MemberInfos').empty();
@@ -323,7 +318,7 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 
 });
 
-$(document).on('click', 'li.li_refreshShoutlist', function() {
+$(document).on('click', '#btn_refreshShouts', function() {
 	
 	refresh_shoutlist(loading);
 	
@@ -347,7 +342,7 @@ function refresh_shoutlist(loading) {
 			if ( loading == true ) { $.mobile.loading( 'show', { theme: "b", text: "Mise à jour des messages ...", textVisible: true }); }
 		},
 		complete: function() {
-			if ( loading == true ) { $.mobile.loading( 'hide' ); }
+			if ( loading == true ) { $.mobile.loading( 'hide' ); $("#loadingMessages").popup("close"); }
 			$('#ULShoutList').listview('refresh');
 			$("#ULShoutList").animate({ scrollTop: $("#ShoutList").attr("scrollHeight") }, 3000);
 			
