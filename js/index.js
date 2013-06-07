@@ -384,7 +384,6 @@ function refresh_shoutlist(loading) {
 	  var hrefInfos = $.mobile.path.parseUrl(hrefUrl);
 	  
 	  var hrefHost = hrefInfos.hostname;
-	  alert('hrefHost: ' + hrefHost);
 	  $(this).text(hrefHost);
 	  
 	});
