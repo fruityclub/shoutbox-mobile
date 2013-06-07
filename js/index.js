@@ -4,7 +4,8 @@ function onDeviceReady() {
 	var deviceReady = true;	
 }
 
-$(document).bind("mobileinit", function(){
+$(document).bind("mobileinit", function() {
+	
 	$.mobile.defaultDialogTransition = 'slide';
 	$.mobile.transitionFallbacks.slideout = 'none';
 	// Définit préférence par défaut
@@ -13,13 +14,10 @@ $(document).bind("mobileinit", function(){
 	
 	if ( !vibration_msg ) { window.localStorage.setItem('vibration_msg', 0); }
 	if ( !msg_size ) { window.localStorage.setItem('msg_size', 12); }
+	
 });
 
 $(document).on('pageshow', '#Connexion1', function() {
-	
-	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
-		clearInterval(refreshIntervalId);
-	}
 
 	var email = window.localStorage.getItem("email");
 	var password = window.localStorage.getItem("password");
@@ -203,10 +201,6 @@ function shoutboxAccess(returndata) {
 	window.localStorage.setItem("posts", returndata.posts);	
 	window.localStorage.setItem("auth_token", returndata.auth_token);
 	
-	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
-		clearInterval(refreshIntervalId);
-	}
-	
 	if (typeof(window.localStorage.getItem("id_shoutbox")) != "undefined" && window.localStorage.getItem("id_shoutbox") !== null) {
 		$.mobile.changePage($('#ShoutList'));
 
@@ -217,10 +211,6 @@ function shoutboxAccess(returndata) {
 }
 
 $(document).on('pageshow', '#ShoutboxList', function(event, data) {
-	
-	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
-		clearInterval(refreshIntervalId);
-	}
 	
 	var id_member = window.localStorage.getItem("id_member");
 	var real_name = window.localStorage.getItem("real_name");
@@ -340,7 +330,9 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 
 $(document).on('pagehide', '#ShoutList', function() {
 
-	clearInterval(refreshIntervalId);
+	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
+		clearInterval(refreshIntervalId);
+	}
 
 });
 
@@ -536,10 +528,6 @@ $(document).on('click', '#btn_confirmDeleteShout', function() {
 });
 
 $(document).on('pageshow', '#config', function(event, data) {
-	
-	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
-		clearInterval(refreshIntervalId);
-	}
 	
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
