@@ -376,7 +376,18 @@ function refresh_shoutlist(loading) {
 		error: function (responseText) {             
 			alert('Erreur ' + responseText.message);
 		}
-	});	
+	});
+	
+	$(".linkInMessage").each(function() {
+		
+	  var hrefUrl = $(this).attr('href');
+	  var hrefInfos = $.mobile.path.parseUrl(hrefUrl);
+	  
+	  var hrefHost = hrefInfos.hostname;
+	  alert('hrefHost: ' + hrefHost);
+	  $(this).text(hrefHost);
+	  
+	});
 
 }
 
@@ -525,16 +536,3 @@ $(document).on('click', '#submit_config', function() {
 function vibrateOnNewMEssages() {
 	navigator.notification.vibrate(1000);
 }
-
-$( ".linkInMessage" ).each(function(  ) {
-	
-  var hrefUrl = $(this).attr('href');
-  var hrefInfos = $.mobile.path.parseUrl(hrefUrl);
-  
-  var hrefHost = hrefInfos.hostname;
-  alert('hrefHost: ' + hrefHost);
-  $(this).text(hrefHost);
-  
-});
-
-// 
