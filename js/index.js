@@ -381,7 +381,9 @@ function refresh_shoutlist(loading) {
 						shoutsList += '</li>';
 					});
 					$("#ULShoutList").append( shoutsList );
-					if ( vibration_msg == 1 ) { vibrateOnNewMEssages(); }
+					if ( vibration_msg == 1 ) { 
+						//vibrateOnNewMEssages(); 
+					}
 				}
 			}
 		},
