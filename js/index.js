@@ -1,5 +1,6 @@
 $(document).bind("mobileinit", function(){
 	$.mobile.defaultDialogTransition = 'slide';
+	$.mobile.transitionFallbacks.slideout = "none"
 });
 
 $(document).on('pagebeforecreate', '#Connexion1', function() {
