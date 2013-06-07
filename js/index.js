@@ -288,6 +288,10 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	var vip_title = 'Non VIP';
 	if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
 	if ( isvip == "true" ) { vip_title = "VIP"; }
+		
+	if ( data.prevPage.attr('id') == 'ShoutboxList' ) {
+		$('#ULShoutList').children().remove('li');
+	}
 	
 	$('.MemberInfos').empty();
 	
