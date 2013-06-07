@@ -1,3 +1,7 @@
+$(document).bind("mobileinit", function(){
+	$.mobile.defaultDialogTransition = 'slide';
+});
+
 $(document).on('pagebeforecreate', '#Connexion1', function() {
 	
 	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
