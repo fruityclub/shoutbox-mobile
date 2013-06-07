@@ -2,8 +2,11 @@ $(document).bind("mobileinit", function(){
 	$.mobile.defaultDialogTransition = 'slide';
 	$.mobile.transitionFallbacks.slideout = 'none';
 	// Définit préférence par défaut
-	window.localStorage.setItem('vibration_msg', 0);
-	window.localStorage.setItem('msg_size', 12);
+	var vibration_msg = window.localStorage.getItem("vibration_msg");
+	var msg_size = window.localStorage.getItem("msg_size");
+	
+	if ( !vibration_msg ) { window.localStorage.setItem('vibration_msg', 0); }
+	if ( !msg_size ) { window.localStorage.setItem('msg_size', 12); }
 });
 
 $(document).on('pageshow', '#Connexion1', function() {
