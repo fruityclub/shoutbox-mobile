@@ -351,6 +351,16 @@ function refresh_shoutlist(loading) {
 			
 			var last_update2 = $('#ULShoutList li').last().attr('data-name');
 			$("#last_update").val(last_update2);
+			
+			$(".linkInMessage").each(function() {
+				
+			  var hrefUrl = $(this).attr('href');
+			  var hrefInfos = $.mobile.path.parseUrl(hrefUrl);
+			  
+			  var hrefHost = hrefInfos.hostname;
+			  $(this).text(hrefHost);
+			  
+			});
 		},
 		success: function (responseText) {
 			if ( loading == true ) { $("#ULShoutList").empty(); }
@@ -376,16 +386,6 @@ function refresh_shoutlist(loading) {
 		error: function (responseText) {             
 			alert('Erreur ' + responseText.message);
 		}
-	});
-	
-	$(".linkInMessage").each(function() {
-		
-	  var hrefUrl = $(this).attr('href');
-	  var hrefInfos = $.mobile.path.parseUrl(hrefUrl);
-	  
-	  var hrefHost = hrefInfos.hostname;
-	  $(this).text(hrefHost);
-	  
 	});
 
 }
