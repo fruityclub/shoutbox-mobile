@@ -532,6 +532,8 @@ $(document).on('click', '#submit_config', function() {
 	var vibration_msg = $('#vibration_msg').val();
 	var msg_size = $("input[name*=msg_size-]:checked").val();
 	
+	alert('msg_size:' + msg_size);
+	
 	window.localStorage.setItem("vibration_msg", vibration_msg);
 	window.localStorage.setItem("msg_size", msg_size);	
 	
