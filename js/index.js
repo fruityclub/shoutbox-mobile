@@ -239,7 +239,7 @@ $(document).on('pageshow', '#ShoutboxList', function(event, data) {
 	
 	$('#ULMemberInfos1').html('<img src="' + avatar + '" width="100" height="100" />');
 	$('#ULMemberInfos2').html('<h2 style="color:' + name_color + '">' + real_name + '</h2>' + group_title + '<br />' + vip_title + '</p>');
-	$('#ULMemberInfos3').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)<br />vibration_msg: ' + vibration_msg + ', msg_size: ' + msg_size + '</p>');
+	$('#ULMemberInfos3').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)</p>');
 	
 	$("#last_update").val('0');
 	
@@ -317,7 +317,7 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	
 	$('#ULMemberInfos12').html('<img src="' + avatar + '" width="100" height="100" />');
 	$('#ULMemberInfos22').html('<h2 style="color:' + name_color + '">' + real_name + '</h2>' + group_title + '<br />' + vip_title + '</p>');
-	$('#ULMemberInfos32').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)<br />vibration_msg: ' + vibration_msg + ', msg_size: ' + msg_size + '</p>');
+	$('#ULMemberInfos32').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)</p>');
 	
 	// première update
 	var loading = true;
@@ -522,6 +522,21 @@ $(document).on('click', '#btn_confirmDeleteShout', function() {
 	}
 });
 
+$(document).on('pageshow', '#config', function(event, data) {
+	
+	var vibration_msg = window.localStorage.getItem("vibration_msg");
+	var msg_size = window.localStorage.getItem("msg_size");
+	
+	// mets valeurs par défaut si existe	
+	if ( !vibration_msg ) { vibration_msg = 0; }
+	if ( !msg_size ) { msg_size = 12; }
+	
+	$('input:radio[name="msg_size"]').filter('[value="' + msg_size + '"]').next().click();
+	$('#vibration_msg').val(vibration_msg);
+	$('#vibration_msg').slider('refresh');
+	
+});
+
 $(document).on('click', '#btn_autoLogConfig', function() {
 
 	window.localStorage.clear();
@@ -535,15 +550,12 @@ $(document).on('click', '#submit_config', function() {
 	var vibration_msg = $('#vibration_msg').val();
 	var msg_size = $("input[name=msg_size]:checked").val();
 	
-	alert('msg_size:' + msg_size);
-	
 	window.localStorage.setItem("vibration_msg", vibration_msg);
 	window.localStorage.setItem("msg_size", msg_size);	
 	
 	alert('La configuration a été enregistrée.');
 
 });
-
 
 function vibrateOnNewMEssages() {
 	navigator.notification.vibrate(1000);
