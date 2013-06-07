@@ -481,7 +481,7 @@ $(document).on('click', '#btn_confirmDeleteShout', function() {
 	}
 });
 
-$(document).on('click', 'btn_autoLogConfig', function() {
+$(document).on('click', '#btn_autoLogConfig', function() {
 
 	window.localStorage.clear();
 	alert('La connexion automatique a été désactivée.');
