@@ -297,6 +297,19 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	
 	$('#ULShoutList').listview();
 	
+	var countNbshouts =  $('#ULShoutList li').size();
+	if ( countNbshouts == 0 ) {
+		var noShoutsHTML = '<li id="li_refreshShoutlist">
+						<a href="#">
+							<img src="css/images/ajax-loader.gif" width="80" />
+							<h3>Chargement des messages en cours ...</h3>
+							<p>Vous attendez depuis trop longtemps ? Appuyez ici pour les afficher plus vite !</p>
+						</a>
+				</li>';
+		$("#ULShoutList").append( noShoutsHTML );
+		
+	}
+	
 	// première update
 	var loading = true;
 	refresh_shoutlist(loading);	
