@@ -288,9 +288,20 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	var vip_title = 'Non VIP';
 	if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
 	if ( isvip == "true" ) { vip_title = "VIP"; }
-		
+	
+	$('#ULShoutList').listview();
 	if ( data.prevPage.attr('id') == 'ShoutboxList' ) {
 		$('#ULShoutList').children().remove('li');
+	}
+	
+	var countNbshouts = $('#ULShoutList li').size();
+	if ( countNbshouts == 0 ) {
+		var noShouts = '<li id="li_refreshShoutlist" data-inset="true">';
+		noShouts += '<img src="css/images/ajax-loader.gif" width="80" />';
+		noShouts += '<h3>Chargement des messages en cours ...</h3>';
+		noShouts += '<p>Vous attendez depuis trop longtemps ? Appuyez ici pour les afficher plus vite !</p>';
+		noShouts += '</li>';
+		$("#ULShoutList").append(noShouts);		
 	}
 	
 	$('.MemberInfos').empty();
@@ -298,18 +309,6 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	$('#ULMemberInfos12').html('<img src="' + avatar + '" width="100" height="100" />');
 	$('#ULMemberInfos22').html('<h2 style="color:' + name_color + '">' + real_name + '</h2>' + group_title + '<br />' + vip_title + '</p>');
 	$('#ULMemberInfos32').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)</p>');
-	
-	$('#ULShoutList').listview();
-	
-	var countNbshouts = $('#ULShoutList li').size();
-	if ( countNbshouts == 0 ) {
-		var noShouts = '<li id="li_refreshShoutlist">';
-		noShouts += '<a href="#"><img src="css/images/ajax-loader.gif" width="80" />';
-		noShouts += '<h3>Chargement des messages en cours ...</h3>';
-		noShouts += '<p>Vous attendez depuis trop longtemps ? Appuyez ici pour les afficher plus vite !</p>';
-		noShouts += '</a></li>';
-		$("#ULShoutList").append(noShouts);		
-	}
 	
 	// première update
 	var loading = true;
