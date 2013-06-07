@@ -524,6 +524,10 @@ $(document).on('click', '#btn_confirmDeleteShout', function() {
 
 $(document).on('pageshow', '#config', function(event, data) {
 	
+	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
+		clearInterval(refreshIntervalId);
+	}
+	
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
 	
@@ -554,6 +558,13 @@ $(document).on('click', '#submit_config', function() {
 	window.localStorage.setItem("msg_size", msg_size);	
 	
 	alert('La configuration a été enregistrée.');
+	
+	if (typeof(window.localStorage.getItem("id_shoutbox")) != "undefined" && window.localStorage.getItem("id_shoutbox") !== null) {
+		$.mobile.changePage($('#ShoutList'));
+
+	} else {	
+		$.mobile.changePage($('#ShoutboxList'));
+	}
 
 });
 
