@@ -127,9 +127,9 @@
 
 				<div class="ui-body ui-body-a">
 					<div class="ui-grid-b" id="ULMemberInfos">
-						<div style="width:40%;" class="ui-block-a" id="ULMemberInfos1"></div>
-						<div style="width:30%;" class="ui-block-b" id="ULMemberInfos2"></div>
-						<div style="width:30%;" class="ui-block-c" id="ULMemberInfos3"></div>
+						<div style="width:40%;" class="ui-block-a MemberInfos" id="ULMemberInfos1"></div>
+						<div style="width:30%;" class="ui-block-b MemberInfos" id="ULMemberInfos2"></div>
+						<div style="width:30%;" class="ui-block-c MemberInfos" id="ULMemberInfos3"></div>
 					</div>
 				</div>
 
@@ -158,9 +158,9 @@
 			
 				<div class="ui-body ui-body-a">
 					<div class="ui-grid-b" id="ULMemberInfos2">
-						<div style="width:40%;" class="ui-block-a" id="ULMemberInfos12"></div>
-						<div style="width:30%;" class="ui-block-b" id="ULMemberInfos22"></div>
-						<div style="width:30%;" class="ui-block-c" id="ULMemberInfos32"></div>
+						<div style="width:40%;" class="ui-block-a MemberInfos" id="ULMemberInfos12"></div>
+						<div style="width:30%;" class="ui-block-b MemberInfos" id="ULMemberInfos22"></div>
+						<div style="width:30%;" class="ui-block-c MemberInfos" id="ULMemberInfos32"></div>
 					</div>
 				</div>
 
@@ -173,7 +173,15 @@
 				
 				<br />
 				
-				<ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Filtrer ..." data-filter-theme="a" id="ULShoutList"></ul>
+				<ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Filtrer ..." data-filter-theme="a" id="ULShoutList">
+					<li id="li_refreshShoutlist">
+						<a href="#">
+							<img src="css/images/ajax-loader.gif" />
+							<h3>Chargement des messages en cours ...</h3>
+							<p>Vous attendez depuis trop longtemps ? Appuyez ici pour les afficher plus vite !</p>
+						</a>
+					</li>				
+				</ul>
 				
 				<input type="hidden" name="last_update" id="last_update" value="0" />
 				
