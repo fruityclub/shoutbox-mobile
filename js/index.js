@@ -195,6 +195,10 @@ function shoutboxAccess(returndata) {
 	window.localStorage.setItem("posts", returndata.posts);	
 	window.localStorage.setItem("auth_token", returndata.auth_token);
 	
+	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
+		clearInterval(refreshIntervalId);
+	}
+	
 	if (typeof(window.localStorage.getItem("id_shoutbox")) != "undefined" && window.localStorage.getItem("id_shoutbox") !== null) {
 		$.mobile.changePage($('#ShoutList'));
 
