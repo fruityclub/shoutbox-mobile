@@ -1,6 +1,9 @@
 $(document).bind("mobileinit", function(){
 	$.mobile.defaultDialogTransition = 'slide';
-	$.mobile.transitionFallbacks.slideout = "none"
+	$.mobile.transitionFallbacks.slideout = 'none';
+	// Définit préférence par défaut
+	window.localStorage.setItem('vibration_msg', 0);
+	window.localStorage.setItem('msg_size', 12);
 });
 
 $(document).on('pageshow', '#Connexion1', function() {
@@ -8,10 +11,6 @@ $(document).on('pageshow', '#Connexion1', function() {
 	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
 		clearInterval(refreshIntervalId);
 	}
-	
-	// Définit préférence par défaut
-	window.localStorage.setItem("vibration_msg", 0);
-	window.localStorage.setItem("msg_size", 12);
 
 	var email = window.localStorage.getItem("email");
 	var password = window.localStorage.getItem("password");
@@ -341,6 +340,9 @@ function refresh_shoutlist(loading) {
 	var auth_token = window.localStorage.getItem("auth_token");
 	var last_update1 = $("#last_update").val();
 	
+	var vibration_msg = window.localStorage.getItem("vibration_msg");
+	var msg_size = window.localStorage.getItem("msg_size");
+	
 	// get shoutbox list
 	$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutlist',
 		type: 'post',
@@ -369,11 +371,7 @@ function refresh_shoutlist(loading) {
 		success: function (responseText) {
 			if ( loading == true ) { $("#ULShoutList").empty(); }
 			if (typeof(responseText) != "undefined" && responseText !== null) {
-				if ( responseText.length > 0) {
-
-					var vibration_msg = window.localStorage.getItem("vibration_msg");
-					var msg_size = window.localStorage.getItem("msg_size");
-	
+				if ( responseText.length > 0) {	
 					var shoutsList = '';
 					$.each( responseText, function( i, item ) {
 						shoutsList += '<li class="LIShoutList" data-name="' + item.log_time + '" data-inset="true">';
