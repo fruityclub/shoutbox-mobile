@@ -297,10 +297,10 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	var countNbshouts = $('#ULShoutList li').size();
 	if ( countNbshouts == 0 ) {
 		var noShouts = '<li id="li_refreshShoutlist" data-inset="true">';
-		noShouts += '<img src="css/images/ajax-loader.gif" width="80" />';
-		noShouts += '<h3>Chargement des messages en cours ...</h3>';
-		noShouts += '<p>Vous attendez depuis trop longtemps ? Appuyez ici pour les afficher plus vite !</p>';
-		noShouts += '</li>';
+		noShouts += '<a href="#"><img src="css/images/ajax-loader.gif" width="80" />';
+		noShouts += '<b>Chargement des messages en cours ...</b>';
+		noShouts += 'Vous attendez depuis trop longtemps ? Appuyez ici pour les afficher plus vite !';
+		noShouts += '</a></li>';
 		$("#ULShoutList").append(noShouts);		
 	}
 	
