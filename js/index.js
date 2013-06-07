@@ -223,16 +223,12 @@ $(document).on('pageshow', '#ShoutboxList', function(event, data) {
 	if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
 	if ( isvip == "true" ) { vip_title = "VIP"; }
 	
-	$('#ULMemberInfos1').empty();
-	$('#ULMemberInfos2').empty();
-	$('#ULMemberInfos3').empty();
+	$('.MemberInfos').empty();
 	
 	$('#ULMemberInfos1').html('<img src="' + avatar + '" width="100" height="100" />');
 	$('#ULMemberInfos2').html('<h2 style="color:' + name_color + '">' + real_name + '</h2>' + group_title + '<br />' + vip_title + '</p>');
 	$('#ULMemberInfos3').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)</p>');
 	
-	$("#ULShoutboxList").empty();
-	$('#ULShoutboxList').listview();
 	$("#last_update").val('0');
 	
 	// get shoutbox list
@@ -248,6 +244,8 @@ $(document).on('pageshow', '#ShoutboxList', function(event, data) {
 			$('#ULShoutboxList').listview('refresh');
 		},
 		success: function (responseText) {
+			$("#ULShoutboxList").empty();
+			$('#ULShoutboxList').listview();
 			var shoutboxsList = '';
 			$.each( responseText, function( i, item ) {
 				shoutboxsList += '<li data-icon="arrow-r" class="LIShoutboxList" data-name="' + item.id_shoutbox + '"><a href="#">';
@@ -291,15 +289,12 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
 	if ( isvip == "true" ) { vip_title = "VIP"; }
 	
-	$('#ULMemberInfos12').empty();
-	$('#ULMemberInfos22').empty();
-	$('#ULMemberInfos32').empty();
+	$('.MemberInfos').empty();
 	
 	$('#ULMemberInfos12').html('<img src="' + avatar + '" width="100" height="100" />');
 	$('#ULMemberInfos22').html('<h2 style="color:' + name_color + '">' + real_name + '</h2>' + group_title + '<br />' + vip_title + '</p>');
 	$('#ULMemberInfos32').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)</p>');
-
-	$("#ULShoutList").empty();
+	
 	$('#ULShoutList').listview();
 	
 	// première update
@@ -317,6 +312,7 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 
 function refresh_shoutlist(loading) {
 
+	// loading = true si premier refresh
 	var id_shoutbox = window.localStorage.getItem("id_shoutbox");
 	var id_member = window.localStorage.getItem("id_member");
 	var auth_token = window.localStorage.getItem("auth_token");
@@ -338,7 +334,8 @@ function refresh_shoutlist(loading) {
 			var last_update2 = $('#ULShoutList li').last().attr('data-name');
 			$("#last_update").val(last_update2);
 		},
-		success: function (responseText) {			
+		success: function (responseText) {
+			if ( loading == true ) { $("#ULShoutList").empty(); }
 			if (typeof(responseText) != "undefined" && responseText !== null) {
 				if ( responseText.length > 0) {			
 					var shoutsList = '';
