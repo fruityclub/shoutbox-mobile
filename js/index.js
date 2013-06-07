@@ -224,6 +224,8 @@ $(document).on('pageshow', '#ShoutboxList', function(event, data) {
 	var money = window.localStorage.getItem("money");
 	var posts = window.localStorage.getItem("posts");
 	var auth_token = window.localStorage.getItem("auth_token");
+	var vibration_msg = window.localStorage.getItem("vibration_msg");
+	var msg_size = window.localStorage.getItem("msg_size");
 	
 	var group_title = 'Membre';
 	var vip_title = 'Non VIP';
@@ -234,7 +236,7 @@ $(document).on('pageshow', '#ShoutboxList', function(event, data) {
 	
 	$('#ULMemberInfos1').html('<img src="' + avatar + '" width="100" height="100" />');
 	$('#ULMemberInfos2').html('<h2 style="color:' + name_color + '">' + real_name + '</h2>' + group_title + '<br />' + vip_title + '</p>');
-	$('#ULMemberInfos3').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)</p>');
+	$('#ULMemberInfos3').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)<br />vibration_msg: ' + vibration_msg + ', msg_size: ' + msg_size + '</p>');
 	
 	$("#last_update").val('0');
 	
@@ -290,6 +292,8 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	var money = window.localStorage.getItem("money");
 	var posts = window.localStorage.getItem("posts");
 	var auth_token = window.localStorage.getItem("auth_token");
+	var vibration_msg = window.localStorage.getItem("vibration_msg");
+	var msg_size = window.localStorage.getItem("msg_size");
 	
 	var group_title = 'Membre';
 	var vip_title = 'Non VIP';
@@ -310,7 +314,7 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	
 	$('#ULMemberInfos12').html('<img src="' + avatar + '" width="100" height="100" />');
 	$('#ULMemberInfos22').html('<h2 style="color:' + name_color + '">' + real_name + '</h2>' + group_title + '<br />' + vip_title + '</p>');
-	$('#ULMemberInfos32').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)</p>');
+	$('#ULMemberInfos32').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)<br />vibration_msg: ' + vibration_msg + ', msg_size: ' + msg_size + '</p>');
 	
 	// première update
 	var loading = true;
