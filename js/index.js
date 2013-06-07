@@ -481,6 +481,10 @@ $(document).on('click', '#btn_confirmDeleteShout', function() {
 	}
 });
 
-function clearLocalStorage() {
+$(document).on('click', 'btn_autoLogConfig', function() {
+
 	window.localStorage.clear();
-}
+	alert('La connexion automatique a été désactivée.');
+
+
+});
