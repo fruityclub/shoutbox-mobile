@@ -310,6 +310,13 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 
 });
 
+$(document).on('click', 'li.li_refreshShoutlist', function() {
+	
+	refresh_shoutlist(loading);
+	
+});
+
+
 function refresh_shoutlist(loading) {
 
 	// loading = true si premier refresh
