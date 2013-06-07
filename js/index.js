@@ -1,3 +1,9 @@
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+	var deviceReady = true;	
+}
+
 $(document).bind("mobileinit", function(){
 	$.mobile.defaultDialogTransition = 'slide';
 	$.mobile.transitionFallbacks.slideout = 'none';
@@ -389,7 +395,7 @@ function refresh_shoutlist(loading) {
 					});
 					$("#ULShoutList").append( shoutsList );
 					if ( vibration_msg == 1 ) { 
-						//vibrateOnNewMEssages(); 
+						vibrateOnNewMEssages(); 
 					}
 				}
 			}
@@ -569,5 +575,7 @@ $(document).on('click', '#submit_config', function() {
 });
 
 function vibrateOnNewMEssages() {
-	navigator.notification.vibrate(1000);
+	if (typeof(deviceReady) != "undefined" && deviceReady !== null) {
+		navigator.notification.vibrate(1000);
+	}
 }
