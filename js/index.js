@@ -3,7 +3,7 @@ $(document).bind("mobileinit", function(){
 	$.mobile.transitionFallbacks.slideout = "none"
 });
 
-$(document).on('pagebeforecreate', '#Connexion1', function() {
+$(document).on('pageshow', '#Connexion1', function() {
 	
 	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
 		clearInterval(refreshIntervalId);
@@ -16,6 +16,8 @@ $(document).on('pagebeforecreate', '#Connexion1', function() {
 	if ( email || password || secretkey ) { var docheck = 1; } else { var docheck = 0; }
 	
 	if ( docheck == 1 && checkform(email, password, secretkey) == true ) {
+		
+		$('#Connexion1').hide('slow');
 		
 		if ( email.length > 0 && password.length > 0 ) {
 		
