@@ -533,7 +533,7 @@ $(document).on('click', '#btn_autoLogConfig', function() {
 $(document).on('click', '#submit_config', function() {
 
 	var vibration_msg = $('#vibration_msg').val();
-	var msg_size = $("input[name*=msg_size-]:checked").val();
+	var msg_size = $("input[name=msg_size]:checked").val();
 	
 	alert('msg_size:' + msg_size);
 	
