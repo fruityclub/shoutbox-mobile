@@ -199,6 +199,7 @@ function shoutboxAccess(returndata) {
 	window.localStorage.setItem("isadmin", returndata.isadmin);	
 	window.localStorage.setItem("unread_messages", returndata.unread_messages);
 	window.localStorage.setItem("name_color", returndata.name_color);
+	window.localStorage.setItem("name_color_glow", returndata.name_color_glow);
 	window.localStorage.setItem("money", returndata.money);
 	window.localStorage.setItem("posts", returndata.posts);	
 	window.localStorage.setItem("auth_token", returndata.auth_token);
@@ -222,6 +223,7 @@ $(document).on('pageshow', '#ShoutboxList', function(event, data) {
 	var isadmin = window.localStorage.getItem("isadmin");
 	var unread_messages = window.localStorage.getItem("unread_messages");
 	var name_color = window.localStorage.getItem("name_color");
+	var name_color_glow = window.localStorage.getItem("name_color_glow");
 	var money = window.localStorage.getItem("money");
 	var posts = window.localStorage.getItem("posts");
 	var auth_token = window.localStorage.getItem("auth_token");
@@ -236,7 +238,7 @@ $(document).on('pageshow', '#ShoutboxList', function(event, data) {
 	$('.MemberInfos').empty();
 	
 	$('#ULMemberInfos1').html('<img src="' + avatar + '" width="100" height="100" />');
-	$('#ULMemberInfos2').html('<h2 style="color:' + name_color + '">' + real_name + '</h2>' + group_title + '<br />' + vip_title + '</p>');
+	$('#ULMemberInfos2').html('<h2 style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</h2>' + group_title + '<br />' + vip_title + '</p>');
 	$('#ULMemberInfos3').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)</p>');
 	
 	$("#last_update").val('0');
@@ -290,6 +292,7 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	var isadmin = window.localStorage.getItem("isadmin");
 	var unread_messages = window.localStorage.getItem("unread_messages");
 	var name_color = window.localStorage.getItem("name_color");
+	var name_color_glow = window.localStorage.getItem("name_color_glow");
 	var money = window.localStorage.getItem("money");
 	var posts = window.localStorage.getItem("posts");
 	var auth_token = window.localStorage.getItem("auth_token");
@@ -314,7 +317,7 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	$('.MemberInfos').empty();
 	
 	$('#ULMemberInfos12').html('<img src="' + avatar + '" width="100" height="100" />');
-	$('#ULMemberInfos22').html('<h2 style="color:' + name_color + '">' + real_name + '</h2>' + group_title + '<br />' + vip_title + '</p>');
+	$('#ULMemberInfos22').html('<h2 style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</h2>' + group_title + '<br />' + vip_title + '</p>');
 	$('#ULMemberInfos32').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)</p>');
 	
 	// première update
@@ -390,7 +393,7 @@ function refresh_shoutlist(loading) {
 					$.each( responseText, function( i, item ) {
 						shoutsList += '<li class="LIShoutList" data-name="' + item.log_time + '" data-inset="true">';
 						shoutsList += '<img src="' + item.avatar + '" width="76" height="76" style="border: 2px solid white;" />';						
-						shoutsList += '&raquo; <b style="color:' + item.name_color + ';">' + item.member_name + '</b><br /><span style="font-size:' + msg_size + 'px;">' + item.body + '</span>';
+						shoutsList += '&raquo; <b style="color:' + item.name_color + '; text-shadow:0px 0px 2px ' + item.name_color_glow + ';">' + item.member_name + '</b><br /><span style="font-size:' + msg_size + 'px;">' + item.body + '</span>';
 						shoutsList += '</li>';
 					});
 					$("#ULShoutList").append( shoutsList );
