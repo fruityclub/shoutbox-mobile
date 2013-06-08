@@ -576,14 +576,15 @@ $(document).on('click', '#submit_config', function() {
 $(document).on('click', '#smileyslist', function() {
 
 	// affiche popup smileys
-	$("#smileysList").popup("open");
+	$("#pop_smileysList").popup("open");
 	
 });
 
 $(document).on('click', '#ULsmileyslist', function(event) {
 	
-	var id_smiley = $(event.target).closest('li').attr('data-name');
+	var id_smiley = $(event.target).closest('img').attr('data-name');
 	$('#shouttext').val($('#shouttext').val() + ' ' + id_smiley + ' ');
+	$("#pop_smileysList").popup("close");
 	
 });
 
