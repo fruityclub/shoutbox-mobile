@@ -464,7 +464,7 @@ $(document).on('click', '#submittext', function() {
 				$.mobile.loading( 'hide' );
 			},
 			success: function (responseText) {				
-				var loading = true;
+				var loading = false;
 				refresh_shoutlist(loading);				
 			},
 			error: function (responseText) {             
