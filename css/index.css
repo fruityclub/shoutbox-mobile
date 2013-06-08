@@ -151,3 +151,14 @@ li.LIShoutList a
 li.LIShoutList {
     background: #383835 !important;
 }
+
+.ui-icon-smileys-list {
+    background-image: url("images/emoticon_lol-18.png");
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .ui-icon-smileys-list {
+		background-image: url("images/emoticon_lol-36.png");
+		background-size: 18px 18px;
+	}
+}
