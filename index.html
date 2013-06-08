@@ -30,7 +30,7 @@
     <body>
 		
 		<!-- PAGE CONNEXION -->
-		<div id="Connexion1" data-role="page" data-theme="a" data-title="ShoutBox Connexion" class="app">
+		<div id="Connexion1" data-role="page" data-theme="f" data-title="ShoutBox Connexion" class="app">
 		
 			<div data-role="header" data-position="fixed" data-tap-toggle="false">
 				<h1>ShoutBox Connexion</h1>
@@ -89,7 +89,7 @@
 					<fieldset data-role="fieldcontain">
 
 						<label for="autolog">Connexion auto:</label>
-							<select name="autolog" id="autolog" data-role="slider" data-theme="c">
+							<select name="autolog" id="autolog" data-role="slider">
 								<option value="0">Non</option>
 								<option value="1">Oui</option>
 							</select>
@@ -103,7 +103,7 @@
 					<input type="hidden" name="did" id="did" value="" />
 					<input type="hidden" name="dplatform" id="dplatform" value="" />
 					
-					<button type="submit" data-theme="c" name="submitlog" id="submitlog" value="submitlog" data-icon="check" data-iconpos="right">Connexion</button>
+					<button type="submit" name="submitlog" id="submitlog" value="submitlog" data-icon="check" data-iconpos="right">Connexion</button>
 					
 				</form>
 				
@@ -116,7 +116,7 @@
 		</div>
 		
 		<!-- PAGE LISTE DES SHOUTBOXS -->
-		<div id="ShoutboxList" data-role="page" data-theme="a" data-title="FruityClub ShoutboxList" class="app">
+		<div id="ShoutboxList" data-role="page" data-theme="f" data-title="FruityClub ShoutboxList" class="app">
 		
 			<div data-role="header" data-position="fixed" data-tap-toggle="false">
 				<h1>FruityClub ShoutboxList</h1>
@@ -146,7 +146,7 @@
 		</div>
 		
 		<!-- PAGE LISTE DES MESSAGES -->
-		<div id="ShoutList" data-role="page" data-theme="a" data-title="FruityClub ShoutList" class="app">
+		<div id="ShoutList" data-role="page" data-theme="f" data-title="FruityClub ShoutList" class="app">
 		
 			<div data-role="header" data-position="fixed" data-tap-toggle="false">
 				<h1>FruityClub ShoutList</h1>
@@ -180,15 +180,15 @@
 				
 			</div>
 			
-			<div data-role="popup" id="confirmDeleteShout"  data-theme="a" class="ui-corner-all" style="max-width:400px;">
+			<div data-role="popup" id="confirmDeleteShout" class="ui-corner-all" style="max-width:400px;">
 					<h3 class="ui-title">Etes vous sûr de vouloir supprimer ce message?</h3>
 					<p>Cette action ne peut pas être annulée.</p>
 					<input type="hidden" name="idShoutHidden" id="idShoutHidden" value="" />
-					<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">Annuler</a>    
-					<a href="#" name="btn_confirmDeleteShout" id="btn_confirmDeleteShout" data-role="button" data-inline="true" data-theme="a">Supprimer</a>  
+					<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="d">Annuler</a>    
+					<a href="#" name="btn_confirmDeleteShout" id="btn_confirmDeleteShout" data-role="button" data-inline="true">Supprimer</a>  
 			</div>
 			
-			<div data-role="popup" id="loadingMessages"  data-theme="a" class="ui-corner-all" style="max-width:400px;">
+			<div data-role="popup" id="loadingMessages" class="ui-corner-all" style="max-width:400px;">
 				<div class="ui-grid-a">
 					<div style="width:20%;" class="ui-block-a">
 						<img src="css/images/ajax-loader.gif" width="80%" />
@@ -196,7 +196,7 @@
 					<div style="width:80%;" class="ui-block-b">	
 						<h3 class="ui-title">Chargement des messages en cours ...</h3>
 						<p>Vous attendez depuis trop longtemps ? Appuyez sur le bouton ci-dessous pour aller plus vite !</p> 
-						<a href="#" name="btn_refreshShouts" id="btn_refreshShouts" data-role="button" data-inline="true" data-theme="a">Afficher les messages</a>  
+						<a href="#" name="btn_refreshShouts" id="btn_refreshShouts" data-role="button" data-inline="true">Afficher les messages</a>  
 					</div>
 				</div>
 			</div>
@@ -205,7 +205,7 @@
 			
 				<form method="post" action="" class="ui-grid-b">
 					<div style="width:20%;" class="ui-block-a"><a href="#ShoutboxList" data-icon="back" data-role="button">Liste</a></div>
-					<div style="width:60%;" class="ui-block-b"><input style="" data-mini="true" type="text" name="shouttext" id="shouttext" value="" data-theme="a"/></div>
+					<div style="width:60%;" class="ui-block-b"><input style="" data-mini="true" type="text" name="shouttext" id="shouttext" value="" /></div>
 					<div style="width:20%;" class="ui-block-c"><a name="submittext" id="submittext" href="#" data-role="button">Shout!</a></div>       
 				</form>
 
@@ -214,7 +214,7 @@
 		</div>
 		
 		<!-- CONFIG -->
-		<div id="config" data-role="page" data-theme="a">
+		<div id="config" data-role="page" data-theme="f">
 
 			<div data-role="header" data-position="fixed">
 				<h1>Configuration</h1>
@@ -243,7 +243,7 @@
 		        					<label for="autolog">Connexion automatique</label>
 		        				</div>
 		        				<div class="ui-block-b" id="autoLogConfig">
-								<button type="submit" id="btn_autoLogConfig" name="btn_autoLogConfig" data-theme="a">D&eacute;sactiver</button>
+								<button type="submit" id="btn_autoLogConfig" name="btn_autoLogConfig">D&eacute;sactiver</button>
 							</div>
 						</div>
 					</li>
@@ -272,7 +272,7 @@
 
 				</ul>
 
-				<button type="submit" data-theme="c" name="submit_config" id="submit_config" value="submit_config" data-icon="check" data-iconpos="right">Enregistrer</button>
+				<button type="submit" name="submit_config" id="submit_config" value="submit_config" data-icon="check" data-iconpos="right">Enregistrer</button>
 
 			</div>
 
