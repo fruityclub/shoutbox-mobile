@@ -6,8 +6,10 @@ function onDeviceReady() {
 
 $(document).bind("mobileinit", function() {
 	
-	$.mobile.defaultDialogTransition = 'slide';
+	$.mobile.defaultDialogTransition = 'none';
+	$.mobile.defaultPageTransition = 'none';
 	$.mobile.transitionFallbacks.slideout = 'none';
+	
 	// Définit préférence par défaut
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
@@ -27,7 +29,7 @@ $(document).on('pageshow', '#Connexion1', function() {
 	
 	if ( docheck == 1 && checkform(email, password, secretkey) == true ) {
 		
-		$('#Connexion1').hide('slow');
+		$('#Connexion1').hide();
 		
 		if ( email.length > 0 && password.length > 0 ) {
 		
