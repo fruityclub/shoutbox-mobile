@@ -389,9 +389,8 @@ function refresh_shoutlist(loading) {
 					var shoutsList = '';
 					$.each( responseText, function( i, item ) {
 						shoutsList += '<li class="LIShoutList" data-name="' + item.log_time + '" data-inset="true">';
-						shoutsList += '<img src="' + item.avatar + '" width="76" height="76" style="border: 2px solid white;" />';
-						if ( item.member_name.length > 11 ) { var member_name_size = 11; } else { var member_name_size = 14; }
-						shoutsList += '<div class="ui-grid-a"><div style="width:30%;" class="ui-block-a"><b style="color:' + item.name_color + '; font-size: ' + member_name_size + 'px;">' + item.member_name + '</b></div><div style="width:70%;" class="ui-block-b"><span style="font-size:' + msg_size + 'px;">' + item.body + '</span></div></div>';
+						shoutsList += '<img src="' + item.avatar + '" width="76" height="76" style="border: 2px solid white;" />';						
+						shoutsList += '&raquo; <b style="color:' + item.name_color + ';">' + item.member_name + '</b><br /><span style="font-size:' + msg_size + 'px;">' + item.body + '</span>';
 						shoutsList += '</li>';
 					});
 					$("#ULShoutList").append( shoutsList );
