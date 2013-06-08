@@ -143,8 +143,11 @@ h1 {
 .info_bbc   {background: #e2ecee url(https://www.fruityclub.net/Themes/default/images/mBox/info.png) 2.2em center no-repeat; border-color: #9ddae6}
 .info_bbc a {color: #2d7ba2}
 
-a
+li.LIShoutList a
 {
-  color: #7EA709;
-  text-decoration: none;
+  color: #7EA709; !important;
+}
+
+li.LIShoutList {
+    background: #383835 !important;
 }
