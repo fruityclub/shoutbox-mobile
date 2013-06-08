@@ -477,7 +477,7 @@ $(document).on('click', '#submittext', function() {
 	
 });
 
-$(document).on('swipeleft', '#ULShoutList', function(event) {
+$(document).on('swipe', '#ULShoutList', function(event) {
 	
 	var id_shout = $(event.target).closest('li').attr('data-name');
 	var id_group = window.localStorage.getItem("id_group");
