@@ -573,6 +573,20 @@ $(document).on('click', '#submit_config', function() {
 
 });
 
+$(document).on('click', '#smileyslist', function() {
+
+	// affiche popup smileys
+	$("#smileysList").popup("open");
+	
+});
+
+$(document).on('click', '#ULsmileyslist', function(event) {
+	
+	var id_smiley = $(event.target).closest('li').attr('data-name');
+	$('#shouttext').val($('#shouttext').val() + ' ' + id_smiley + ' ');
+	
+});
+
 function vibrateOnNewMEssages() {
 	if (typeof(deviceReady) != "undefined" && deviceReady !== null) {
 		navigator.notification.vibrate(1000);
