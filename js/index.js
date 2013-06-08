@@ -237,9 +237,9 @@ $(document).on('pageshow', '#ShoutboxList', function(event, data) {
 	
 	$('.MemberInfos').empty();
 	
-	$('#ULMemberInfos1').html('<img src="' + avatar + '" width="100" height="100" />');
-	$('#ULMemberInfos2').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><p>' + group_title + '<br />' + vip_title + '</p>');
-	$('#ULMemberInfos3').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)</p>');
+	$('#ULMemberInfos12').html('<img src="' + avatar + '" width="100" height="100" />');
+	$('#ULMemberInfos22').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
+	$('#ULMemberInfos32').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
 	
 	$("#last_update").val('0');
 	
@@ -317,8 +317,8 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	$('.MemberInfos').empty();
 	
 	$('#ULMemberInfos12').html('<img src="' + avatar + '" width="100" height="100" />');
-	$('#ULMemberInfos22').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><p>' + group_title + '<br />' + vip_title + '</p>');
-	$('#ULMemberInfos32').html('<p>' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)</p>');
+	$('#ULMemberInfos22').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
+	$('#ULMemberInfos32').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
 	
 	// première update
 	var loading = true;
