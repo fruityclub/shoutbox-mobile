@@ -454,6 +454,14 @@ function get_shoutbox_infos(id_shoutbox) {
 
 }
 
+$(document).on('click', '#btn_emptytext', function() {
+
+	$('#shouttext').val('');
+
+});
+
+
+
 $(document).on('click', '#submittext', function() {
 
 	sendshout();
@@ -502,7 +510,7 @@ function sendshout() {
 	
 }
 
-/*$(document).on('taphold', '#ULShoutList', function(event) {
+$(document).on('taphold', '#ULShoutList', function(event) {
 	
 	var id_shout = $(event.target).closest('li').attr('data-name');
 	
@@ -510,16 +518,6 @@ function sendshout() {
 	
 	fn_confirmDeleteShout(id_shout);
 	
-});*/
-
-$('li.LIShoutList').on('taphold', function(e) {
-
-	var id_shout = $(this).attr('data-name');
-	
-	alert('id_shout2: ' + id_shout);
-	
-	fn_confirmDeleteShout(id_shout);
-
 });
 
 function fn_confirmDeleteShout(id_shout) {		
