@@ -493,6 +493,8 @@ function fn_sendshout(e) {
 		
 	}
 	
+	return false;
+	
 }
 
 function fn_tapInShoutList(event) {	
