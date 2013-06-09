@@ -334,14 +334,16 @@ function fn_show_ShoutList(event, data) {
 	if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
 	if ( isvip == "true" ) { vip_title = "VIP"; }
 	
-	$('#ULShoutList').listview();
-	$('#ULShoutList').children().remove('li');
-	$("#loadingMessages").popup("open");
-	
 	$('.MemberInfos').empty();	
 	$('#ULMemberInfos12').html('<img src="' + avatar + '" height="76" style="border: 2px solid white;" />');
 	$('#ULMemberInfos22').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
 	$('#ULMemberInfos32').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
+	
+	$('#ULShoutList').listview();
+	$('#ULShoutList').children().remove('li');
+	$("#loadingMessages").popup("open");
+
+	$("#last_update").val('0');
 	
 	get_shoutbox_infos();
 
