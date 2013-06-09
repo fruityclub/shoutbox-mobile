@@ -6,21 +6,23 @@ $(document).bind("mobileinit", fn_mobileinit);
 $(document).on('pageshow', '#Connexion1', fn_show_Connexion1);
 $(document).on('pageshow', '#ShoutboxList', fn_show_ShoutboxList);
 $(document).on('pageshow', '#ShoutList', fn_show_ShoutList);
-$(document).on('pageshow', '#config', function(fn_show_config);
+$(document).on('pageshow', '#config', fn_show_config);
 
 $(document).on('pagehide', '#ShoutList', fn_hide_ShoutList);
 
 $(document).on('submit', '#formaddshout', fn_sendshout);
-$(document).on('submit', '#checkuser', submitconnexion);
+$(document).on('submit', '#checkuser', fn_submitconnexion);
 
 $(document).on('taphold', '#ULShoutList', fn_tapInShoutList);
 
-$(document).on('vclick', '#submitlog', submitconnexion);
+$(document).on('vclick', '#submitlog', fn_submitconnexion);
 $(document).on('vclick', 'li.LIShoutboxList', fn_click_LIShoutboxList);
 $(document).on('vclick', '#btn_refreshShouts', fn_click_btn_refreshShouts);
 $(document).on('vclick', '#btn_emptytext', fn_emptytext);
 $(document).on('vclick', '#submittext', fn_sendshout);
-$(document).on('vclick', '#btn_confirmDeleteShout', btn_confirmDeleteShout);
+
+$(document).on('vclick', '#btn_confirmDeleteShout', fn_confirmDeleteShout);
+
 $(document).on('vclick', '#btn_autoLogConfig', fn_autoLogConfig);
 $(document).on('vclick', '#submit_config', fn_sublit_config);
 $(document).on('vclick', '#smileyslist', fn_click_smileyslist);
@@ -73,7 +75,7 @@ function fn_show_Connexion1() {
 	}	
 }
 
-function submitconnexion(e) {
+function fn_submitconnexion(e) {
 	
 	e.preventDefault();
 	
@@ -499,10 +501,10 @@ function fn_sendshout(e) {
 
 function fn_tapInShoutList(event) {	
 	var id_shout = $(event.target).closest('li').attr('data-name');		
-	fn_confirmDeleteShout(id_shout);	
+	popupDeleteShout(id_shout);	
 }
 
-function fn_confirmDeleteShout(id_shout) {		
+function popupDeleteShout(id_shout) {		
 	
 	var id_group = window.localStorage.getItem("id_group");
 	
@@ -520,7 +522,7 @@ function fn_confirmDeleteShout(id_shout) {
 	
 }
 
-function btn_confirmDeleteShout() {
+function fn_confirmDeleteShout() {
 	var id_group = window.localStorage.getItem("id_group");
 	var id_shout = $('#idShoutHidden').val();
 	
