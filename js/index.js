@@ -343,12 +343,11 @@ function fn_show_ShoutList(event, data) {
 	$('#ULMemberInfos22').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
 	$('#ULMemberInfos32').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
 	
-	// première update	
 	get_shoutbox_infos();
-	
-	// updates suivantes regulières
+
 	var firstRefresh = true;
 	startRefresh(firstRefresh);
+	
 }
 
 function fn_hide_ShoutList() {
