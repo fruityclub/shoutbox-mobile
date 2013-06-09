@@ -339,16 +339,23 @@ function fn_show_ShoutList(event, data) {
 	$('#ULMemberInfos22').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
 	$('#ULMemberInfos32').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
 	
-	$('#ULShoutList').listview();
-	$('#ULShoutList').children().remove('li');
-	$("#loadingMessages").popup("open");
-
-	$("#last_update").val('0');
+	if ( data.prevPage.attr("id") == "ShoutboxList" ) {
 	
-	get_shoutbox_infos();
+		$('#ULShoutList').listview();
+		$('#ULShoutList').children().remove('li');
+		$("#loadingMessages").popup("open");	
+		$("#last_update").val('0');
+		
+		get_shoutbox_infos();
+	
+		var firstRefresh = true;
+		startRefresh(firstRefresh);
+	
+	} else {
 
-	var firstRefresh = true;
-	startRefresh(firstRefresh);
+		startRefresh();
+
+	}
 	
 }
 
@@ -447,7 +454,6 @@ function get_shoutbox_infos(id_shoutbox) {
 			} else {
 				$("#shoutbox_warning").hide();
 			}
-			$("#last_update").val(responseText.last_update);
 		},
 		error: function (responseText) {             
 			alert('Erreur ' + responseText.message);
