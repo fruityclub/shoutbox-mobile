@@ -34,6 +34,7 @@ function onDeviceReady() {
 }
 
 function fn_mobileinit() {
+	
 	$.mobile.defaultDialogTransition = 'none';
 	$.mobile.defaultPageTransition = 'none';
 	$.mobile.transitionFallbacks.slideout = 'none';
@@ -43,13 +44,17 @@ function fn_mobileinit() {
 	var msg_size = window.localStorage.getItem("msg_size");
 	
 	if ( !vibration_msg ) { window.localStorage.setItem('vibration_msg', 0); }
-	if ( !msg_size ) { window.localStorage.setItem('msg_size', 12); }	
+	if ( !msg_size ) { window.localStorage.setItem('msg_size', 12); }
+	
 }
 
 function fn_show_Connexion1() {
+	
 	var email = window.localStorage.getItem("email");
 	var password = window.localStorage.getItem("password");
 	var secretkey = window.localStorage.getItem("secretkey");
+	
+	stopRefresh();
 	
 	if ( email || password || secretkey ) { var docheck = 1; } else { var docheck = 0; }
 	
@@ -253,6 +258,8 @@ function fn_show_ShoutboxList() {
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
 	
+	stopRefresh();
+	
 	var group_title = 'Membre';
 	var vip_title = 'Non VIP';
 	if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
@@ -319,6 +326,8 @@ function fn_show_ShoutList(event, data) {
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
 	
+	stopRefresh();
+	
 	var group_title = 'Membre';
 	var vip_title = 'Non VIP';
 	if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
@@ -349,13 +358,14 @@ function fn_show_ShoutList(event, data) {
 	var loading = false;
 	var refreshIntervalId = setInterval(function() {
 		  refresh_shoutlist(loading);
-	}, 30000);	
+	}, 30000);
+	
+	// on conserve l'id du refreshinterval pour utilisation future
+	window.localStorage.setItem("refreshIntervalId", refreshIntervalId);
 }
 
 function fn_hide_ShoutList() {
-	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
-		clearInterval(refreshIntervalId);
-	}	
+	stopRefresh();
 }
 
 function fn_click_btn_refreshShouts() {
@@ -606,4 +616,12 @@ function vibrateOnNewMEssages() {
 	if (typeof(deviceReady) != "undefined" && deviceReady !== null) {
 		navigator.notification.vibrate(1000);
 	}
+}
+
+function stopRefresh() {
+	if (typeof(window.localStorage.getItem("refreshIntervalId")) != "undefined" && window.localStorage.getItem("refreshIntervalId") !== null) {
+		var refreshIntervalId = window.localStorage.getItem("refreshIntervalId");
+		clearInterval(refreshIntervalId);
+	}
+	
 }
