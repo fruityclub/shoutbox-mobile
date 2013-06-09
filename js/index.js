@@ -614,8 +614,11 @@ function vibrateOnNewMEssages() {
 }
 
 function startRefresh(firstRefresh) {
+	
+	firstRefresh = firstRefresh || false;
+	
 	refresh_shoutlist(firstRefresh);	
-	var refreshIntervalId = setTimeout(refresh_shoutlist, 30000);
+	var refreshIntervalId = setTimeout(startRefresh, 30000);
 	
 	// on conserve l'id du refreshinterval pour utilisation future
 	window.localStorage.setItem("refreshIntervalId", refreshIntervalId);	
