@@ -52,6 +52,18 @@ $(document).on('pageshow', '#Connexion1', function() {
 
 $(document).on('click', '#submitlog', function() {
 
+	submitconnexion();
+
+});
+
+$(document).on('submit', '#checkuser', function() {
+
+	submitconnexion();
+
+});
+
+function submitconnexion() {
+	
 	var email = $('#email').val();
 	var password = $('#passlog').val();
 	var secretkey = $('#secretkey').val();		
@@ -80,8 +92,8 @@ $(document).on('click', '#submitlog', function() {
 	}
 	
 	return false;
-
-});
+	
+}
 
 function checkform(email, password, secretkey) {
 
@@ -444,6 +456,18 @@ function get_shoutbox_infos(id_shoutbox) {
 
 $(document).on('click', '#submittext', function() {
 
+	sendshout();
+	
+});
+
+$(document).on('submit', '#formaddshout', function() {
+	
+	sendshout();
+	
+});
+
+function sendshout() {
+	
 	var shouttext = $('#shouttext').val();
 	var id_shoutbox = window.localStorage.getItem("id_shoutbox");
 	var id_member = window.localStorage.getItem("id_member");
@@ -475,14 +499,31 @@ $(document).on('click', '#submittext', function() {
 		
 	}
 	
+}
+
+$(document).on('taphold', '#ULShoutList', function(event) {
+	
+	var id_shout = $(event.target).closest('li').attr('data-name');
+	
+	alert('id_shout1: ' + id_shout);
+	
+	fn_confirmDeleteShout(id_shout);
+	
 });
 
-$(document).on('swipe', '#ULShoutList li.LIShoutList', function(event) {
-	
+$('.LIShoutList').on('taphold', function(e) {
+
+	e.stopPropagation();
 	var id_shout = $(this).attr('data-name');
-	alert('id_shout: ' + id_shout);
 	
-	//$(event.target).closest('li').attr('data-name');
+	alert('id_shout2: ' + id_shout);
+	
+	fn_confirmDeleteShout(id_shout);
+
+});
+
+function fn_confirmDeleteShout(id_shout) {		
+	
 	var id_group = window.localStorage.getItem("id_group");
 	
 	if ( id_group > 0 && id_group < 3 && id_shout ) {
@@ -497,7 +538,7 @@ $(document).on('swipe', '#ULShoutList li.LIShoutList', function(event) {
 		alert('Vous n\'avez pas les droits necessaires ou l\'identifiant du message n\'est pas correctement formé.')		
 	}
 	
-});
+}
 
 $(document).on('click', '#btn_confirmDeleteShout', function() {
 	
@@ -549,10 +590,11 @@ $(document).on('pageshow', '#config', function(event, data) {
 });
 
 $(document).on('click', '#btn_autoLogConfig', function() {
-
-	window.localStorage.clear();
+	
+	window.localStorage.removeItem("email");
+	window.localStorage.removeItem("password");
+	window.localStorage.removeItem("secretkey");
 	alert('La connexion automatique a été désactivée.');
-
 
 });
 
@@ -568,7 +610,6 @@ $(document).on('click', '#submit_config', function() {
 	
 	if (typeof(window.localStorage.getItem("id_shoutbox")) != "undefined" && window.localStorage.getItem("id_shoutbox") !== null) {
 		$.mobile.changePage($('#ShoutList'));
-
 	} else {	
 		$.mobile.changePage($('#ShoutboxList'));
 	}
