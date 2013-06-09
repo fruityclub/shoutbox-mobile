@@ -23,8 +23,8 @@ $(document).on('vclick', '#submittext', fn_sendshout);
 
 $(document).on('vclick', '#btn_confirmDeleteShout', fn_confirmDeleteShout);
 
-$(document).on('vclick', '#btn_autoLogConfig', fn_autoLogConfig);
-$(document).on('vclick', '#submit_config', fn_sublit_config);
+$(document).on('vclick', '#btn_autoLogConfig', fn_del_autolog);
+$(document).on('vclick', '#submit_config', fn_submit_config);
 $(document).on('vclick', '#smileyslist', fn_click_smileyslist);
 $(document).on('vclick', '#ULsmileyslist', fn_click_ULsmileyslist);
 
@@ -311,6 +311,9 @@ function fn_click_LIShoutboxList() {
 }
 
 function fn_show_ShoutList(event, data) {
+	
+	stopRefresh();
+	
 	var id_member = window.localStorage.getItem("id_member");
 	var real_name = window.localStorage.getItem("real_name");
 	var avatar = window.localStorage.getItem("avatar");
@@ -326,25 +329,16 @@ function fn_show_ShoutList(event, data) {
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
 	
-	stopRefresh();
-	
 	var group_title = 'Membre';
 	var vip_title = 'Non VIP';
 	if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
 	if ( isvip == "true" ) { vip_title = "VIP"; }
 	
 	$('#ULShoutList').listview();
-	if ( data.prevPage.attr('id') == 'ShoutboxList' ) {
-		$('#ULShoutList').children().remove('li');
-	}
+	$('#ULShoutList').children().remove('li');
+	$("#loadingMessages").popup("open");
 	
-	var countNbshouts = $('#ULShoutList li').size();
-	if ( countNbshouts == 0 ) {
-		$("#loadingMessages").popup("open");				
-	}
-	
-	$('.MemberInfos').empty();
-	
+	$('.MemberInfos').empty();	
 	$('#ULMemberInfos12').html('<img src="' + avatar + '" height="76" style="border: 2px solid white;" />');
 	$('#ULMemberInfos22').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
 	$('#ULMemberInfos32').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
@@ -560,7 +554,10 @@ function fn_confirmDeleteShout() {
 	}	
 }
 
-function fn_show_config () {
+function fn_show_config() {
+	
+	stopRefresh();
+	
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
 	
@@ -571,16 +568,17 @@ function fn_show_config () {
 	$('input:radio[name="msg_size"]').filter('[value="' + msg_size + '"]').next().click();
 	$('#vibration_msg').val(vibration_msg);
 	$('#vibration_msg').slider('refresh');
+	
 }
 
-function fn_autoLogConfig() {
+function fn_del_autolog() {
 	window.localStorage.removeItem("email");
 	window.localStorage.removeItem("password");
 	window.localStorage.removeItem("secretkey");
 	alert('La connexion automatique a été désactivée.');	
 }
 
-function fn_sublit_config() {
+function fn_submit_config() {
 	var vibration_msg = $('#vibration_msg').val();
 	var msg_size = $("input[name=msg_size]:checked").val();
 	
