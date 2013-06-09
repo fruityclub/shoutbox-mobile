@@ -59,6 +59,7 @@ $(document).on('click', '#submitlog', function() {
 $(document).on('submit', '#checkuser', function() {
 
 	submitconnexion();
+	return false;
 
 });
 
@@ -463,6 +464,7 @@ $(document).on('click', '#submittext', function() {
 $(document).on('submit', '#formaddshout', function() {
 	
 	sendshout();
+	return false;
 	
 });
 
@@ -511,7 +513,7 @@ $(document).on('taphold', '#ULShoutList', function(event) {
 	
 });
 
-$('.LIShoutList').on('taphold', function(e) {
+/*$('.LIShoutList').on('taphold', function(e) {
 
 	e.stopPropagation();
 	var id_shout = $(this).attr('data-name');
@@ -520,7 +522,7 @@ $('.LIShoutList').on('taphold', function(e) {
 	
 	fn_confirmDeleteShout(id_shout);
 
-});
+});*/
 
 function fn_confirmDeleteShout(id_shout) {		
 	
