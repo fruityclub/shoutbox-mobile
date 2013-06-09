@@ -342,6 +342,12 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	var refreshIntervalId = setInterval(function() {
 		  refresh_shoutlist(loading);
 	}, 30000);
+	
+	$(document).on('taphold', '#ULShoutList', function(event) {		
+		var id_shout = $(event.target).closest('li').attr('data-name');		
+		alert('id_shout0: ' + id_shout);		
+		fn_confirmDeleteShout(id_shout);		
+	});
 
 });
 
