@@ -1,11 +1,37 @@
+// Events
 document.addEventListener("deviceready", onDeviceReady, false);
 
+$(document).bind("mobileinit", fn_mobileinit);
+
+$(document).on('pageshow', '#Connexion1', fn_show_Connexion1);
+$(document).on('pageshow', '#ShoutboxList', fn_show_ShoutboxList);
+$(document).on('pageshow', '#ShoutList', fn_show_ShoutList);
+$(document).on('pageshow', '#config', function(fn_show_config);
+
+$(document).on('pagehide', '#ShoutList', fn_hide_ShoutList);
+
+$(document).on('submit', '#formaddshout', fn_sendshout);
+$(document).on('submit', '#checkuser', submitconnexion);
+
+$(document).on('taphold', '#ULShoutList', fn_tapInShoutList);
+
+$(document).on('vclick', '#submitlog', submitconnexion);
+$(document).on('vclick', 'li.LIShoutboxList', fn_click_LIShoutboxList);
+$(document).on('vclick', '#btn_refreshShouts', fn_click_btn_refreshShouts);
+$(document).on('vclick', '#btn_emptytext', fn_emptytext);
+$(document).on('vclick', '#submittext', fn_sendshout);
+$(document).on('vclick', '#btn_confirmDeleteShout', btn_confirmDeleteShout);
+$(document).on('vclick', '#btn_autoLogConfig', fn_autoLogConfig);
+$(document).on('vclick', '#submit_config', fn_sublit_config);
+$(document).on('vclick', '#smileyslist', fn_click_smileyslist);
+$(document).on('vclick', '#ULsmileyslist', fn_click_ULsmileyslist);
+
+// Functions
 function onDeviceReady() {
 	var deviceReady = true;	
 }
 
-$(document).bind("mobileinit", function() {
-	
+function fn_mobileinit() {
 	$.mobile.defaultDialogTransition = 'none';
 	$.mobile.defaultPageTransition = 'none';
 	$.mobile.transitionFallbacks.slideout = 'none';
@@ -15,12 +41,10 @@ $(document).bind("mobileinit", function() {
 	var msg_size = window.localStorage.getItem("msg_size");
 	
 	if ( !vibration_msg ) { window.localStorage.setItem('vibration_msg', 0); }
-	if ( !msg_size ) { window.localStorage.setItem('msg_size', 12); }
-	
-});
+	if ( !msg_size ) { window.localStorage.setItem('msg_size', 12); }	
+}
 
-$(document).on('pageshow', '#Connexion1', function() {
-
+function fn_show_Connexion1() {
 	var email = window.localStorage.getItem("email");
 	var password = window.localStorage.getItem("password");
 	var secretkey = window.localStorage.getItem("secretkey");
@@ -46,14 +70,12 @@ $(document).on('pageshow', '#Connexion1', function() {
 		
 		}
 	
-	}
-    
-});
+	}	
+}
 
-$(document).on('vclick', '#submitlog', submitconnexion);
-$(document).on('submit', '#checkuser', submitconnexion);
-
-function submitconnexion() {
+function submitconnexion(e) {
+	
+	e.preventDefault();
 	
 	var email = $('#email').val();
 	var password = $('#passlog').val();
@@ -118,9 +140,6 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 			secretkey = secretkey;	
 		}
 	}
-	
-	//$('#did').val(device.uuid);
-	//$('#dplatform').val(device.platform);
 	
 	var returndata = "NULL";
 
@@ -215,7 +234,7 @@ function shoutboxAccess(returndata) {
 
 }
 
-$(document).on('pageshow', '#ShoutboxList', function(event, data) {
+function fn_show_ShoutboxList() {
 	
 	var id_member = window.localStorage.getItem("id_member");
 	var real_name = window.localStorage.getItem("real_name");
@@ -274,18 +293,15 @@ $(document).on('pageshow', '#ShoutboxList', function(event, data) {
 		}
 	});
 	
-});
+}
 
-$(document).on('vclick', 'li.LIShoutboxList', function() {
-
+function fn_click_LIShoutboxList() {
 	var id_shoutbox = $(this).attr('data-name');
 	window.localStorage.setItem("id_shoutbox", id_shoutbox);
-	$.mobile.changePage($('#ShoutList'));
-	
-});
+	$.mobile.changePage($('#ShoutList'));	
+}
 
-$(document).on('pageshow', '#ShoutList', function(event, data) {
-	
+function fn_show_ShoutList(event, data) {
 	var id_member = window.localStorage.getItem("id_member");
 	var real_name = window.localStorage.getItem("real_name");
 	var avatar = window.localStorage.getItem("avatar");
@@ -331,25 +347,19 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	var loading = false;
 	var refreshIntervalId = setInterval(function() {
 		  refresh_shoutlist(loading);
-	}, 30000);
+	}, 30000);	
+}
 
-});
-
-$(document).on('pagehide', '#ShoutList', function() {
-
+function fn_hide_ShoutList() {
 	if (typeof(refreshIntervalId) != "undefined" && refreshIntervalId !== null) {
 		clearInterval(refreshIntervalId);
-	}
+	}	
+}
 
-});
-
-$(document).on('vclick', '#btn_refreshShouts', function() {
-	
+function fn_click_btn_refreshShouts() {
 	var loading = true;
-	refresh_shoutlist(loading);
-	
-});
-
+	refresh_shoutlist(loading);	
+}
 
 function refresh_shoutlist(loading) {
 
@@ -444,18 +454,13 @@ function get_shoutbox_infos(id_shoutbox) {
 
 }
 
-$(document).on('vclick', '#btn_emptytext', function() {
+function fn_emptytext() {
+	$('#shouttext').val('');	
+}
 
-	$('#shouttext').val('');
-
-});
-
-
-
-$(document).on('click', '#submittext', sendshout);
-$(document).on('submit', '#formaddshout', sendshout);
-
-function sendshout() {
+function fn_sendshout(e) {
+	
+	e.preventDefault();
 	
 	var shouttext = $('#shouttext').val();
 	var id_shoutbox = window.localStorage.getItem("id_shoutbox");
@@ -490,11 +495,8 @@ function sendshout() {
 	
 }
 
-$(document).on('taphold', '#ULShoutList', tapInShoutList);
-
-function tapInShoutList(event) {	
-	var id_shout = $(event.target).closest('li').attr('data-name');	
-	alert('id_shout1: ' + id_shout);	
+function fn_tapInShoutList(event) {	
+	var id_shout = $(event.target).closest('li').attr('data-name');		
 	fn_confirmDeleteShout(id_shout);	
 }
 
@@ -516,8 +518,7 @@ function fn_confirmDeleteShout(id_shout) {
 	
 }
 
-$(document).on('click', '#btn_confirmDeleteShout', function() {
-	
+function btn_confirmDeleteShout() {
 	var id_group = window.localStorage.getItem("id_group");
 	var id_shout = $('#idShoutHidden').val();
 	
@@ -547,11 +548,10 @@ $(document).on('click', '#btn_confirmDeleteShout', function() {
 			}
 		});
 	
-	}
-});
+	}	
+}
 
-$(document).on('pageshow', '#config', function(event, data) {
-	
+function fn_show_config () {
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
 	
@@ -562,20 +562,16 @@ $(document).on('pageshow', '#config', function(event, data) {
 	$('input:radio[name="msg_size"]').filter('[value="' + msg_size + '"]').next().click();
 	$('#vibration_msg').val(vibration_msg);
 	$('#vibration_msg').slider('refresh');
-	
-});
+}
 
-$(document).on('click', '#btn_autoLogConfig', function() {
-	
+function fn_autoLogConfig() {
 	window.localStorage.removeItem("email");
 	window.localStorage.removeItem("password");
 	window.localStorage.removeItem("secretkey");
-	alert('La connexion automatique a été désactivée.');
+	alert('La connexion automatique a été désactivée.');	
+}
 
-});
-
-$(document).on('click', '#submit_config', function() {
-
+function fn_sublit_config() {
 	var vibration_msg = $('#vibration_msg').val();
 	var msg_size = $("input[name=msg_size]:checked").val();
 	
@@ -589,23 +585,18 @@ $(document).on('click', '#submit_config', function() {
 	} else {	
 		$.mobile.changePage($('#ShoutboxList'));
 	}
+}
 
-});
-
-$(document).on('click', '#smileyslist', function() {
-
+function fn_click_smileyslist() {
 	// affiche popup smileys
-	$("#pop_smileysList").popup("open");
-	
-});
+	$("#pop_smileysList").popup("open");	
+}
 
-$(document).on('click', '#ULsmileyslist', function(event) {
-	
-	var id_smiley = $(event.target).closest('div').attr('data-name');
+function fn_click_ULsmileyslist(e) {
+	var id_smiley = $(e.target).closest('div').attr('data-name');
 	$('#shouttext').val($('#shouttext').val() + ' ' + id_smiley + ' ');
-	$("#pop_smileysList").popup("close");
-	
-});
+	$("#pop_smileysList").popup("close");	
+}
 
 function vibrateOnNewMEssages() {
 	if (typeof(deviceReady) != "undefined" && deviceReady !== null) {
