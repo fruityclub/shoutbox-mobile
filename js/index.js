@@ -349,19 +349,12 @@ function fn_show_ShoutList(event, data) {
 	$('#ULMemberInfos22').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
 	$('#ULMemberInfos32').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
 	
-	// première update
-	var loading = true;
-	refresh_shoutlist(loading);	
+	// première update	
 	get_shoutbox_infos();
 	
 	// updates suivantes regulières
-	var loading = false;
-	var refreshIntervalId = setInterval(function() {
-		  refresh_shoutlist(loading);
-	}, 30000);
-	
-	// on conserve l'id du refreshinterval pour utilisation future
-	window.localStorage.setItem("refreshIntervalId", refreshIntervalId);
+	var firstRefresh = true;
+	startRefresh(firstRefresh);
 }
 
 function fn_hide_ShoutList() {
@@ -375,6 +368,8 @@ function fn_click_btn_refreshShouts() {
 
 function refresh_shoutlist(loading) {
 
+	loading = loading || false;
+	
 	// loading = true si premier refresh
 	var id_shoutbox = window.localStorage.getItem("id_shoutbox");
 	var id_member = window.localStorage.getItem("id_member");
@@ -616,6 +611,14 @@ function vibrateOnNewMEssages() {
 	if (typeof(deviceReady) != "undefined" && deviceReady !== null) {
 		navigator.notification.vibrate(1000);
 	}
+}
+
+function startRefresh(firstRefresh) {
+	refresh_shoutlist(firstRefresh);	
+	var refreshIntervalId = setTimeout(refresh_shoutlist, 30000);
+	
+	// on conserve l'id du refreshinterval pour utilisation future
+	window.localStorage.setItem("refreshIntervalId", refreshIntervalId);	
 }
 
 function stopRefresh() {
