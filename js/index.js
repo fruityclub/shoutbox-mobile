@@ -287,7 +287,7 @@ $(document).on('pageshow', '#ShoutboxList', function(event, data) {
 	
 });
 
-$(document).on('vclick', 'li.LIShoutboxList', function() {
+$(document).on('click', 'li.LIShoutboxList', function() {
 
 	var id_shoutbox = $(this).attr('data-name');
 	window.localStorage.setItem("id_shoutbox", id_shoutbox);
@@ -503,7 +503,7 @@ function sendshout() {
 	
 }
 
-$(document).on('taphold', '#ULShoutList', function(event) {
+/*$(document).on('taphold', '#ULShoutList', function(event) {
 	
 	var id_shout = $(event.target).closest('li').attr('data-name');
 	
@@ -511,9 +511,9 @@ $(document).on('taphold', '#ULShoutList', function(event) {
 	
 	fn_confirmDeleteShout(id_shout);
 	
-});
+});*/
 
-/*$('.LIShoutList').on('taphold', function(e) {
+$('li.LIShoutList').on('taphold', function(e) {
 
 	e.stopPropagation();
 	var id_shout = $(this).attr('data-name');
@@ -522,7 +522,7 @@ $(document).on('taphold', '#ULShoutList', function(event) {
 	
 	fn_confirmDeleteShout(id_shout);
 
-});*/
+});
 
 function fn_confirmDeleteShout(id_shout) {		
 	
