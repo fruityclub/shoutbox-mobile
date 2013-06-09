@@ -50,18 +50,8 @@ $(document).on('pageshow', '#Connexion1', function() {
     
 });
 
-$(document).on('click', '#submitlog', function() {
-
-	submitconnexion();
-
-});
-
-$(document).on('submit', '#checkuser', function() {
-
-	submitconnexion();
-	return false;
-
-});
+$(document).on('vclick', '#submitlog', submitconnexion);
+$(document).on('submit', '#checkuser', submitconnexion);
 
 function submitconnexion() {
 	
@@ -286,7 +276,7 @@ $(document).on('pageshow', '#ShoutboxList', function(event, data) {
 	
 });
 
-$(document).on('click', 'li.LIShoutboxList', function() {
+$(document).on('vclick', 'li.LIShoutboxList', function() {
 
 	var id_shoutbox = $(this).attr('data-name');
 	window.localStorage.setItem("id_shoutbox", id_shoutbox);
@@ -342,12 +332,6 @@ $(document).on('pageshow', '#ShoutList', function(event, data) {
 	var refreshIntervalId = setInterval(function() {
 		  refresh_shoutlist(loading);
 	}, 30000);
-	
-	$(document).on('taphold', '#ULShoutList', function(event) {		
-		var id_shout = $(event.target).closest('li').attr('data-name');		
-		alert('id_shout0: ' + id_shout);		
-		fn_confirmDeleteShout(id_shout);		
-	});
 
 });
 
@@ -359,7 +343,7 @@ $(document).on('pagehide', '#ShoutList', function() {
 
 });
 
-$(document).on('click', '#btn_refreshShouts', function() {
+$(document).on('vclick', '#btn_refreshShouts', function() {
 	
 	var loading = true;
 	refresh_shoutlist(loading);
@@ -460,7 +444,7 @@ function get_shoutbox_infos(id_shoutbox) {
 
 }
 
-$(document).on('click', '#btn_emptytext', function() {
+$(document).on('vclick', '#btn_emptytext', function() {
 
 	$('#shouttext').val('');
 
@@ -468,18 +452,8 @@ $(document).on('click', '#btn_emptytext', function() {
 
 
 
-$(document).on('click', '#submittext', function() {
-
-	sendshout();
-	
-});
-
-$(document).on('submit', '#formaddshout', function() {
-	
-	sendshout();
-	return false;
-	
-});
+$(document).on('click', '#submittext', sendshout);
+$(document).on('submit', '#formaddshout', sendshout);
 
 function sendshout() {
 	
@@ -516,29 +490,13 @@ function sendshout() {
 	
 }
 
-$(document).on('taphold', '#ULShoutList', function(event) {
-	
-	var id_shout = $(event.target).closest('li').attr('data-name');
-	
-	alert('id_shout1: ' + id_shout);
-	
-	fn_confirmDeleteShout(id_shout);
-	
-});
+$(document).on('taphold', '#ULShoutList', tapInShoutList);
 
-// TEST **
-$('#ULShoutList').bind('swipeleft', function(event) {
-	console.log("swipeleft!!");	
-});
-
-$('#ULShoutList').bind('swiperight', function(event) {
-	console.log("swiperight!!");	
-});
-
-$('#ULShoutList').bind('taphold', function(event) {
-	console.log("taphold!!");			
-});
-// ** TEST
+function tapInShoutList(event) {	
+	var id_shout = $(event.target).closest('li').attr('data-name');	
+	alert('id_shout1: ' + id_shout);	
+	fn_confirmDeleteShout(id_shout);	
+}
 
 function fn_confirmDeleteShout(id_shout) {		
 	
@@ -643,7 +601,7 @@ $(document).on('click', '#smileyslist', function() {
 
 $(document).on('click', '#ULsmileyslist', function(event) {
 	
-	var id_smiley = $(event.target).closest('img').attr('data-name');
+	var id_smiley = $(event.target).closest('div').attr('data-name');
 	$('#shouttext').val($('#shouttext').val() + ' ' + id_smiley + ' ');
 	$("#pop_smileysList").popup("close");
 	
