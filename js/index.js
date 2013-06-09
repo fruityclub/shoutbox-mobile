@@ -219,7 +219,6 @@ function shoutboxAccess(returndata) {
 	
 	if (typeof(window.localStorage.getItem("id_shoutbox")) != "undefined" && window.localStorage.getItem("id_shoutbox") !== null) {
 		$.mobile.changePage($('#ShoutList'));
-
 	} else {	
 		$.mobile.changePage($('#ShoutboxList'));
 	}
@@ -515,7 +514,6 @@ function sendshout() {
 
 $('li.LIShoutList').on('taphold', function(e) {
 
-	e.stopPropagation();
 	var id_shout = $(this).attr('data-name');
 	
 	alert('id_shout2: ' + id_shout);
