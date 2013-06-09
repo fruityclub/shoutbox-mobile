@@ -520,6 +520,20 @@ $(document).on('taphold', '#ULShoutList', function(event) {
 	
 });
 
+// TEST **
+$('#ULShoutList').bind('swipeleft', function(event) {
+	console.log("swipeleft!!");	
+});
+
+$('#ULShoutList').bind('swiperight', function(event) {
+	console.log("swiperight!!");	
+});
+
+$('#ULShoutList').bind('taphold', function(event) {
+	console.log("taphold!!");			
+});
+// ** TEST
+
 function fn_confirmDeleteShout(id_shout) {		
 	
 	var id_group = window.localStorage.getItem("id_group");
