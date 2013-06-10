@@ -44,7 +44,12 @@
 				<div class="ui-body ui-body-a">
 				
 					Connectez-vous ci-dessous pour acc&eacute;der &agrave; la shoutbox. Si vous n'avez pas de compte, vous devez en cr&eacute;er un sur le site http://www.fruityclub.net avant de vous connecter ici.
-
+					
+					<div class="error_bbc" id="erreur_connexion" style="display:none;">Une erreur s'est produite pendant la v&eacute;rification de vos identifiant. <br /> 
+						Soit il s'agit d'un probl&egrave;me de connexion : dans ce cas, merci de v&eacute;rifier si votre acc&egrave;s &agrave; internet fonctionne correctement.
+						<br />Soit il s'agit d'un probl&egrave;me avec vos identifiants : merci de v&eacute;rifier la bonne saisie de votre email et mot de passe ou de votre cl&eacute; secr&egrave;te.
+					</div>
+					
 				</div>
 				
 				<br />
@@ -53,7 +58,7 @@
 					
 					<div class="ui-body ui-body-a">
 					
-						<h3>Connexion par email et mot de passe</h3>					
+						<h3>Connexion par email et mot de passe</h3>
 						
 						<fieldset data-role="fieldcontain">
 				
@@ -97,8 +102,6 @@
 					</fieldset>
 					
 					<br />
-					
-					<div id="resultRequest"></div>
 					
 					<input type="hidden" name="did" id="did" value="" />
 					<input type="hidden" name="dplatform" id="dplatform" value="" />
