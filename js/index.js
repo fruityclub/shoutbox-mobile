@@ -173,7 +173,7 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 		},
 		error: function (responseText) {
 			$.mobile.loading( 'hide' );
-			$('#Connexion1').show();
+			$.mobile.changePage($('#Connexion1'));
 			$('#erreur_connexion').show();
 		}
 	});
@@ -211,7 +211,7 @@ function checkmembername(serviceURL, email, password, secretkey, local) {
 			},
 			error: function (responseText) {             
 				$.mobile.loading( 'hide' );
-				$('#Connexion1').show();
+				$.mobile.changePage($('#Connexion1'));
 				$('#erreur_connexion').show();
 			}
 		});
