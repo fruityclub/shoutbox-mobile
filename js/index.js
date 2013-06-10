@@ -35,6 +35,8 @@ function onDeviceReady() {
 
 function fn_mobileinit() {
 	
+	console.log('fn_mobileinit');
+	
 	$.mobile.defaultDialogTransition = 'none';
 	$.mobile.defaultPageTransition = 'none';
 	$.mobile.transitionFallbacks.slideout = 'none';
@@ -49,6 +51,8 @@ function fn_mobileinit() {
 }
 
 function fn_show_Connexion1() {
+	
+	console.log('fn_show_Connexion1');
 	
 	var email = window.localStorage.getItem("email");
 	var password = window.localStorage.getItem("password");
@@ -82,6 +86,8 @@ function fn_show_Connexion1() {
 }
 
 function fn_submitconnexion(e) {
+	
+	console.log('fn_submitconnexion');
 	
 	e.preventDefault();
 	
@@ -117,6 +123,8 @@ function fn_submitconnexion(e) {
 }
 
 function checkform(email, password, secretkey) {
+	
+	console.log('checkform');
 
 	var testForm = false;
 	if ( email.length > 0 && password.length > 0 ) {
@@ -130,6 +138,8 @@ function checkform(email, password, secretkey) {
 }
 
 function checklogin(serviceURL, membername, email, password, secretkey, local) {
+	
+	console.log('checklogin');
 	
 	if ( local == 0 ) {
 		if ( membername != '' ) {
@@ -173,6 +183,7 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 		},
 		error: function (responseText) {
 			$.mobile.loading( 'hide' );
+			$('#Connexion1').show();
 			$.mobile.changePage($('#Connexion1'));
 			$('#erreur_connexion').show();
 		}
@@ -183,6 +194,8 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 }
 
 function checkmembername(serviceURL, email, password, secretkey, local) {
+	
+	console.log('checkmembername');
 
 	var returndata = "NULL";
 	
@@ -211,6 +224,7 @@ function checkmembername(serviceURL, email, password, secretkey, local) {
 			},
 			error: function (responseText) {             
 				$.mobile.loading( 'hide' );
+				$('#Connexion1').show();
 				$.mobile.changePage($('#Connexion1'));
 				$('#erreur_connexion').show();
 			}
@@ -221,6 +235,8 @@ function checkmembername(serviceURL, email, password, secretkey, local) {
 }
 
 function shoutboxAccess(returndata) {
+	
+	console.log('shoutboxAccess');
 
 	$('#passlog').val('');
 	$('#secretkey').val('');
@@ -247,6 +263,8 @@ function shoutboxAccess(returndata) {
 }
 
 function fn_show_ShoutboxList() {
+	
+	console.log('fn_show_ShoutboxList');
 	
 	var id_member = window.localStorage.getItem("id_member");
 	var real_name = window.localStorage.getItem("real_name");
@@ -312,12 +330,15 @@ function fn_show_ShoutboxList() {
 }
 
 function fn_click_LIShoutboxList() {
+	console.log('fn_click_LIShoutboxList');
 	var id_shoutbox = $(this).attr('data-name');
 	window.localStorage.setItem("id_shoutbox", id_shoutbox);
 	$.mobile.changePage($('#ShoutList'));	
 }
 
 function fn_show_ShoutList(event, data) {
+	
+	console.log('fn_show_ShoutList');
 	
 	stopRefresh();
 	
@@ -367,10 +388,12 @@ function fn_show_ShoutList(event, data) {
 }
 
 function fn_hide_ShoutList() {
+	console.log();
 	stopRefresh();
 }
 
 function fn_click_btn_refreshShouts() {
+	console.log();
 	var loading = true;
 	refresh_shoutlist(loading);	
 }
