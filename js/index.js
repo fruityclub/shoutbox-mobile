@@ -61,6 +61,7 @@ function fn_show_Connexion1() {
 	if ( docheck == 1 && checkform(email, password, secretkey) == true ) {
 		
 		$('#Connexion1').hide();
+		$('#erreur_connexion').hide();
 		
 		if ( email.length > 0 && password.length > 0 ) {
 		
