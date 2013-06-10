@@ -336,6 +336,8 @@ function fn_show_ShoutList(event, data) {
 	
 	stopRefresh();
 	
+	console.log('stopRefresh');
+	
 	var id_member = window.localStorage.getItem("id_member");
 	var real_name = window.localStorage.getItem("real_name");
 	var avatar = window.localStorage.getItem("avatar");
@@ -351,18 +353,26 @@ function fn_show_ShoutList(event, data) {
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
 	
+	console.log('localStorage');
+	
 	var group_title = 'Membre';
 	var vip_title = 'Non VIP';
 	if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
 	if ( isvip == "true" ) { vip_title = "VIP"; }
+	
+	console.log('group_title');
 	
 	$('.MemberInfos').empty();	
 	$('#ULMemberInfos12').html('<img src="' + avatar + '" height="76" style="border: 2px solid white;" />');
 	$('#ULMemberInfos22').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
 	$('#ULMemberInfos32').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
 	
+	console.log('MemberInfos');
+	
 	if ( data.prevPage.attr("id") == "ShoutboxList" ) {
 	
+		console.log('data.prevPage.attr ShoutboxList');
+		
 		$('#ULShoutList').listview();
 		$('#ULShoutList').children().remove('li');
 		$("#loadingMessages").popup("open");	
@@ -374,7 +384,8 @@ function fn_show_ShoutList(event, data) {
 		startRefresh(firstRefresh);
 	
 	} else {
-
+		
+		console.log('data.prevPage.attr NO ShoutboxList');
 		startRefresh();
 
 	}
@@ -382,17 +393,19 @@ function fn_show_ShoutList(event, data) {
 }
 
 function fn_hide_ShoutList() {
-	console.log();
+	console.log('fn_hide_ShoutList');
 	stopRefresh();
 }
 
 function fn_click_btn_refreshShouts() {
-	console.log();
+	console.log('fn_click_btn_refreshShouts');
 	var loading = true;
 	refresh_shoutlist(loading);	
 }
 
 function refresh_shoutlist(loading) {
+	
+	console.log('refresh_shoutlist');
 
 	loading = loading || false;
 	
