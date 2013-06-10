@@ -35,8 +35,6 @@ function onDeviceReady() {
 
 function fn_mobileinit() {
 	
-	console.log('fn_mobileinit');
-	
 	$.mobile.defaultDialogTransition = 'none';
 	$.mobile.defaultPageTransition = 'none';
 	$.mobile.transitionFallbacks.slideout = 'none';
@@ -51,8 +49,6 @@ function fn_mobileinit() {
 }
 
 function fn_show_Connexion1() {
-	
-	console.log('fn_show_Connexion1');
 	
 	var email = window.localStorage.getItem("email");
 	var password = window.localStorage.getItem("password");
@@ -86,8 +82,6 @@ function fn_show_Connexion1() {
 }
 
 function fn_submitconnexion(e) {
-	
-	console.log('fn_submitconnexion');
 	
 	e.preventDefault();
 	
@@ -123,8 +117,6 @@ function fn_submitconnexion(e) {
 }
 
 function checkform(email, password, secretkey) {
-	
-	console.log('checkform');
 
 	var testForm = false;
 	if ( email.length > 0 && password.length > 0 ) {
@@ -138,8 +130,6 @@ function checkform(email, password, secretkey) {
 }
 
 function checklogin(serviceURL, membername, email, password, secretkey, local) {
-	
-	console.log('checklogin');
 	
 	if ( local == 0 ) {
 		if ( membername != '' ) {
@@ -194,8 +184,6 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 }
 
 function checkmembername(serviceURL, email, password, secretkey, local) {
-	
-	console.log('checkmembername');
 
 	var returndata = "NULL";
 	
@@ -241,6 +229,8 @@ function shoutboxAccess(returndata) {
 	$('#passlog').val('');
 	$('#secretkey').val('');
 	
+	console.log('vide pass key');
+	
 	window.localStorage.setItem("id_member", returndata.id_member);
 	window.localStorage.setItem("real_name", returndata.real_name);
 	window.localStorage.setItem("avatar", returndata.avatar);
@@ -254,9 +244,13 @@ function shoutboxAccess(returndata) {
 	window.localStorage.setItem("posts", returndata.posts);	
 	window.localStorage.setItem("auth_token", returndata.auth_token);
 	
+	console.log('set storage');
+	
 	if (typeof(window.localStorage.getItem("id_shoutbox")) != "undefined" && window.localStorage.getItem("id_shoutbox") !== null) {
+		console.log('goto ShoutList');
 		$.mobile.changePage($('#ShoutList'));
-	} else {	
+	} else {
+		console.log('goto ShoutboxList');
 		$.mobile.changePage($('#ShoutboxList'));
 	}
 
