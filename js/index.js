@@ -35,8 +35,9 @@ function onDeviceReady() {
 
 function fn_mobileinit() {
 	
-	$.mobile.defaultDialogTransition = 'none';
-	$.mobile.defaultPageTransition = 'none';
+	$.mobile.pageContainer = $('#container');
+	$.mobile.defaultDialogTransition = 'slide';
+	$.mobile.defaultPageTransition = 'slide';
 	$.mobile.transitionFallbacks.slideout = 'none';
 	
 	// Définit préférence par défaut
