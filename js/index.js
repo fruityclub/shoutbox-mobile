@@ -171,7 +171,9 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 			shoutboxAccess(responseText);
 		},
 		error: function (responseText) {
-			alert('Erreur ' + responseText.message);
+			$.mobile.loading( 'hide' );
+			$('#Connexion1').show();
+			$('#erreur_connexion').show();
 		}
 	});
 	
@@ -207,7 +209,9 @@ function checkmembername(serviceURL, email, password, secretkey, local) {
 				checklogin(serviceURL, membername, email, password, secretkey, local);
 			},
 			error: function (responseText) {             
-				alert('Erreur ' + responseText.message);
+				$.mobile.loading( 'hide' );
+				$('#Connexion1').show();
+				$('#erreur_connexion').show();
 			}
 		});
 		
@@ -298,7 +302,9 @@ function fn_show_ShoutboxList() {
 
 		},
 		error: function (responseText) {             
-			alert('Erreur ' + responseText.message);
+			$.mobile.loading( 'hide' );
+			$.mobile.changePage($('#Connexion1'));
+			$('#erreur_connexion').show();
 		}
 	});
 	
@@ -425,7 +431,9 @@ function refresh_shoutlist(loading) {
 			}
 		},
 		error: function (responseText) {             
-			alert('Erreur ' + responseText.message);
+			$.mobile.loading( 'hide' );
+			$.mobile.changePage($('#Connexion1'));
+			$('#erreur_connexion').show();
 		}
 	});
 
@@ -456,7 +464,7 @@ function get_shoutbox_infos(id_shoutbox) {
 			}
 		},
 		error: function (responseText) {             
-			alert('Erreur ' + responseText.message);
+			//alert('Erreur ' + responseText.message);
 		}
 	});
 
@@ -494,7 +502,9 @@ function fn_sendshout(e) {
 				refresh_shoutlist(loading);				
 			},
 			error: function (responseText) {             
-				alert('Erreur ' + responseText.message);
+				$.mobile.loading( 'hide' );
+				$.mobile.changePage($('#Connexion1'));
+				$('#erreur_connexion').show();
 			}
 		});
 
@@ -554,7 +564,9 @@ function fn_confirmDeleteShout() {
 				$('li.LIShoutList[data-name="' + id_shout + '"]').remove();
 			},
 			error: function (responseText) {             
-				alert('Erreur ' + responseText.message);
+				$.mobile.loading( 'hide' );
+				$.mobile.changePage($('#Connexion1'));
+				$('#erreur_connexion').show();
 			}
 		});
 	
