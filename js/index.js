@@ -291,7 +291,9 @@ function fn_show_ShoutboxList(event, data) {
 	$('#ULMemberInfos2').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
 	$('#ULMemberInfos3').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
 
-	if ( data.prevPage.attr("id") != "ShoutList" ) {
+	var nbShoutboxs = $("#ULShoutboxList li").size();
+
+	if ( data.prevPage.attr("id") != "ShoutList" || nbShoutboxs == 0 ) {
 
 		// get shoutbox list
 		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutboxlist',
@@ -359,7 +361,7 @@ function fn_show_ShoutList(event, data) {
 	
 	console.log('localStorage');
 	
-	if ( data.prevPage.attr("id") == "ShoutboxList" || data.prevPage.attr("id") == "Connexion1" ) {
+	if ( data.prevPage.attr("id") != "config" ) {
 		
 		console.log('data.prevPage.attr ShoutboxList');
 	
