@@ -60,8 +60,7 @@ function fn_show_Connexion1() {
 	if ( email || password || secretkey ) { var docheck = 1; } else { var docheck = 0; }
 	
 	if ( docheck == 1 && checkform(email, password, secretkey) == true ) {
-		
-		$('#Connexion1').hide();
+
 		$('#erreur_connexion').hide();
 		
 		if ( email.length > 0 && password.length > 0 ) {
@@ -174,7 +173,6 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 		},
 		error: function (responseText) {
 			$.mobile.loading( 'hide' );
-			$('#Connexion1').show();
 			$.mobile.changePage($('#Connexion1'));
 			$('#erreur_connexion').show();
 		}
@@ -213,7 +211,6 @@ function checkmembername(serviceURL, email, password, secretkey, local) {
 			},
 			error: function (responseText) {             
 				$.mobile.loading( 'hide' );
-				$('#Connexion1').show();
 				$.mobile.changePage($('#Connexion1'));
 				$('#erreur_connexion').show();
 			}
@@ -257,7 +254,7 @@ function shoutboxAccess(returndata) {
 
 }
 
-function fn_show_ShoutboxList() {
+function fn_show_ShoutboxList(event, data) {
 	
 	console.log('fn_show_ShoutboxList');
 	
@@ -277,50 +274,52 @@ function fn_show_ShoutboxList() {
 	var msg_size = window.localStorage.getItem("msg_size");
 	
 	stopRefresh();
-	
-	var group_title = 'Membre';
-	var vip_title = 'Non VIP';
-	if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
-	if ( isvip == "true" ) { vip_title = "VIP"; }
-	
-	$('.MemberInfos').empty();
-	
-	$('#ULMemberInfos1').html('<img src="' + avatar + '" height="76" style="border: 2px solid white;" />');
-	$('#ULMemberInfos2').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
-	$('#ULMemberInfos3').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
-	
 	$("#last_update").val('0');
 	
-	// get shoutbox list
-	$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutboxlist',
-		type: 'post',
-		data: {'auth_token': auth_token, 'id_member': id_member},
-		async: true,
-		beforeSend: function() {
-			$.mobile.loading( 'show', { theme: "b", text: "Affichage des ShoutBoxs ...", textVisible: true });
-		},
-		complete: function() {
-			$.mobile.loading( 'hide' );
-			$('#ULShoutboxList').listview('refresh');
-		},
-		success: function (responseText) {
-			$("#ULShoutboxList").empty();
-			$('#ULShoutboxList').listview();
-			var shoutboxsList = '';
-			$.each( responseText, function( i, item ) {
-				shoutboxsList += '<li data-icon="arrow-r" class="LIShoutboxList" data-name="' + item.id_shoutbox + '"><a href="#">';
-				shoutboxsList += item.name;
-				shoutboxsList += '</a></li>';
-			});
-			$("#ULShoutboxList").append( shoutboxsList );
-
-		},
-		error: function (responseText) {             
-			$.mobile.loading( 'hide' );
-			$.mobile.changePage($('#Connexion1'));
-			$('#erreur_connexion').show();
-		}
-	});
+	if ( data.prevPage.attr("id") == "Connexion1" ) {
+	
+		var group_title = 'Membre';
+		var vip_title = 'Non VIP';
+		if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
+		if ( isvip == "true" ) { vip_title = "VIP"; }
+		
+		$('.MemberInfos').empty();
+		
+		$('#ULMemberInfos1').html('<img src="' + avatar + '" height="76" style="border: 2px solid white;" />');
+		$('#ULMemberInfos2').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
+		$('#ULMemberInfos3').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
+		
+		// get shoutbox list
+		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutboxlist',
+			type: 'post',
+			data: {'auth_token': auth_token, 'id_member': id_member},
+			async: true,
+			beforeSend: function() {
+				$.mobile.loading( 'show', { theme: "b", text: "Affichage des ShoutBoxs ...", textVisible: true });
+			},
+			complete: function() {
+				$.mobile.loading( 'hide' );
+				$('#ULShoutboxList').listview('refresh');
+			},
+			success: function (responseText) {
+				$("#ULShoutboxList").empty();
+				$('#ULShoutboxList').listview();
+				var shoutboxsList = '';
+				$.each( responseText, function( i, item ) {
+					shoutboxsList += '<li data-icon="arrow-r" class="LIShoutboxList" data-name="' + item.id_shoutbox + '"><a href="#">';
+					shoutboxsList += item.name;
+					shoutboxsList += '</a></li>';
+				});
+				$("#ULShoutboxList").append( shoutboxsList );
+	
+			},
+			error: function (responseText) {             
+				$.mobile.loading( 'hide' );
+				$('#erreur_connexion').show();
+			}
+		});
+		
+	}
 	
 }
 
@@ -356,23 +355,23 @@ function fn_show_ShoutList(event, data) {
 	
 	console.log('localStorage');
 	
-	var group_title = 'Membre';
-	var vip_title = 'Non VIP';
-	if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
-	if ( isvip == "true" ) { vip_title = "VIP"; }
-	
-	console.log('group_title');
-	
-	$('.MemberInfos').empty();	
-	$('#ULMemberInfos12').html('<img src="' + avatar + '" height="76" style="border: 2px solid white;" />');
-	$('#ULMemberInfos22').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
-	$('#ULMemberInfos32').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
-	
-	console.log('MemberInfos');
-	
 	if ( data.prevPage.attr("id") == "ShoutboxList" ) {
-	
+		
 		console.log('data.prevPage.attr ShoutboxList');
+	
+		var group_title = 'Membre';
+		var vip_title = 'Non VIP';
+		if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
+		if ( isvip == "true" ) { vip_title = "VIP"; }
+		
+		console.log('group_title');
+		
+		$('.MemberInfos').empty();	
+		$('#ULMemberInfos12').html('<img src="' + avatar + '" height="76" style="border: 2px solid white;" />');
+		$('#ULMemberInfos22').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
+		$('#ULMemberInfos32').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
+		
+		console.log('MemberInfos');
 		
 		$('#ULShoutList').listview();
 		$('#ULShoutList').children().remove('li');
