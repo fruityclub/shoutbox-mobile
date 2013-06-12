@@ -25,6 +25,7 @@ $(document).on('vclick', '#btn_confirmDeleteShout', fn_confirmDeleteShout);
 
 $(document).on('vclick', '#btn_autoLogConfig', fn_del_autolog);
 $(document).on('vclick', '#submit_config', fn_submit_config);
+$(document).on('vclick', '#btn_confirmConfig', fn_click_btn_confirmConfig);
 $(document).on('vclick', '#smileyslist', fn_click_smileyslist);
 $(document).on('vclick', '#ULsmileyslist', fn_click_ULsmileyslist);
 
@@ -635,6 +636,7 @@ function fn_del_autolog() {
 }
 
 function fn_submit_config() {
+	
 	var vibration_msg = $('#vibration_msg').val();
 	var msg_size = $("input[name=msg_size]:checked").val();
 	
@@ -642,12 +644,19 @@ function fn_submit_config() {
 	window.localStorage.setItem("msg_size", msg_size);	
 	
 	$("#popup_confirmConfig").popup("open");
+
+}
+
+function fn_click_btn_confirmConfig() {
+	
+	$("#popup_confirmConfig").popup("close");
 	
 	if (typeof(window.localStorage.getItem("id_shoutbox")) != "undefined" && window.localStorage.getItem("id_shoutbox") !== null) {
 		$.mobile.changePage($('#ShoutList'));
 	} else {	
 		$.mobile.changePage($('#ShoutboxList'));
-	}
+	}	
+	
 }
 
 function fn_click_smileyslist() {
