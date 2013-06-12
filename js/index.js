@@ -49,15 +49,19 @@ function fn_mobileinit() {
 	
 }
 
-function fn_show_Connexion1() {
+function fn_show_Connexion1(event, data) {
 	
 	var email = window.localStorage.getItem("email");
 	var password = window.localStorage.getItem("password");
 	var secretkey = window.localStorage.getItem("secretkey");
+	var docheck = 0;
+	var navback = 0;
 	
 	stopRefresh();
 	
-	if ( email || password || secretkey ) { var docheck = 1; } else { var docheck = 0; }
+	if ( data.prevPage.attr("id") == "ShoutboxList" || data.prevPage.attr("id") == "ShoutboxList" ) { var navback = 1; }
+	
+	if ( (email || password || secretkey) && navback == 0 ) { var docheck = 1; }
 	
 	if ( docheck == 1 && checkform(email, password, secretkey) == true ) {
 
@@ -276,7 +280,7 @@ function fn_show_ShoutboxList(event, data) {
 	stopRefresh();
 	$("#last_update").val('0');
 	
-	if ( data.prevPage.attr("id") == "Connexion1" ) {
+	if ( data.prevPage.attr("id") != "ShoutList" ) {
 	
 		var group_title = 'Membre';
 		var vip_title = 'Non VIP';
@@ -355,7 +359,7 @@ function fn_show_ShoutList(event, data) {
 	
 	console.log('localStorage');
 	
-	if ( data.prevPage.attr("id") == "ShoutboxList" ) {
+	if ( data.prevPage.attr("id") == "ShoutboxList" || data.prevPage.attr("id") == "Connexion1" ) {
 		
 		console.log('data.prevPage.attr ShoutboxList');
 	
@@ -385,7 +389,7 @@ function fn_show_ShoutList(event, data) {
 	
 	} else {
 		
-		console.log('data.prevPage.attr NO ShoutboxList');
+		console.log('data.prevPage.attr NO ShoutboxList or Connexion1');
 		startRefresh();
 
 	}
