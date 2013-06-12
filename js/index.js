@@ -639,7 +639,7 @@ function fn_submit_config() {
 	window.localStorage.setItem("vibration_msg", vibration_msg);
 	window.localStorage.setItem("msg_size", msg_size);	
 	
-	alert('La configuration a été enregistrée.');
+	$("#popup_confirmConfig").popup("open");
 	
 	if (typeof(window.localStorage.getItem("id_shoutbox")) != "undefined" && window.localStorage.getItem("id_shoutbox") !== null) {
 		$.mobile.changePage($('#ShoutList'));
