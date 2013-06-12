@@ -280,19 +280,19 @@ function fn_show_ShoutboxList(event, data) {
 	stopRefresh();
 	$("#last_update").val('0');
 	
+	var group_title = 'Membre';
+	var vip_title = 'Non VIP';
+	if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
+	if ( isvip == "true" ) { vip_title = "VIP"; }
+		
+	$('.MemberInfos').empty();
+		
+	$('#ULMemberInfos1').html('<img src="' + avatar + '" height="76" style="border: 2px solid white;" />');
+	$('#ULMemberInfos2').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
+	$('#ULMemberInfos3').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
+
 	if ( data.prevPage.attr("id") != "ShoutList" ) {
-	
-		var group_title = 'Membre';
-		var vip_title = 'Non VIP';
-		if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
-		if ( isvip == "true" ) { vip_title = "VIP"; }
-		
-		$('.MemberInfos').empty();
-		
-		$('#ULMemberInfos1').html('<img src="' + avatar + '" height="76" style="border: 2px solid white;" />');
-		$('#ULMemberInfos2').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + '<br />' + vip_title);
-		$('#ULMemberInfos3').html(unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
-		
+
 		// get shoutbox list
 		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutboxlist',
 			type: 'post',
