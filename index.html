@@ -1,339 +1,109 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.1.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/fruityclub.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-<style type="text/css">  
-	body { 
-		/* Setting body margins to 0 to have proper positioning of #container div */ 
-		margin: 0; 
-	}  
-	/* #container div with absolute position and 100% width and height so it takes up whole window */ 
-	#container { 
-		position: absolute; 
-		width: 100%; 
-		height: 100%; 
-	}
-</style>
         <title>FruityClub ShoutBox Mobile</title>
     </head>
     <body>
-	<div id="container">
-		<!-- PAGE CONNEXION -->
-		<div id="Connexion1" data-role="page" data-theme="a" data-title="ShoutBox Connexion">
+    
+	<!-- PAGE CONNEXION -->
+	<div id="Connexion1" data-role="page" data-theme="a" data-title="ShoutBox Connexion">
+	
+		<div data-role="header" data-position="fixed" data-tap-toggle="false">
+			<h1>ShoutBox Connexion</h1>
+			<a href="#config" data-icon="gear" class="ui-btn-right">Options</a>
+		</div>
+	
+		<div data-role="content">
 		
-			<div data-role="header" data-position="fixed" data-tap-toggle="false">
-				<h1>ShoutBox Connexion</h1>
-				<a href="#config" data-icon="gear" class="ui-btn-right">Options</a>
-			</div>
-		
-			<div data-role="content">
+			<div class="center-wrapper">
 			
-				<div class="center-wrapper">
+			<div class="ui-body ui-body-a">
+			
+				Connectez-vous ci-dessous pour acc&eacute;der &agrave; la shoutbox. Si vous n'avez pas de compte, vous devez en cr&eacute;er un sur le site http://www.fruityclub.net avant de vous connecter ici.
+				
+				<div class="error_bbc" id="erreur_connexion" style="display:none;">Une erreur s'est produite pendant la v&eacute;rification de vos identifiants ou de la connexion à la shoutbox. <br /> 
+					Soit il s'agit d'un probl&egrave;me de connexion : dans ce cas, merci de v&eacute;rifier si votre acc&egrave;s &agrave; internet fonctionne correctement. <br />
+					Soit il s'agit d'un probl&egrave;me avec vos identifiants : merci de v&eacute;rifier la bonne saisie de votre email et mot de passe ou de votre cl&eacute; secr&egrave;te.
+				</div>
+				
+			</div>
+			
+			<br />
+			
+			<form action="" method="post" id="checkuser">
 				
 				<div class="ui-body ui-body-a">
 				
-					Connectez-vous ci-dessous pour acc&eacute;der &agrave; la shoutbox. Si vous n'avez pas de compte, vous devez en cr&eacute;er un sur le site http://www.fruityclub.net avant de vous connecter ici.
-					
-					<div class="error_bbc" id="erreur_connexion" style="display:none;">Une erreur s'est produite pendant la v&eacute;rification de vos identifiants ou de la connexion à la shoutbox. <br /> 
-						Soit il s'agit d'un probl&egrave;me de connexion : dans ce cas, merci de v&eacute;rifier si votre acc&egrave;s &agrave; internet fonctionne correctement. <br />
-						Soit il s'agit d'un probl&egrave;me avec vos identifiants : merci de v&eacute;rifier la bonne saisie de votre email et mot de passe ou de votre cl&eacute; secr&egrave;te.
-					</div>
-					
-				</div>
-				
-				<br />
-				
-				<form action="" method="post" id="checkuser">
-					
-					<div class="ui-body ui-body-a">
-					
-						<h3>Connexion par email et mot de passe</h3>
-						
-						<fieldset data-role="fieldcontain">
-				
-							<label for="email">Email:</label>
-							<input type="email" name="email" id="email" value="" />
-
-							<label for="passlog">Mot de passe:</label>
-							<input type="password" name="passlog" id="passlog" value="" />
-							
-						</fieldset>
-
-					</div>
-					
-					<br />
-					
-					<div class="ui-body ui-body-a">
-					
-						<h3>Connexion par cl&eacute; secr&egrave;te</h3>
-						
-						<fieldset data-role="fieldcontain">
-				
-							<label for="secretkey">Cl&eacute; secr&egrave;te:</label>
-							<input type="number" name="secretkey" id="secretkey" value="" />
-							
-						</fieldset>							
-						
-						<h4>Votre cl&eacute; secr&egrave;te est disponible dans votre profil sur le site, uniquement si vous êtes VIP.</h4>
-						
-					</div>
-					
-					<br />
+					<h3>Connexion par email et mot de passe</h3>
 					
 					<fieldset data-role="fieldcontain">
-
-						<label for="autolog">Connexion auto:</label>
-							<select name="autolog" id="autolog" data-role="slider">
-								<option value="0">Non</option>
-								<option value="1">Oui</option>
-							</select>
-					
+			
+						<label for="email">Email:</label>
+						<input type="email" name="email" id="email" value="" />
+	
+						<label for="passlog">Mot de passe:</label>
+						<input type="password" name="passlog" id="passlog" value="" />
+						
 					</fieldset>
-					
-					<br />
-					
-					<input type="hidden" name="did" id="did" value="" />
-					<input type="hidden" name="dplatform" id="dplatform" value="" />
-					
-					<button type="submit" name="submitlog" id="submitlog" value="submitlog" data-icon="check" data-iconpos="right">Connexion</button>
-					
-				</form>
-				
-				</div>
-				
-				<div id="resultTest"></div>
-				
-			</div>
-			
-		</div>
-		
-		<!-- PAGE LISTE DES SHOUTBOXS -->
-		<div id="ShoutboxList" data-role="page" data-theme="a" data-title="FruityClub ShoutboxList">
-		
-			<div data-role="header" data-position="fixed" data-tap-toggle="false">
-				<h1>FruityClub ShoutboxList</h1>
-				<a href="#config" data-icon="gear" class="ui-btn-right">Options</a>
-			</div>
-		
-			<div data-role="content">
-
-				<div class="ui-body ui-body-a">
-					<div class="ui-grid-a" id="ULMemberInfos">
-						<div style="width:30%;" class="ui-block-a MemberInfos" id="ULMemberInfos1"></div>
-						<div style="width:70%;" class="ui-block-b MemberInfos" id="ULMemberInfos2"></div>						
-					</div>
-				</div>
-
-				<br />
-				
-				<div class="ui-body ui-body-a" id="ShoutboxListTitle">				
-					Choisissez ci-dessous la shoutbox à laquelle vous souhaitez vous connecter. Vous pourrez basculer de l'une à l'autre ensuite.
-				</div>
-				
-				<ul data-role="listview" data-inset="true" id="ULShoutboxList"></ul>
-				
-			</div>
-			
-		</div>
-		
-		<!-- PAGE LISTE DES MESSAGES -->
-		<div id="ShoutList" data-role="page" data-theme="a" data-title="FruityClub ShoutList">
-		
-			<div data-role="header" data-position="fixed" data-tap-toggle="false">
-				<h1>FruityClub ShoutList</h1>
-				<a href="#config" data-icon="gear" class="ui-btn-right">Options</a>
-			</div>
-		
-			<div data-role="content">
-			
-				<div class="ui-body ui-body-a">
-					<div class="ui-grid-a" id="ULMemberInfos2">
-						<div style="width:30%;" class="ui-block-a MemberInfos" id="ULMemberInfos3"></div>
-						<div style="width:70%;" class="ui-block-b MemberInfos" id="ULMemberInfos4"></div>
-					</div>
-				</div>
-
-				<br />
-				
-				<div class="ui-body ui-body-a">
-					<h3 id="ShoutboxTitle"></h3>
-					<div class="error_bbc" id="shoutbox_warning" style="display: none"></div>
+	
 				</div>
 				
 				<br />
 				
-				<ul data-role="listview" data-inset="true" id="ULShoutList"></ul>
+				<div class="ui-body ui-body-a">
 				
-				<input type="hidden" name="last_update" id="last_update" value="0" />
-				
-				<br /><br />
-				
-			</div>
+					<h3>Connexion par cl&eacute; secr&egrave;te</h3>
+					
+					<fieldset data-role="fieldcontain">
 			
-			<div data-role="popup" id="confirmDeleteShout" class="ui-corner-all" style="max-width:400px;">
-				<h3 class="ui-title">Etes vous sûr de vouloir supprimer ce message?</h3>
-				<p>Cette action ne peut pas être annulée.</p>
-				<input type="hidden" name="idShoutHidden" id="idShoutHidden" value="" />
-				<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="d">Annuler</a>    
-				<a href="#" name="btn_confirmDeleteShout" id="btn_confirmDeleteShout" data-role="button" data-inline="true">Supprimer</a>  
-			</div>
-			
-			<div data-role="popup" id="loadingMessages" class="ui-corner-all" style="max-width:400px;">
-				<div class="ui-grid-a">
-					<div style="width:20%;" class="ui-block-a">
-						<img src="css/images/ajax-loader.gif" width="80%" />
-					</div>
-					<div style="width:80%;" class="ui-block-b">	
-						<h3 class="ui-title">Chargement des messages en cours ...</h3>
-						<p>Vous attendez depuis trop longtemps ? Appuyez sur le bouton ci-dessous pour aller plus vite !</p> 
-						<a href="#" name="btn_refreshShouts" id="btn_refreshShouts" data-role="button" data-inline="true">Afficher les messages</a>  
-					</div>
+						<label for="secretkey">Cl&eacute; secr&egrave;te:</label>
+						<input type="number" name="secretkey" id="secretkey" value="" />
+						
+					</fieldset>							
+					
+					<h4>Votre cl&eacute; secr&egrave;te est disponible dans votre profil sur le site, uniquement si vous êtes VIP.</h4>
+					
 				</div>
+				
+				<br />
+				
+				<fieldset data-role="fieldcontain">
+	
+					<label for="autolog">Connexion auto:</label>
+						<select name="autolog" id="autolog" data-role="slider">
+							<option value="0">Non</option>
+							<option value="1">Oui</option>
+						</select>
+				
+				</fieldset>
+				
+				<br />
+				
+				<input type="hidden" name="did" id="did" value="" />
+				<input type="hidden" name="dplatform" id="dplatform" value="" />
+				
+				<button type="submit" name="submitlog" id="submitlog" value="submitlog" data-icon="check" data-iconpos="right">Connexion</button>
+				
+			</form>
+			
 			</div>
 			
-			<div data-role="popup" id="pop_smileysList" class="ui-corner-all" style="max-width:400px;">
-				<div id="ULsmileyslist">
-					<div class="ui-body ui-body-a">
-						Appuyez sur un des smileys ci-dessous pour l'ajouter à votre message.
-					</div>
-					<br />
-					<div class="ui-grid-c">
-						<div class="ui-block-a"><div class="ui-bar ui-bar-f" style="text-align:center; height:40px;" data-name=" :)"><img src="css/images/smileys/smile.gif"    	data-name=" :)" /></div></div>
-						<div class="ui-block-b"><div class="ui-bar ui-bar-f" style="text-align:center; height:40px;" data-name=" :D"><img src="css/images/smileys/bigsmile.gif" 	data-name=" :D" /></div></div>
-						<div class="ui-block-c"><div class="ui-bar ui-bar-f" style="text-align:center; height:40px;" data-name=" :lol1:"><img src="css/images/smileys/lol1.gif" 	data-name=" :lol1:" /></div></div>
-						<div class="ui-block-d"><div class="ui-bar ui-bar-f" style="text-align:center; height:40px;" data-name=" ;)"><img src="css/images/smileys/icon_wink-1.gif" 	data-name=" ;)" /></div></div>				
-						<div class="ui-block-a"><div class="ui-bar ui-bar-f" style="text-align:center; height:40px;" data-name=" :girl:"><img src="css/images/smileys/girl.gif" 	data-name=" :girl:" /></div></div>
-						<div class="ui-block-b"><div class="ui-bar ui-bar-f" style="text-align:center; height:40px;" data-name=" :o"><img src="css/images/smileys/surpris.gif" 	data-name=" :o" /></div></div>
-						<div class="ui-block-c"><div class="ui-bar ui-bar-f" style="text-align:center; height:40px;" data-name=" :lol5:"><img src="css/images/smileys/lol5.gif" 	data-name=" :lol5:" /></div></div>
-						<div class="ui-block-d"><div class="ui-bar ui-bar-f" style="text-align:center; height:40px;" data-name=" :roll:"><img src="css/images/smileys/icon_rolleyes.gif" data-name=" :roll:" /></div></div>				
-						<div class="ui-block-a"><div class="ui-bar ui-bar-f" style="text-align:center; height:40px;" data-name=" :youpi:"><img src="css/images/smileys/youpi.gif" 	data-name=" :youpi:" /></div></div>
-						<div class="ui-block-b"><div class="ui-bar ui-bar-f" style="text-align:center; height:40px;" data-name=" :rulaiz:"><img src="css/images/smileys/rulaiz.gif" 	data-name=" :rulaiz:" /></div></div>
-						<div class="ui-block-c"><div class="ui-bar ui-bar-f" style="text-align:center; height:40px;" data-name=" :petard:"><img src="css/images/smileys/petard.gif" 	data-name=" :petard:" /></div></div>
-						<div class="ui-block-d"><div class="ui-bar ui-bar-f" style="text-align:center; height:40px;" data-name=" :marteau:"><img src="css/images/smileys/marteau.gif" 	data-name=" :marteau:" /></div></div>			
-					</div>					
-				</div>
-				<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="d">Annuler</a>
-			</div>
-			
-			<div data-role="footer" data-position="fixed" data-tap-toggle="false">
-			
-				<form action="" method="post" id="formaddshout">
-					<div class="ui-grid-d">
-						<div style="width:15%;" class="ui-block-a"><a href="#ShoutboxList" data-role="button">Liste</a></div>
-						<div style="width:15%;" class="ui-block-b"><a name="smileyslist" id="smileyslist" href="#" data-role="button">Smileys</a></div>
-						<div style="width:40%;" class="ui-block-c"><input style="" data-mini="true" type="text" name="shouttext" id="shouttext" value="" /></div>
-						<div style="width:10%;" class="ui-block-d"><a name="btn_emptytext" id="btn_emptytext" href="#" data-role="button" data-icon="delete" data-iconpos="notext">Delete</a></div>
-						<div style="width:20%;" class="ui-block-e"><button type="submit" name="submittext" id="submittext" value="submittext">Shout!</button></div>
-					</div>
-				</form>
-
-			</div>
+			<div id="resultTest"></div>
 			
 		</div>
 		
-		<!-- CONFIG -->
-		<div id="config" data-role="page" data-theme="a" data-title="Configuration">
-
-			<div data-role="header" data-position="fixed">
-				<h1>Configuration</h1>
-				<a href="#ShoutboxList" data-icon="home" data-iconpos="notext" data-direction="reverse">Accueil</a>
-			</div><!-- /header -->
-
-			<div class="ui-body ui-body-a">
-
-				<ul data-role="listview" data-inset="true">
-					<li data-role="fieldcontain">						
-						<div class="ui-grid-a">
-							<div class="ui-block-a">
-								<label for="vibration_msg">Vibrer &agrave; la r&eacute;ception de nouveaux messages</label>
-							</div>
-							<div class="ui-block-b">
-								<select name="vibration_msg" id="vibration_msg" data-role="slider">
-									<option value="0">Non</option>
-									<option value="1">Oui</option>
-								</select>								
-							</div>
-						</div>
-					</li>
-					<li data-role="fieldcontain">
-						<div class="ui-grid-a">
-		        				<div class="ui-block-a">
-		        					<label for="autolog">Connexion automatique</label>
-		        				</div>
-		        				<div class="ui-block-b" id="autoLogConfig">
-								<button type="submit" id="btn_autoLogConfig" name="btn_autoLogConfig">D&eacute;sactiver</button>
-							</div>
-						</div>
-					</li>
-					<li data-role="fieldcontain">
-						<div class="ui-grid-a">
-							<div class="ui-block-a">
-		        					<legend>Taille de la police des messages</legend>
-		        				</div>
-		        				<div class="ui-block-b">
-		        					<fieldset data-role="controlgroup">
-							         	<input type="radio" name="msg_size" id="msg_size-1" value="10" />
-							         	<label for="msg_size-1">Petite</label>
-
-							         	<input type="radio" name="msg_size" id="msg_size-2" value="12" checked="checked"  />
-							         	<label for="msg_size-2">Normale</label>
-
-							         	<input type="radio" name="msg_size" id="msg_size-3" value="14"  />
-							         	<label for="msg_size-3">Grande</label>
-
-							         	<input type="radio" name="msg_size" id="msg_size-4" value="16"  />
-							         	<label for="msg_size-4">Tres grande</label>
-							         </fieldset>
-						         </div>
-						</div>
-					</li>
-
-				</ul>
-
-				<button type="submit" name="submit_config" id="submit_config" value="submit_config" data-icon="check" data-iconpos="right">Enregistrer</button>
-
-			</div>			
-			
-			<div data-role="popup" id="popup_confirmConfig" class="ui-corner-all" style="max-width:400px;">
-				<p>La configuration a été enregitrée.</p>
-				<a href="#" name="btn_confirmConfig" id="btn_confirmConfig" data-role="button" data-inline="true">Ok</a>			
-			</div>
-			
-			<div data-role="popup" id="popup_confirmAutolog" class="ui-corner-all" style="max-width:400px;">
-				<p>La connexion automatique a été désactivée.</p>
-				<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="d">Ok</a>		
-			</div>
-
-		</div>		
 	</div>
 	
 	<script type="text/javascript" src="js/cordova-2.7.0.js"></script>
-	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery.mobile-1.3.1.min.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript" src="js/sha1.js"></script>		
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile.touch.min.js"></script>
+  	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/shoutboxslist.js"></script>		
 	
     </body>
 </html>
