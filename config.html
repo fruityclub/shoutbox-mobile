@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>FruityClub ShoutBox Mobile</title>
+    </head>
+    <body>
+		
+		<!-- CONFIG -->
+		<div id="config" data-role="page" data-theme="a" data-title="Configuration">
+
+			<div data-role="header" data-position="fixed">
+				<h1>Configuration</h1>
+				<a href="#ShoutboxList" data-icon="home" data-iconpos="notext" data-direction="reverse">Accueil</a>
+			</div><!-- /header -->
+
+			<div class="ui-body ui-body-a">
+
+				<ul data-role="listview" data-inset="true">
+					<li data-role="fieldcontain">						
+						<div class="ui-grid-a">
+							<div class="ui-block-a">
+								<label for="vibration_msg">Vibrer &agrave; la r&eacute;ception de nouveaux messages</label>
+							</div>
+							<div class="ui-block-b">
+								<select name="vibration_msg" id="vibration_msg" data-role="slider">
+									<option value="0">Non</option>
+									<option value="1">Oui</option>
+								</select>								
+							</div>
+						</div>
+					</li>
+					<li data-role="fieldcontain">
+						<div class="ui-grid-a">
+		        				<div class="ui-block-a">
+		        					<label for="autolog">Connexion automatique</label>
+		        				</div>
+		        				<div class="ui-block-b" id="autoLogConfig">
+								<button type="submit" id="btn_autoLogConfig" name="btn_autoLogConfig">D&eacute;sactiver</button>
+							</div>
+						</div>
+					</li>
+					<li data-role="fieldcontain">
+						<div class="ui-grid-a">
+							<div class="ui-block-a">
+		        					<legend>Taille de la police des messages</legend>
+		        				</div>
+		        				<div class="ui-block-b">
+		        					<fieldset data-role="controlgroup">
+							         	<input type="radio" name="msg_size" id="msg_size-1" value="10" />
+							         	<label for="msg_size-1">Petite</label>
+
+							         	<input type="radio" name="msg_size" id="msg_size-2" value="12" checked="checked"  />
+							         	<label for="msg_size-2">Normale</label>
+
+							         	<input type="radio" name="msg_size" id="msg_size-3" value="14"  />
+							         	<label for="msg_size-3">Grande</label>
+
+							         	<input type="radio" name="msg_size" id="msg_size-4" value="16"  />
+							         	<label for="msg_size-4">Tres grande</label>
+							         </fieldset>
+						         </div>
+						</div>
+					</li>
+
+				</ul>
+
+				<button type="submit" name="submit_config" id="submit_config" value="submit_config" data-icon="check" data-iconpos="right">Enregistrer</button>
+
+			</div>			
+			
+			<div data-role="popup" id="popup_confirmConfig" class="ui-corner-all" style="max-width:400px;">
+				<p>La configuration a été enregitrée.</p>
+				<a href="#" name="btn_confirmConfig" id="btn_confirmConfig" data-role="button" data-inline="true">Ok</a>			
+			</div>
+			
+			<div data-role="popup" id="popup_confirmAutolog" class="ui-corner-all" style="max-width:400px;">
+				<p>La connexion automatique a été désactivée.</p>
+				<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="d">Ok</a>		
+			</div>
+
+		</div>
+	
+    <script type="text/javascript" src="js/cordova-2.7.0.js"></script>
+  	<script type="text/javascript" src="js/jquery.min.js"></script>
+  	<script type="text/javascript" src="js/jquery.mobile.touch.min.js"></script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+  	<script type="text/javascript" src="js/config.js"></script>	
+	
+    </body>
+</html>
