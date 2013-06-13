@@ -5,95 +5,71 @@
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>FruityClub ShoutBox Mobile</title>
     </head>
     <body>
     
 	<!-- PAGE CONNEXION -->
-	<div id="Connexion1" data-role="page" data-theme="a" data-title="ShoutBox Connexion">
+	<div id="Connexion1">
 	
-		<div data-role="header" data-position="fixed" data-tap-toggle="false">
-			<h1>ShoutBox Connexion</h1>
-			<a href="#config" data-icon="gear" class="ui-btn-right">Options</a>
+		<div class="navbar navbar-fixed-top">
+		  <div class="navbar-inner">
+		    <div class="container">
+			<a class="brand" href="#">ShoutBox Connexion</a>
+			<a href="#" class="btn btn-inverse active pull-right">Options <i class="icon-white icon-wrench"></i></a>
+		    </div>
+		  </div>
 		</div>
-	
-		<div data-role="content">
 		
-			<div class="center-wrapper">
+		
+		<div class="container">
 			
-			<div class="ui-body ui-body-a">
-			
+			<div class="well well-large">
 				Connectez-vous ci-dessous pour acc&eacute;der &agrave; la shoutbox. Si vous n'avez pas de compte, vous devez en cr&eacute;er un sur le site http://www.fruityclub.net avant de vous connecter ici.
-				
-				<div class="error_bbc" id="erreur_connexion" style="display:none;">Une erreur s'est produite pendant la v&eacute;rification de vos identifiants ou de la connexion à la shoutbox. <br /> 
-					Soit il s'agit d'un probl&egrave;me de connexion : dans ce cas, merci de v&eacute;rifier si votre acc&egrave;s &agrave; internet fonctionne correctement. <br />
-					Soit il s'agit d'un probl&egrave;me avec vos identifiants : merci de v&eacute;rifier la bonne saisie de votre email et mot de passe ou de votre cl&eacute; secr&egrave;te.
-				</div>
-				
 			</div>
 			
-			<br />
+			<div class="alert alert-error">
+		        	<a class="close" data-dismiss="alert" href="#">×</a>
+		        	Une erreur s'est produite pendant la v&eacute;rification de vos identifiants ou de la connexion à la shoutbox. <br /> 
+				Soit il s'agit d'un probl&egrave;me de connexion : dans ce cas, merci de v&eacute;rifier si votre acc&egrave;s &agrave; internet fonctionne correctement. <br />
+				Soit il s'agit d'un probl&egrave;me avec vos identifiants : merci de v&eacute;rifier la bonne saisie de votre email et mot de passe ou de votre cl&eacute; secr&egrave;te.
+		        </div>
 			
 			<form action="" method="post" id="checkuser">
-				
-				<div class="ui-body ui-body-a">
-				
-					<h3>Connexion par email et mot de passe</h3>
-					
-					<fieldset data-role="fieldcontain">
 			
-						<label for="email">Email:</label>
-						<input type="email" name="email" id="email" value="" />
-	
-						<label for="passlog">Mot de passe:</label>
-						<input type="password" name="passlog" id="passlog" value="" />
-						
-					</fieldset>
-	
+			<div class="row">
+				<div class="span4 offset4 well">
+				
+					<legend>Connexion par email et mot de passe</legend>
+					
+					<input type="email" name="email" id="email" class="span4" value="" placeholder="Email" />
+					<input type="password" name="passlog" id="passlog" value="" class="span4" placeholder="Mot de passe" />
+  
 				</div>
-				
-				<br />
-				
-				<div class="ui-body ui-body-a">
-				
-					<h3>Connexion par cl&eacute; secr&egrave;te</h3>
-					
-					<fieldset data-role="fieldcontain">
-			
-						<label for="secretkey">Cl&eacute; secr&egrave;te:</label>
-						<input type="number" name="secretkey" id="secretkey" value="" />
-						
-					</fieldset>							
-					
-					<h4>Votre cl&eacute; secr&egrave;te est disponible dans votre profil sur le site, uniquement si vous êtes VIP.</h4>
-					
-				</div>
-				
-				<br />
-				
-				<fieldset data-role="fieldcontain">
-	
-					<label for="autolog">Connexion auto:</label>
-						<select name="autolog" id="autolog" data-role="slider">
-							<option value="0">Non</option>
-							<option value="1">Oui</option>
-						</select>
-				
-				</fieldset>
-				
-				<br />
-				
-				<input type="hidden" name="did" id="did" value="" />
-				<input type="hidden" name="dplatform" id="dplatform" value="" />
-				
-				<button type="submit" name="submitlog" id="submitlog" value="submitlog" data-icon="check" data-iconpos="right">Connexion</button>
-				
-			</form>
-			
 			</div>
 			
-			<div id="resultTest"></div>
+			<div class="row">
+				<div class="span4 offset4 well">
+				
+					<legend>Connexion par cl&eacute; secr&egrave;te</legend>
+					
+					<input type="number" name="secretkey" id="secretkey" class="span4" value="" placeholder="Cl&eacute; secr&egrave;te" />
+  
+				</div>
+			</div>	
+			
+			<div class="row">
+				<div class="span4 offset4 well">
+				
+		            		<label class="checkbox">
+		            			<input type="checkbox" name="remember" value="1"> Connexion automatique
+		            		</label>
+		            		<button type="submit" name="submit" class="btn btn-info btn-block">Connexion</button>
+  
+				</div>
+			</div>	
+			
+			</form>
 			
 		</div>
 		
