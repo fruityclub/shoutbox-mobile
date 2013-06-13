@@ -7,6 +7,7 @@ $(document).on('vclick', '#submittext', fn_sendshout);
 $(document).on('submit', '#formaddshout', fn_sendshout);
 $(document).on('vclick', '#smileyslist', fn_click_smileyslist);
 $(document).on('vclick', '#ULsmileyslist', fn_click_ULsmileyslist);
+$(document).on('vclick', '#btn_confirmDeleteShout', fn_confirmDeleteShout);
 
 function fn_show_ShoutList(event, data) {
 
