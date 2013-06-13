@@ -268,3 +268,39 @@ function fn_confirmDeleteShout() {
 
 	}	
 }
+
+function fn_click_smileyslist() {
+	// affiche popup smileys
+	$("#pop_smileysList").popup("open");	
+}
+
+function fn_click_ULsmileyslist(e) {
+	var id_smiley = $(e.target).closest('div').attr('data-name');
+	$('#shouttext').val($('#shouttext').val() + ' ' + id_smiley + ' ');
+	$("#pop_smileysList").popup("close");	
+}
+
+function vibrateOnNewMEssages() {
+	if (typeof(deviceReady) != "undefined" && deviceReady !== null) {
+		navigator.notification.vibrate(1000);
+	}
+}
+
+function startRefresh(firstRefresh) {
+
+	firstRefresh = firstRefresh || false;
+
+	refresh_shoutlist(firstRefresh);	
+	var refreshIntervalId = setTimeout(startRefresh, 30000);
+
+	// on conserve l'id du refreshinterval pour utilisation future
+	window.localStorage.setItem("refreshIntervalId", refreshIntervalId);	
+}
+
+function stopRefresh() {
+	if (typeof(window.localStorage.getItem("refreshIntervalId")) != "undefined" && window.localStorage.getItem("refreshIntervalId") !== null) {
+		var refreshIntervalId = window.localStorage.getItem("refreshIntervalId");
+		clearInterval(refreshIntervalId);
+	}
+
+}
