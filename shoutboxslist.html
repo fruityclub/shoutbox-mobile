@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>FruityClub ShoutBox Mobile</title>
+    </head>
+    <body>
+
+		<!-- PAGE LISTE DES SHOUTBOXS -->
+		<div id="ShoutboxList" data-role="page" data-theme="a" data-title="FruityClub ShoutboxList">
+
+  	  <div data-role="header" data-position="fixed" data-tap-toggle="false">
+			  <h1>FruityClub ShoutboxList</h1>
+				<a href="#config" data-icon="gear" class="ui-btn-right">Options</a>
+			</div>
+
+			<div data-role="content">
+
+				<div class="ui-body ui-body-a">
+					<div class="ui-grid-a" id="ULMemberInfos">
+						<div style="width:30%;" class="ui-block-a MemberInfos" id="ULMemberInfos1"></div>
+						<div style="width:70%;" class="ui-block-b MemberInfos" id="ULMemberInfos2"></div>						
+					</div>
+				</div>
+
+				<br />
+
+				<div class="ui-body ui-body-a" id="ShoutboxListTitle">				
+					Choisissez ci-dessous la shoutbox à laquelle vous souhaitez vous connecter. Vous pourrez basculer de l'une à l'autre ensuite.
+				</div>
+
+				<ul data-role="listview" data-inset="true" id="ULShoutboxList"></ul>
+
+			</div>
+
+  </div>
+
+	<script type="text/javascript" src="js/cordova-2.7.0.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile.touch.min.js"></script>
+  <script type="text/javascript" src="bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/shoutboxslist.js"></script>	
+
+    </body>
+</html>
