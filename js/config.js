@@ -1,4 +1,7 @@
 $(document).on('pageshow', '#config', fn_show_config);
+$(document).on('vclick', '#btn_autoLogConfig', fn_del_autolog);
+$(document).on('vclick', '#submit_config', fn_submit_config);
+$(document).on('vclick', '#btn_confirmConfig', fn_click_btn_confirmConfig);
 
 function fn_show_config() {
 
