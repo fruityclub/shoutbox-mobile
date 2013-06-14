@@ -85,6 +85,7 @@ function fn_show_Connexion1(event, data) {
 
 function fn_submitconnexion(e) {
 	
+	console.log('fn_submitconnexion');
 	e.preventDefault();
 	
 	var email = $('#email').val();
@@ -94,13 +95,15 @@ function fn_submitconnexion(e) {
 	if ( checkform(email, password, secretkey) == true ) {
 
 		if ( email.length > 0 && password.length > 0 ) {
-		
+			
+			console.log('connexion email');
 			var serviceURL = 'https://www.fruityclub.net/api/index.php/connexion/email';
 			var local = 0;
 			checkmembername(serviceURL, email, password, secretkey, local);	
 			
 		} else if ( secretkey.length > 0 ) {
-		
+			
+			console.log('connexion cle');
 			var serviceURL = 'https://www.fruityclub.net/api/index.php/connexion/secretkey';
 			var local = 0;
 			var email = '';
@@ -186,6 +189,8 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 
 function checkmembername(serviceURL, email, password, secretkey, local) {
 
+	console.log('checkmembername');
+	
 	var returndata = "NULL";
 	
 	if ( email == '' ) { 
