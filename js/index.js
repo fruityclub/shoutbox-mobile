@@ -34,6 +34,8 @@ function onDeviceReady() {
 
 function fn_show_Connexion1(event, data) {
 	
+	console.log('fn_show_Connexion1');
+	
 	// Définit préférence par défaut
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
