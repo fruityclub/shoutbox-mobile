@@ -1,7 +1,7 @@
 // Events
 document.addEventListener("deviceready", onDeviceReady, false);
 
-$(document).bind("mobileinit", fn_mobileinit);
+//$(document).bind("mobileinit", fn_mobileinit);
 
 $(document).ready(fn_show_Connexion1);
 //$(document).on('pageshow', '#Connexion1', fn_show_Connexion1);
