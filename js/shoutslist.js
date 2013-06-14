@@ -70,37 +70,6 @@ function fn_click_btn_refreshShouts() {
 	refresh_shoutlist(loading);	
 }
 
-function get_shoutbox_infos(id_shoutbox) {
-
-	var id_shoutbox = window.localStorage.getItem("id_shoutbox");
-	var id_member = window.localStorage.getItem("id_member");
-	var auth_token = window.localStorage.getItem("auth_token");
-
-	$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutboxinfos',
-		type: 'post',
-		data: {'auth_token': auth_token, 'id_member': id_member, 'id_shoutbox': id_shoutbox},
-		async: true,
-		beforeSend: function() {
-			$.mobile.loading( 'show', { theme: "b", text: "Recuperation d'informations ...", textVisible: true });
-		},
-		complete: function() {
-			$.mobile.loading( 'hide' );
-		},
-		success: function (responseText) {
-			$("#ShoutboxTitle").html( responseText.name );
-			if ( responseText.warning != '' ) { 
-				$("#shoutbox_warning").show(); $("#shoutbox_warning").html( responseText.warning ); 
-			} else {
-				$("#shoutbox_warning").hide();
-			}
-		},
-		error: function (responseText) {
-
-		}
-	});
-
-}
-
 function fn_emptytext() {
 	$('#shouttext').val('');	
 }
@@ -213,10 +182,4 @@ function fn_click_ULsmileyslist(e) {
 	var id_smiley = $(e.target).closest('div').attr('data-name');
 	$('#shouttext').val($('#shouttext').val() + ' ' + id_smiley + ' ');
 	$("#pop_smileysList").popup("close");	
-}
-
-function vibrateOnNewMEssages() {
-	if (typeof(deviceReady) != "undefined" && deviceReady !== null) {
-		navigator.notification.vibrate(1000);
-	}
 }
