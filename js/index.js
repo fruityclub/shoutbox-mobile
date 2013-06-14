@@ -32,7 +32,7 @@ function onDeviceReady() {
 	var deviceReady = true;	
 }
 
-function fn_show_Connexion1(event, data) {
+function fn_show_Connexion1() {
 	
 	console.log('fn_show_Connexion1');
 	
@@ -242,9 +242,9 @@ function shoutboxAccess(returndata) {
 	window.localStorage.setItem("auth_token", returndata.auth_token);
 	
 	if (typeof(window.localStorage.getItem("id_shoutbox")) != "undefined" && window.localStorage.getItem("id_shoutbox") !== null) {
-		$('#content').load('shoutslist.html');
+		$('#content').load('shoutslist.html', fn_show_ShoutList);
 	} else {
-		$('#content').load('shoutboxslist.html');
+		$('#content').load('shoutboxslist.html', fn_show_ShoutboxList);
 	}
 
 }
