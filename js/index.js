@@ -216,9 +216,9 @@ function shoutboxAccess(returndata) {
 	window.localStorage.setItem("auth_token", returndata.auth_token);
 	
 	if (typeof(window.localStorage.getItem("id_shoutbox")) != "undefined" && window.localStorage.getItem("id_shoutbox") !== null) {
-		$.mobile.changePage($('#ShoutList'));
+		$('#content').load('shoutslist.html');
 	} else {
-		$.mobile.changePage($('#ShoutboxList'));
+		$('#content').load('shoutboxslist.html');
 	}
 
 }
