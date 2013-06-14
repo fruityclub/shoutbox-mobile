@@ -3,7 +3,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 $(document).bind("mobileinit", fn_mobileinit);
 
-$(document).on('pageshow', '#Connexion1', fn_show_Connexion1);
+$(document).ready(fn_show_Connexion1);
+//$(document).on('pageshow', '#Connexion1', fn_show_Connexion1);
 $(document).on('submit', '#checkuser', fn_submitconnexion);
 $(document).on('vclick', '#submitlog', fn_submitconnexion);
 
@@ -12,12 +13,7 @@ function onDeviceReady() {
 	var deviceReady = true;	
 }
 
-function fn_mobileinit() {
-	
-	$.mobile.pageContainer = $('#container');
-	$.mobile.defaultDialogTransition = 'slide';
-	$.mobile.defaultPageTransition = 'slide';
-	$.mobile.transitionFallbacks.slideout = 'none';
+function fn_show_Connexion1(event, data) {
 	
 	// Définit préférence par défaut
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
@@ -26,19 +22,17 @@ function fn_mobileinit() {
 	if ( !vibration_msg ) { window.localStorage.setItem('vibration_msg', 0); }
 	if ( !msg_size ) { window.localStorage.setItem('msg_size', 12); }
 	
-}
-
-function fn_show_Connexion1(event, data) {
-	
 	var email = window.localStorage.getItem("email");
 	var password = window.localStorage.getItem("password");
 	var secretkey = window.localStorage.getItem("secretkey");
+	var prevPage = window.localStorage.getItem("prevPage");
+	
 	var docheck = 0;
 	var navback = 0;
 	
 	stopRefresh();
 	
-	if ( data.prevPage.attr("id") == "ShoutboxList" || data.prevPage.attr("id") == "ShoutboxList" ) { var navback = 1; }
+	if ( prevPage == "ShoutboxList" || prevPage == "ShoutboxList" ) { var navback = 1; }
 	
 	if ( (email || password || secretkey) && navback == 0 ) { var docheck = 1; }
 	
