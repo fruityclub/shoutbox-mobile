@@ -43,25 +43,30 @@
 				
 			</div>
 			
-			<div data-role="popup" id="confirmDeleteShout" class="ui-corner-all" style="max-width:400px;">
-				<h3 class="ui-title">Etes vous sûr de vouloir supprimer ce message?</h3>
-				<p>Cette action ne peut pas être annulée.</p>
-				<input type="hidden" name="idShoutHidden" id="idShoutHidden" value="" />
-				<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="d">Annuler</a>    
-				<a href="#" name="btn_confirmDeleteShout" id="btn_confirmDeleteShout" data-role="button" data-inline="true">Supprimer</a>  
+			<div class="modal hide fade" id="confirmDeleteShout">
+				<div class="modal-header">
+			    		<h3>Etes vous sûr de vouloir supprimer ce message?</h3>
+			  	</div>
+				<div class="modal-body">
+			    		<p>Cette action ne peut pas être annulée.</p>
+			  	</div>
+			  	<div class="modal-footer">
+			    		<a href="#" class="btn">Annuler</a>
+			    		<a href="#" name="btn_confirmDeleteShout" id="btn_confirmDeleteShout" class="btn btn-primary">Supprimer</a>
+			  	</div>
 			</div>
 			
-			<div data-role="popup" id="loadingMessages" class="ui-corner-all" style="max-width:400px;">
-				<div class="ui-grid-a">
-					<div style="width:20%;" class="ui-block-a">
-						<img src="css/images/ajax-loader.gif" width="80%" />
-					</div>
-					<div style="width:80%;" class="ui-block-b">	
-						<h3 class="ui-title">Chargement des messages en cours ...</h3>
-						<p>Vous attendez depuis trop longtemps ? Appuyez sur le bouton ci-dessous pour aller plus vite !</p> 
-						<a href="#" name="btn_refreshShouts" id="btn_refreshShouts" data-role="button" data-inline="true">Afficher les messages</a>  
-					</div>
-				</div>
+			<div class="modal hide fade" id="loadingMessages">
+				<div class="modal-header">
+			    		<img src="css/images/ajax-loader.gif" width="80%" /> 
+			    		<h3>Chargement des messages en cours ...</h3>
+			  	</div>
+				<div class="modal-body">
+			    		<p>Vous attendez depuis trop longtemps ? Appuyez sur le bouton ci-dessous pour aller plus vite !</p>
+			  	</div>
+			  	<div class="modal-footer">
+			    		<a href="#" name="btn_refreshShouts" id="btn_refreshShouts" class="btn btn-primary">Supprimer</a>
+			  	</div>
 			</div>
 			
 			<div data-role="popup" id="pop_smileysList" class="ui-corner-all" style="max-width:400px;">
