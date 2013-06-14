@@ -653,7 +653,7 @@ function fn_confirmDeleteShout() {
 			},
 			error: function (responseText) {             
 				$('#loading').modal('hide');
-				$('#content').load('connexion.html'):
+				$('#content').load('connexion.html');
 				$('#erreur_connexion').show();
 			}
 		});
