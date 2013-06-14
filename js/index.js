@@ -161,12 +161,10 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 		type: 'post',
 		async: true,
 		beforeSend: function() {
-			$('body').addClass('ui-loading');
-			$.mobile.loading( 'show', { theme: "b", text: "Connexion ...", textVisible: true });
+			$('#loading').modal('show');
 		},
 		complete: function() {
-			$('body').removeClass('ui-loading');
-			$.mobile.loading( 'hide' );
+			$('#loading').modal('hide');
 		},
 		success: function (responseText) {
 			if ( $('#autolog').val() == 1 && local == 0 ) {			
@@ -177,8 +175,8 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 			shoutboxAccess(responseText);
 		},
 		error: function (responseText) {
-			$.mobile.loading( 'hide' );
-			$.mobile.changePage($('#Connexion1'));
+			$('#loading').modal('hide');
+			$('#content').load('connexion.html');
 			$('#erreur_connexion').show();
 		}
 	});
@@ -205,20 +203,18 @@ function checkmembername(serviceURL, email, password, secretkey, local) {
 			type: 'post',
 			async: true,
 			beforeSend: function() {
-				$('body').addClass('ui-loading');
-				$.mobile.loading( 'show', { theme: "b", text: "Preparation ...", textVisible: true });
+				$('#loading').modal('show');
 			},
 			complete: function() {
-				$('body').removeClass('ui-loading');
-				$.mobile.loading( 'hide' );
+				$('#loading').modal('hide');
 			},
 			success: function (responseText) {
 				membername = responseText.member_name;
 				checklogin(serviceURL, membername, email, password, secretkey, local);
 			},
 			error: function (responseText) {             
-				$.mobile.loading( 'hide' );
-				$.mobile.changePage($('#Connexion1'));
+				$('#loading').modal('hide');
+				$('#content').load('connexion.html');
 				$('#erreur_connexion').show();
 			}
 		});
@@ -270,10 +266,10 @@ function get_shoutbox_infos(id_shoutbox) {
 		data: {'auth_token': auth_token, 'id_member': id_member, 'id_shoutbox': id_shoutbox},
 		async: true,
 		beforeSend: function() {
-			$.mobile.loading( 'show', { theme: "b", text: "Recuperation d'informations ...", textVisible: true });
+			$('#loading').modal('show');			
 		},
 		complete: function() {
-			$.mobile.loading( 'hide' );
+			$('#loading').modal('hide');
 		},
 		success: function (responseText) {
 			$("#ShoutboxTitle").html( responseText.name );
@@ -284,7 +280,7 @@ function get_shoutbox_infos(id_shoutbox) {
 			}
 		},
 		error: function (responseText) {
-
+			$('#loading').modal('hide');
 		}
 	});
 
@@ -309,10 +305,10 @@ function refresh_shoutlist(loading) {
 		data: {'auth_token': auth_token, 'id_member': id_member, 'id_shoutbox': id_shoutbox, 'last_update': last_update1},
 		async: true,
 		beforeSend: function() {
-			if ( loading == true ) { $.mobile.loading( 'show', { theme: "b", text: "Mise à jour des messages ...", textVisible: true }); }
+			if ( loading == true ) { $('#loading').modal('show'); }
 		},
 		complete: function() {
-			if ( loading == true ) { $.mobile.loading( 'hide' ); $("#loadingMessages").popup("close"); }
+			if ( loading == true ) { $('#loading').modal('hide'); $("#loadingMessages").popup("close"); }
 			$('#ULShoutList').listview('refresh');
 
 			var last_update2 = $('#ULShoutList li').last().attr('data-name');
@@ -347,8 +343,8 @@ function refresh_shoutlist(loading) {
 			}
 		},
 		error: function (responseText) {             
-			$.mobile.loading( 'hide' );
-			$.mobile.changePage($('#Connexion1'));
+			$('#loading').modal('hide');
+			$('#content').load('connexion.html');
 			$('#erreur_connexion').show();
 		}
 	});
@@ -416,9 +412,9 @@ function fn_click_btn_confirmConfig() {
 	$("#popup_confirmConfig").popup("close");
 
 	if (typeof(window.localStorage.getItem("id_shoutbox")) != "undefined" && window.localStorage.getItem("id_shoutbox") !== null) {
-		$.mobile.changePage($('#ShoutList'));
-	} else {	
-		$.mobile.changePage($('#ShoutboxList'));
+		$('#content').load('shoutslist.html');
+	} else {
+		$('#content').load('shoutboxslist.html');
 	}	
 
 }
@@ -439,6 +435,7 @@ function fn_show_ShoutboxList(event, data) {
 	var auth_token = window.localStorage.getItem("auth_token");
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
+	var prevPage = window.localStorage.getItem("prevPage");
 
 	stopRefresh();
 	$("#last_update").val('0');
@@ -455,7 +452,7 @@ function fn_show_ShoutboxList(event, data) {
 
 	var nbShoutboxs = $("#ULShoutboxList li").size();
 
-	if ( data.prevPage.attr("id") != "ShoutList" || nbShoutboxs == 0 ) {
+	if ( prevPage != "ShoutList" || nbShoutboxs == 0 ) {
 
 		// get shoutbox list
 		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutboxlist',
@@ -463,11 +460,11 @@ function fn_show_ShoutboxList(event, data) {
 			data: {'auth_token': auth_token, 'id_member': id_member},
 			async: true,
 			beforeSend: function() {
-				$.mobile.loading( 'show', { theme: "b", text: "Affichage des ShoutBoxs ...", textVisible: true });
+				$('#loading').modal('show');
 			},
 			complete: function() {
-				$.mobile.loading( 'hide' );
-				$('#ULShoutboxList').listview('refresh');
+				$('#loading').modal('hide');
+				//$('#ULShoutboxList').listview('refresh');
 			},
 			success: function (responseText) {
 				$("#ULShoutboxList").empty();
@@ -481,8 +478,8 @@ function fn_show_ShoutboxList(event, data) {
 				$("#ULShoutboxList").append( shoutboxsList );
 
 			},
-			error: function (responseText) {             
-				$.mobile.loading( 'hide' );
+			error: function (responseText) {
+				$('#loading').modal('hide');
 				$('#erreur_connexion').show();
 			}
 		});
@@ -517,10 +514,11 @@ function fn_show_ShoutList(event, data) {
 	var auth_token = window.localStorage.getItem("auth_token");
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
+	var prevPage = window.localStorage.getItem("prevPage");
 
 	var nbShouts = $("#ULShoutList li").size();
 
-	if ( data.prevPage.attr("id") != "config" || nbShouts == 0 ) {
+	if ( prevPage != "config" || nbShouts == 0 ) {
 
 		console.log('data.prevPage.attr ShoutboxList');
 
@@ -581,19 +579,19 @@ function fn_sendshout(e) {
 			data: {'auth_token': auth_token, 'id_member': id_member, 'real_name': real_name, 'id_shoutbox': id_shoutbox, 'msg_txt': shouttext},
 			async: true,
 			beforeSend: function() {
-				$.mobile.loading( 'show', { theme: "b", text: "Ajout du message ...", textVisible: true });
+				$('#loading').modal('show');
 			},
 			complete: function() {
 				$('#shouttext').val('');
-				$.mobile.loading( 'hide' );
+				$('#loading').modal('hide');
 			},
 			success: function (responseText) {				
 				var loading = false;
 				refresh_shoutlist(loading);				
 			},
-			error: function (responseText) {             
-				$.mobile.loading( 'hide' );
-				$.mobile.changePage($('#Connexion1'));
+			error: function (responseText) {
+				$('#loading').modal('hide');
+				$('#content').load('connexion.html'):
 				$('#erreur_connexion').show();
 			}
 		});
@@ -645,17 +643,17 @@ function fn_confirmDeleteShout() {
 			data: {'auth_token': auth_token, 'id_member': id_member, 'id_shout': id_shout, 'id_shoutbox': id_shoutbox},
 			async: true,
 			beforeSend: function() {
-				$.mobile.loading( 'show', { theme: "b", text: "Suppression du message ...", textVisible: true });
+				$('#loading').modal('show');
 			},
 			complete: function() {
-				$.mobile.loading( 'hide' );
+				$('#loading').modal('hide');
 			},
 			success: function (responseText) {
 				$('li.LIShoutList[data-name="' + id_shout + '"]').remove();
 			},
 			error: function (responseText) {             
-				$.mobile.loading( 'hide' );
-				$.mobile.changePage($('#Connexion1'));
+				$('#loading').modal('hide');
+				$('#content').load('connexion.html'):
 				$('#erreur_connexion').show();
 			}
 		});
