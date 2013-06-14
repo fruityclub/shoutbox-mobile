@@ -59,6 +59,7 @@ function fn_show_Connexion1(event, data) {
 	
 	if ( docheck == 1 && checkform(email, password, secretkey) == true ) {
 
+		console.log('auto connexion ok');
 		$('#erreur_connexion').hide();
 		
 		if ( email.length > 0 && password.length > 0 ) {
@@ -76,6 +77,9 @@ function fn_show_Connexion1(event, data) {
 		
 		}
 	
+	} else {
+		console.log('auto connexion ko');
+		$('#content').load('connexion.html');	
 	}	
 }
 
