@@ -9,6 +9,7 @@ $(document).on('click', '#btn_confirmConfig', fn_click_btn_confirmConfig);
 $(document).on('click', 'li.LIShoutboxList', fn_click_LIShoutboxList);
 $(document).on('taphold', '#ULShoutList', fn_tapInShoutList);
 $(document).on('click', '#btn_refreshShouts', fn_click_btn_refreshShouts);
+$(document).on('click', '#btn_showShoutboxsList', fn_click_btn_showShoutboxsList);
 $(document).on('click', '#btn_emptytext', fn_emptytext);
 $(document).on('click', '#submittext', fn_sendshout);
 $(document).on('submit', '#formaddshout', fn_sendshout);
@@ -20,6 +21,10 @@ $(document).on('click', '#btn_closeSmileyslist', fn_click_btn_closeSmileyslist);
 // Functions
 function onDeviceReady() {
 	var deviceReady = true;	
+}
+
+function fn_click_btn_showShoutboxsList() {
+	$('#content').load('html/shoutboxslist.html', fn_show_ShoutboxList);
 }
 
 function fn_show_Connexion1() {
@@ -666,4 +671,8 @@ function displayUserInfos() {
 	$('#ULMemberInfos2').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + ' ' + vip_title + '<br />' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
 
 	
+}
+
+function fn_click_btn_showShoutboxsList() {
+	$('#content').load('html/shoutboxslist.html', fn_show_ShoutboxList);
 }
