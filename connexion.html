@@ -1,44 +1,44 @@
-  <!-- PAGE CONNEXION -->	
-	<div class="container">
-		
-		<div class="well well-large">
-			Connectez-vous ci-dessous pour acc&eacute;der &agrave; la shoutbox. Si vous n'avez pas de compte, vous devez en cr&eacute;er un sur le site http://www.fruityclub.net avant de vous connecter ici.
-		</div>
-		
-		<div class="alert alert-error" style="display: none;">
-	        	<a class="close" data-dismiss="alert" href="#">×</a>
-	        	Une erreur s'est produite pendant la v&eacute;rification de vos identifiants ou de la connexion à la shoutbox. <br /> 
-			Soit il s'agit d'un probl&egrave;me de connexion : dans ce cas, merci de v&eacute;rifier si votre acc&egrave;s &agrave; internet fonctionne correctement. <br />
-			Soit il s'agit d'un probl&egrave;me avec vos identifiants : merci de v&eacute;rifier la bonne saisie de votre email et mot de passe ou de votre cl&eacute; secr&egrave;te.
-	  </div>
-		
-		<form action="" method="post" id="checkuser">
-		
-			<div class="well well-large">
-			
-				<legend>Connexion par email et mot de passe</legend>				
-				<input type="email" name="email" id="email" class="input-xlarge" value="" placeholder="Email" />
-				<input type="password" name="passlog" id="passlog" value="" class="input-xlarge" placeholder="Mot de passe" />
+<!-- PAGE CONNEXION -->	
+<div class="container">
 	
-			</div>
-
-			<div class="well well-large">
-			
-				<legend>Connexion par cl&eacute; secr&egrave;te</legend>				
-				<input type="number" name="secretkey" id="secretkey" class="input-xlarge" value="" placeholder="Cl&eacute; secr&egrave;te" />
-	
-			</div>
-
-			<div class="well well-large">
-				
-				<label>Connexion automatique</label>
-	            		<div class="switch" data-on="success" data-off="warning" data-on-label="OUI" data-off-label="NON">
-	            			<input type="checkbox" name="autolog" id="autolog" value="1" /> 
-				</div>
-	            		<button type="submit" name="submit" class="btn btn-large btn-block">Connexion</button>
-	
-			</div>	
-		
-		</form>
-		
+	<div class="well well-large">
+		Connectez-vous ci-dessous pour acc&eacute;der &agrave; la shoutbox. Si vous n'avez pas de compte, vous devez en cr&eacute;er un sur le site http://www.fruityclub.net avant de vous connecter ici.
 	</div>
+	
+	<div class="alert alert-error" style="display: none;">
+        	<a class="close" data-dismiss="alert" href="#">×</a>
+        	Une erreur s'est produite pendant la v&eacute;rification de vos identifiants ou de la connexion à la shoutbox. <br /> 
+		Soit il s'agit d'un probl&egrave;me de connexion : dans ce cas, merci de v&eacute;rifier si votre acc&egrave;s &agrave; internet fonctionne correctement. <br />
+		Soit il s'agit d'un probl&egrave;me avec vos identifiants : merci de v&eacute;rifier la bonne saisie de votre email et mot de passe ou de votre cl&eacute; secr&egrave;te.
+  	</div>
+	
+	<form action="" method="post" name="checkuser" id="checkuser">
+	
+		<div class="well well-large">
+		
+			<legend>Connexion par email et mot de passe</legend>				
+			<input type="email" name="email" id="email" class="input-xlarge" value="" placeholder="Email" />
+			<input type="password" name="passlog" id="passlog" value="" class="input-xlarge" placeholder="Mot de passe" />
+
+		</div>
+
+		<div class="well well-large">
+		
+			<legend>Connexion par cl&eacute; secr&egrave;te</legend>				
+			<input type="number" name="secretkey" id="secretkey" class="input-xlarge" value="" placeholder="Cl&eacute; secr&egrave;te" />
+
+		</div>
+
+		<div class="well well-large">
+			
+			<label>Connexion automatique</label>
+            		<div class="switch switch-large" data-on="success" data-off="warning" data-on-label="Oui" data-off-label="Non">
+            			<input type="checkbox" name="autolog" id="autolog" value="1" /> 
+			</div>
+            		<button type="submit" name="submit" class="btn btn-large btn-block">Connexion</button>
+
+		</div>	
+	
+	</form>
+	
+</div>
