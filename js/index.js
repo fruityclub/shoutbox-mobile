@@ -477,7 +477,7 @@ function fn_show_ShoutboxList(event, data) {
 				$("#ULShoutboxList").empty();
 				var shoutboxsList = '';
 				$.each( responseText, function( i, item ) {
-					shoutboxsList += '<li data-icon="arrow-r" class="LIShoutboxList" data-name="' + item.id_shoutbox + '"><a href="#">';
+					shoutboxsList += '<li class="LIShoutboxList" data-name="' + item.id_shoutbox + '"><a href="#">';
 					shoutboxsList += item.name;
 					shoutboxsList += '</a></li>';
 				});
