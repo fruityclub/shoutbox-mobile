@@ -80,7 +80,9 @@ function fn_show_Connexion1() {
 	} else {
 		console.log('auto connexion ko');
 		$('#content').load('html/connexion.html');	
-	}	
+	}
+	
+	$('div#autolog')['switch']();
 }
 
 function fn_submitconnexion(e) {
