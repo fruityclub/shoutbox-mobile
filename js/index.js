@@ -173,7 +173,9 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 			$('#loading').modal('hide');
 		},
 		success: function (responseText) {
-			if ( $('#autolog').val() == 1 && local == 0 ) {			
+			alert('autolog=' + $('#autolog').val());
+			if ( $('#autolog').val() == 1 && local == 0 ) {	
+				console.log('autolog ok');
 				window.localStorage.setItem("email", email);
 				window.localStorage.setItem("password", password);
 				window.localStorage.setItem("secretkey", secretkey);
