@@ -1,23 +1,12 @@
 // Events
 document.addEventListener("deviceready", onDeviceReady, false);
-
-//$(document).bind("mobileinit", fn_mobileinit);
-
 $(document).ready(fn_show_Connexion1);
-//$(document).on('pageshow', '#Connexion1', fn_show_Connexion1);
 $(document).on('submit', '#checkuser', fn_submitconnexion);
-$(document).on('vclick', '#submitlog', fn_submitconnexion);
-
-//$(document).on('pageshow', '#config', fn_show_config);
+$(document).on('click', '#submitlog', fn_submitconnexion);
 $(document).on('click', '#btn_autoLogConfig', fn_del_autolog);
 $(document).on('click', '#submit_config', fn_submit_config);
 $(document).on('click', '#btn_confirmConfig', fn_click_btn_confirmConfig);
-
-//$(document).on('pageshow', '#ShoutboxList', fn_show_ShoutboxList);
 $(document).on('click', 'li.LIShoutboxList', fn_click_LIShoutboxList);
-
-//$(document).on('pageshow', '#ShoutList', fn_show_ShoutList);
-//$(document).on('pagehide', '#ShoutList', fn_hide_ShoutList);
 $(document).on('taphold', '#ULShoutList', fn_tapInShoutList);
 $(document).on('click', '#btn_refreshShouts', fn_click_btn_refreshShouts);
 $(document).on('click', '#btn_emptytext', fn_emptytext);
@@ -26,6 +15,7 @@ $(document).on('submit', '#formaddshout', fn_sendshout);
 $(document).on('click', '#smileyslist', fn_click_smileyslist);
 $(document).on('click', '#ULsmileyslist', fn_click_ULsmileyslist);
 $(document).on('click', '#btn_confirmDeleteShout', fn_confirmDeleteShout);
+$(document).on('click', '#btn_closeSmileyslist', fn_click_btn_closeSmileyslist);
 
 // Functions
 function onDeviceReady() {
@@ -505,39 +495,21 @@ function fn_show_ShoutList(event, data) {
   	stopRefresh();
 
 	var id_member = window.localStorage.getItem("id_member");
-	var real_name = window.localStorage.getItem("real_name");
-	var avatar = window.localStorage.getItem("avatar");
-	var id_group = window.localStorage.getItem("id_group");
-	var isvip = window.localStorage.getItem("isvip");
-	var isadmin = window.localStorage.getItem("isadmin");
-	var unread_messages = window.localStorage.getItem("unread_messages");
-	var name_color = window.localStorage.getItem("name_color");
-	var name_color_glow = window.localStorage.getItem("name_color_glow");
-	var money = window.localStorage.getItem("money");
-	var posts = window.localStorage.getItem("posts");
 	var auth_token = window.localStorage.getItem("auth_token");
+	
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
 	var prevPage = window.localStorage.getItem("prevPage");
-
 	var nbShouts = $("#ULShoutList li").size();
 
 	if ( prevPage != "config" || nbShouts == 0 ) {
 
 		console.log('data.prevPage.attr ShoutboxList');
 
-		var group_title = 'Membre';
-		var vip_title = 'Non VIP';
-		if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
-		if ( isvip == "true" ) { vip_title = "VIP"; }
+		displayUserInfos();
 
-		$('.MemberInfos').empty();	
-		$('#ULMemberInfos3').html('<img src="' + avatar + '" height="76" style="border: 2px solid white;" />');
-		$('#ULMemberInfos4').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + ' ' + vip_title + '<br />' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
-
-		$('#ULShoutList').listview();
 		$('#ULShoutList').children().remove('li');
-		$("#loadingMessages").popup("open");	
+		$('#loadingMessages').modal('show');
 		$("#last_update").val('0');
 
 		get_shoutbox_infos();
@@ -624,7 +596,7 @@ function popupDeleteShout(id_shout) {
 		$('#idShoutHidden').val(id_shout);
 
 		// affiche un pop-up de confirmation
-		$("#confirmDeleteShout").popup("open");
+		$('#confirmDeleteShout').modal('show');
 
 	} else {
 		alert('Vous n\'avez pas les droits necessaires ou l\'identifiant du message n\'est pas correctement formé.')		
@@ -641,8 +613,8 @@ function fn_confirmDeleteShout() {
 		var id_shoutbox = window.localStorage.getItem("id_shoutbox");
 		var id_member = window.localStorage.getItem("id_member");
 		var auth_token = window.localStorage.getItem("auth_token");
-
-		$("#confirmDeleteShout").popup("close");
+		
+		$('#confirmDeleteShout').modal('hide');
 
 		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutdelete',
 			type: 'post',
@@ -669,11 +641,40 @@ function fn_confirmDeleteShout() {
 
 function fn_click_smileyslist() {
 	// affiche popup smileys
-	$("#pop_smileysList").popup("open");	
+	$('#pop_smileysList').modal('show');
 }
 
 function fn_click_ULsmileyslist(e) {
 	var id_smiley = $(e.target).closest('div').attr('data-name');
-	$('#shouttext').val($('#shouttext').val() + ' ' + id_smiley + ' ');
-	$("#pop_smileysList").popup("close");	
+	$('#shouttext').val($('#shouttext').val() + ' ' + id_smiley + ' ');	
+}
+
+function fn_click_btn_closeSmileyslist() {
+	$('#pop_smileysList').modal('hide');
+}
+
+function displayUserInfos() {
+
+	var real_name = window.localStorage.getItem("real_name");
+	var avatar = window.localStorage.getItem("avatar");
+	var id_group = window.localStorage.getItem("id_group");
+	var isvip = window.localStorage.getItem("isvip");
+	var isadmin = window.localStorage.getItem("isadmin");
+	var unread_messages = window.localStorage.getItem("unread_messages");
+	var name_color = window.localStorage.getItem("name_color");
+	var name_color_glow = window.localStorage.getItem("name_color_glow");
+	var money = window.localStorage.getItem("money");
+	var posts = window.localStorage.getItem("posts");
+
+	var group_title = 'Membre';
+	var vip_title = 'Non VIP';
+	if ( isadmin == "true" ) { group_title = "Administrateur"; } else if ( id_group == 2 ) { group_title = "Mod&eacute;rateur"; }
+	if ( isvip == "true" ) { vip_title = "VIP"; }
+
+	$('.MemberInfos').empty();
+
+	$('#ULMemberInfos1').html('<img src="' + avatar + '" class="img-polaroid" />');
+	$('#ULMemberInfos2').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + ' ' + vip_title + '<br />' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
+
+	
 }
