@@ -40,7 +40,7 @@
     <div class="navbar navbar-fixed-bottom" id="shootFooter" style="display: none;">
       	<div class="navbar-inner">
 		<div class="container">
-	        	<form action="" method="post" id="formaddshout">
+	        	<form action="" method="post" id="formaddshout" class="form-inline">
 		            	<div class="row">
 		                	<div class="span2">
 						<button class="btn btn-block" name="btn_showShoutboxsList" id="btn_showShoutboxsList" type="button">Liste</button>
@@ -48,14 +48,14 @@
 		                	<div class="span2">
 		                		<button class="btn btn-block" name="smileyslist" id="smileyslist" type="button">Smileys</button>
 		                	</div>
-		                	<div class="span5">
-		                		<input class="input-block-level" type="text" name="shouttext" id="shouttext" value="" placeholder="Votre message ...">
-		                	</div>
 		                	<div class="span1">
 		                		<a href="#" name="btn_emptytext" id="btn_emptytext" class="btn btn-inverse active pull-right"> <i class="icon-white icon-remove"></i> </a>
 		                	</div>
-		                	<div class="span2">
-		                		<button class="btn btn-block" name="submittext" id="submittext" type="submit">Shout!</button>
+		                	<div class="span7">
+		                		<div class="input-append">
+		                			<input class="input-block-level" type="text" name="shouttext" id="shouttext" value="" placeholder="Votre message ...">
+		                			<button class="btn btn-block" name="submittext" id="submittext" type="submit">Shout!</button>
+		                		</div>
 		                	</div>
 		            	</div>
 		         </form>
