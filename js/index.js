@@ -331,8 +331,8 @@ function refresh_shoutlist(loading) {
 					var shoutsList = '';
 					$.each( responseText, function( i, item ) {
 						shoutsList += '<li class="LIShoutList" data-name="' + item.log_time + '" data-inset="true"><div class="row">';
-						shoutsList += '<div class="span3"><div class="well well-large"><img src="' + item.avatar + '" class="img-polaroid" /></div></div>';						
-						shoutsList += '<div class="span9"><div class="well well-large"><b style="color:' + item.name_color + '; text-shadow:0px 0px 2px ' + item.name_color_glow + ';">' + item.member_name + '</b><br /><span style="font-size:' + msg_size + 'px;">' + item.body + '</span></div></div>';
+						shoutsList += '<div class="span2"><div class="well well-large"><img src="' + item.avatar + '" class="img-polaroid" style="width: 76px;" /></div></div>';						
+						shoutsList += '<div class="span10"><div class="well well-large"><b style="color:' + item.name_color + '; text-shadow:0px 0px 2px ' + item.name_color_glow + ';">' + item.member_name + '</b><br /><span style="font-size:' + msg_size + 'px;">' + item.body + '</span></div></div>';
 						shoutsList += '</div></li>';
 					});
 					$("#ULShoutList").append( shoutsList );
