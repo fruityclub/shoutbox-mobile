@@ -497,10 +497,6 @@ function fn_show_ShoutList(event, data) {
 	var nbShouts = $("#ULShoutList li").size();
 	if ( nbShouts == 0 ) {
 
-		console.log('data.prevPage.attr ShoutboxList');
-
-		displayUserInfos();
-
 		$('#ULShoutList').children().remove('li');
 		$('#loadingMessages').modal('show');
 		$("#last_update").val('0');
