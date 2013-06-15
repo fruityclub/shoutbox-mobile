@@ -464,11 +464,9 @@ function fn_show_ShoutboxList(event, data) {
 			},
 			complete: function() {
 				$('#loading').modal('hide');
-				//$('#ULShoutboxList').listview('refresh');
 			},
 			success: function (responseText) {
 				$("#ULShoutboxList").empty();
-				$('#ULShoutboxList').listview();
 				var shoutboxsList = '';
 				$.each( responseText, function( i, item ) {
 					shoutboxsList += '<li data-icon="arrow-r" class="LIShoutboxList" data-name="' + item.id_shoutbox + '"><a href="#">';
