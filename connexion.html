@@ -16,8 +16,7 @@
 		
 			<div class="well well-large">
 			
-				<legend>Connexion par email et mot de passe</legend>
-				
+				<legend>Connexion par email et mot de passe</legend>				
 				<input type="email" name="email" id="email" class="input-xlarge" value="" placeholder="Email" />
 				<input type="password" name="passlog" id="passlog" value="" class="input-xlarge" placeholder="Mot de passe" />
 	
@@ -25,17 +24,17 @@
 
 			<div class="well well-large">
 			
-				<legend>Connexion par cl&eacute; secr&egrave;te</legend>
-				
+				<legend>Connexion par cl&eacute; secr&egrave;te</legend>				
 				<input type="number" name="secretkey" id="secretkey" class="input-xlarge" value="" placeholder="Cl&eacute; secr&egrave;te" />
 	
 			</div>
 
 			<div class="well well-large">
-			
-	            		<label class="checkbox">
-	            			<input type="checkbox" name="remember" value="1"> Connexion automatique
-	            		</label>
+				
+				<label>Connexion automatique</label>
+	            		<div class="switch" data-on="success" data-off="warning" data-on-label="OUI" data-off-label="NON">
+	            			<input type="checkbox" name="autolog" id="autolog" value="1" /> 
+				</div>
 	            		<button type="submit" name="submit" class="btn btn-large btn-block">Connexion</button>
 	
 			</div>	
