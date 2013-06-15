@@ -82,7 +82,7 @@ function fn_show_Connexion1() {
 		$('#content').load('html/connexion.html');	
 	}
 	
-	$('#autolog').bootstrapSwitch();
+	$('.switch').bootstrapSwitch();
 }
 
 function fn_submitconnexion(e) {
