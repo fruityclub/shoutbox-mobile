@@ -477,9 +477,9 @@ function fn_show_ShoutboxList(event, data) {
 				$("#ULShoutboxList").empty();
 				var shoutboxsList = '';
 				$.each( responseText, function( i, item ) {
-					shoutboxsList += '<li class="LIShoutboxList" data-name="' + item.id_shoutbox + '"><a href="#">';
+					shoutboxsList += '<li class="LIShoutboxList" data-name="' + item.id_shoutbox + '"><div class="well well-large"><h3>';
 					shoutboxsList += item.name;
-					shoutboxsList += '</a></li>';
+					shoutboxsList += '</h3></div></li>';
 				});
 				$("#ULShoutboxList").append( shoutboxsList );
 
