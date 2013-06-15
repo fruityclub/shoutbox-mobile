@@ -25,7 +25,7 @@ function onDeviceReady() {
 function fn_show_Connexion1() {
 	
 	console.log('fn_show_Connexion1');
-	$('.footer').hide();
+	$('#shootFooter').hide();
 	
 	// Définit préférence par défaut
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
@@ -368,7 +368,7 @@ function stopRefresh() {
 function fn_show_config() {
 
   	stopRefresh();
-  	$('.footer').hide();
+  	$('#shootFooter').hide();
 
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
@@ -417,7 +417,7 @@ function fn_click_btn_confirmConfig() {
 
 function fn_show_ShoutboxList(event, data) {
 	
-	$('.footer').hide();
+	$('#shootFooter').hide();
 
   	var id_member = window.localStorage.getItem("id_member");
 	var auth_token = window.localStorage.getItem("auth_token");
@@ -480,7 +480,7 @@ function fn_show_ShoutList(event, data) {
 
   	stopRefresh();
   	
-  	$('.footer').show();
+  	$('#shootFooter').show();
 
 	var id_member = window.localStorage.getItem("id_member");
 	var auth_token = window.localStorage.getItem("auth_token");
@@ -517,7 +517,7 @@ function fn_show_ShoutList(event, data) {
 
 function fn_hide_ShoutList() {
 	stopRefresh();
-	$('.footer').hide();
+	$('#shootFooter').hide();
 }
 
 function fn_click_btn_refreshShouts() {
