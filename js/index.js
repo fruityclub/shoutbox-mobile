@@ -8,24 +8,24 @@ $(document).ready(fn_show_Connexion1);
 $(document).on('submit', '#checkuser', fn_submitconnexion);
 $(document).on('vclick', '#submitlog', fn_submitconnexion);
 
-$(document).on('pageshow', '#config', fn_show_config);
-$(document).on('vclick', '#btn_autoLogConfig', fn_del_autolog);
-$(document).on('vclick', '#submit_config', fn_submit_config);
-$(document).on('vclick', '#btn_confirmConfig', fn_click_btn_confirmConfig);
+//$(document).on('pageshow', '#config', fn_show_config);
+$(document).on('click', '#btn_autoLogConfig', fn_del_autolog);
+$(document).on('click', '#submit_config', fn_submit_config);
+$(document).on('click', '#btn_confirmConfig', fn_click_btn_confirmConfig);
 
-$(document).on('pageshow', '#ShoutboxList', fn_show_ShoutboxList);
-$(document).on('vclick', 'li.LIShoutboxList', fn_click_LIShoutboxList);
+//$(document).on('pageshow', '#ShoutboxList', fn_show_ShoutboxList);
+$(document).on('click', 'li.LIShoutboxList', fn_click_LIShoutboxList);
 
-$(document).on('pageshow', '#ShoutList', fn_show_ShoutList);
-$(document).on('pagehide', '#ShoutList', fn_hide_ShoutList);
+//$(document).on('pageshow', '#ShoutList', fn_show_ShoutList);
+//$(document).on('pagehide', '#ShoutList', fn_hide_ShoutList);
 $(document).on('taphold', '#ULShoutList', fn_tapInShoutList);
-$(document).on('vclick', '#btn_refreshShouts', fn_click_btn_refreshShouts);
-$(document).on('vclick', '#btn_emptytext', fn_emptytext);
-$(document).on('vclick', '#submittext', fn_sendshout);
+$(document).on('click', '#btn_refreshShouts', fn_click_btn_refreshShouts);
+$(document).on('click', '#btn_emptytext', fn_emptytext);
+$(document).on('click', '#submittext', fn_sendshout);
 $(document).on('submit', '#formaddshout', fn_sendshout);
-$(document).on('vclick', '#smileyslist', fn_click_smileyslist);
-$(document).on('vclick', '#ULsmileyslist', fn_click_ULsmileyslist);
-$(document).on('vclick', '#btn_confirmDeleteShout', fn_confirmDeleteShout);
+$(document).on('click', '#smileyslist', fn_click_smileyslist);
+$(document).on('click', '#ULsmileyslist', fn_click_ULsmileyslist);
+$(document).on('click', '#btn_confirmDeleteShout', fn_confirmDeleteShout);
 
 // Functions
 function onDeviceReady() {
@@ -82,7 +82,9 @@ function fn_show_Connexion1() {
 		$('#content').load('html/connexion.html');	
 	}
 	
+	// ????
 	$('.switch').bootstrapSwitch();
+	$('#autolog').bootstrapSwitch();
 }
 
 function fn_submitconnexion(e) {
