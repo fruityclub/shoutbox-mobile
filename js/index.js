@@ -315,19 +315,15 @@ function refresh_shoutlist(loading) {
 			if ( loading == true ) { $('#loading').modal('show'); }
 		},
 		complete: function() {
-			if ( loading == true ) { $('#loading').modal('hide'); $("#loadingMessages").popup("close"); }
-			$('#ULShoutList').listview('refresh');
+			if ( loading == true ) { $('#loading').modal('hide'); $("#loadingMessages").modal('hide'); }
 
 			var last_update2 = $('#ULShoutList li').last().attr('data-name');
 			$("#last_update").val(last_update2);
 
 			$(".linkInMessage").each(function() {
 
-			  var hrefUrl = $(this).attr('href');
-			  var hrefInfos = $.mobile.path.parseUrl(hrefUrl);
-
-			  var hrefHost = hrefInfos.hostname;
-			  $(this).text(hrefHost);
+				var hostname = $(this).prop('href', url).prop('hostname');
+				$(this).text(hostname);
 
 			});
 		},
@@ -338,8 +334,8 @@ function refresh_shoutlist(loading) {
 					var shoutsList = '';
 					$.each( responseText, function( i, item ) {
 						shoutsList += '<li class="LIShoutList" data-name="' + item.log_time + '" data-inset="true">';
-						shoutsList += '<img src="' + item.avatar + '" width="76" height="76" style="border: 2px solid white;" />';						
-						shoutsList += '<b style="color:' + item.name_color + '; text-shadow:0px 0px 2px ' + item.name_color_glow + ';">' + item.member_name + '</b><br /><span style="font-size:' + msg_size + 'px;">' + item.body + '</span>';
+						shoutsList += '<div class="well well-large"><img src="' + item.avatar + '" class="img-polaroid" /></div>';						
+						shoutsList += '<div class="well well-large"><b style="color:' + item.name_color + '; text-shadow:0px 0px 2px ' + item.name_color_glow + ';">' + item.member_name + '</b><br /><span style="font-size:' + msg_size + 'px;">' + item.body + '</span></div>';
 						shoutsList += '</li>';
 					});
 					$("#ULShoutList").append( shoutsList );
@@ -399,8 +395,8 @@ function fn_del_autolog() {
 	window.localStorage.removeItem("email");
 	window.localStorage.removeItem("password");
 	window.localStorage.removeItem("secretkey");
-
-	$("#popup_confirmAutolog").popup("open");
+	
+	$('#popup_confirmAutolog').modal('show');
 }
 
 function fn_submit_config() {
@@ -410,14 +406,13 @@ function fn_submit_config() {
 
 	window.localStorage.setItem("vibration_msg", vibration_msg);
 	window.localStorage.setItem("msg_size", msg_size);	
-
-	$("#popup_confirmConfig").popup("open");
-
+	
+	$('#popup_confirmConfig').modal('show');
 }
 
 function fn_click_btn_confirmConfig() {
 
-	$("#popup_confirmConfig").popup("close");
+	$('#popup_confirmConfig').modal('hide');
 
 	if (typeof(window.localStorage.getItem("id_shoutbox")) != "undefined" && window.localStorage.getItem("id_shoutbox") !== null) {
 		$('#content').load('html/shoutslist.html');
@@ -429,7 +424,7 @@ function fn_click_btn_confirmConfig() {
 
 function fn_show_ShoutboxList(event, data) {
 
-  var id_member = window.localStorage.getItem("id_member");
+  	var id_member = window.localStorage.getItem("id_member");
 	var real_name = window.localStorage.getItem("real_name");
 	var avatar = window.localStorage.getItem("avatar");
 	var id_group = window.localStorage.getItem("id_group");
@@ -455,7 +450,7 @@ function fn_show_ShoutboxList(event, data) {
 
 	$('.MemberInfos').empty();
 
-	$('#ULMemberInfos1').html('<img src="' + avatar + '" height="76" style="border: 2px solid white;" />');
+	$('#ULMemberInfos1').html('<img src="' + avatar + '" class="img-polaroid" />');
 	$('#ULMemberInfos2').html('<b style="color:' + name_color + '; text-shadow:0px 0px 2px ' + name_color_glow + ';">' + real_name + '</b><br />' + group_title + ' ' + vip_title + '<br />' + unread_messages + ' message(s) non lu(s)<br />' + posts + ' message(s)<br />' + money + ' point(s)');
 
 	var nbShoutboxs = $("#ULShoutboxList li").size();
@@ -507,7 +502,7 @@ function fn_click_LIShoutboxList() {
 
 function fn_show_ShoutList(event, data) {
 
-  stopRefresh();
+  	stopRefresh();
 
 	var id_member = window.localStorage.getItem("id_member");
 	var real_name = window.localStorage.getItem("real_name");
