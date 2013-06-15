@@ -79,7 +79,7 @@ function fn_show_Connexion1() {
 	
 	} else {
 		console.log('auto connexion ko');
-		$('#content').load('connexion.html');	
+		$('#content').load('html/connexion.html');	
 	}	
 }
 
@@ -176,7 +176,7 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 		},
 		error: function (responseText) {
 			$('#loading').modal('hide');
-			$('#content').load('connexion.html');
+			$('#content').load('html/connexion.html');
 			$('#erreur_connexion').show();
 		}
 	});
@@ -214,7 +214,7 @@ function checkmembername(serviceURL, email, password, secretkey, local) {
 			},
 			error: function (responseText) {             
 				$('#loading').modal('hide');
-				$('#content').load('connexion.html');
+				$('#content').load('html/connexion.html');
 				$('#erreur_connexion').show();
 			}
 		});
@@ -242,9 +242,9 @@ function shoutboxAccess(returndata) {
 	window.localStorage.setItem("auth_token", returndata.auth_token);
 	
 	if (typeof(window.localStorage.getItem("id_shoutbox")) != "undefined" && window.localStorage.getItem("id_shoutbox") !== null) {
-		$('#content').load('shoutslist.html', fn_show_ShoutList);
+		$('#content').load('html/shoutslist.html', fn_show_ShoutList);
 	} else {
-		$('#content').load('shoutboxslist.html', fn_show_ShoutboxList);
+		$('#content').load('html/shoutboxslist.html', fn_show_ShoutboxList);
 	}
 
 }
@@ -344,7 +344,7 @@ function refresh_shoutlist(loading) {
 		},
 		error: function (responseText) {             
 			$('#loading').modal('hide');
-			$('#content').load('connexion.html');
+			$('#content').load('html/connexion.html');
 			$('#erreur_connexion').show();
 		}
 	});
@@ -412,9 +412,9 @@ function fn_click_btn_confirmConfig() {
 	$("#popup_confirmConfig").popup("close");
 
 	if (typeof(window.localStorage.getItem("id_shoutbox")) != "undefined" && window.localStorage.getItem("id_shoutbox") !== null) {
-		$('#content').load('shoutslist.html');
+		$('#content').load('html/shoutslist.html');
 	} else {
-		$('#content').load('shoutboxslist.html');
+		$('#content').load('html/shoutboxslist.html');
 	}	
 
 }
@@ -589,7 +589,7 @@ function fn_sendshout(e) {
 			},
 			error: function (responseText) {
 				$('#loading').modal('hide');
-				$('#content').load('connexion.html');
+				$('#content').load('html/connexion.html');
 				$('#erreur_connexion').show();
 			}
 		});
@@ -651,7 +651,7 @@ function fn_confirmDeleteShout() {
 			},
 			error: function (responseText) {             
 				$('#loading').modal('hide');
-				$('#content').load('connexion.html');
+				$('#content').load('html/connexion.html');
 				$('#erreur_connexion').show();
 			}
 		});
