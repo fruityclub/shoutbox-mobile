@@ -79,15 +79,14 @@ function fn_show_Connexion1() {
 	
 	} else {
 		console.log('auto connexion ko');
-		$('#content').load('html/connexion.html', fn_showSwitch);	
+		window.localStorage.setItem("prevPage", "connexion");
+		$('#content').load('html/connexion.html', fn_showSwitch);		
 	}
 	
 }
 
 function fn_showSwitch() {
-	// ????
 	$('.switch').bootstrapSwitch();
-	//$('#autolog').bootstrapSwitch();	
 }
 
 function fn_submitconnexion(e) {
@@ -183,7 +182,7 @@ function checklogin(serviceURL, membername, email, password, secretkey, local) {
 		},
 		error: function (responseText) {
 			$('#loading').modal('hide');
-			$('#content').load('html/connexion.html');
+			$('#content').load('html/connexion.html', fn_showSwitch);
 			$('#erreur_connexion').show();
 		}
 	});
@@ -221,7 +220,7 @@ function checkmembername(serviceURL, email, password, secretkey, local) {
 			},
 			error: function (responseText) {             
 				$('#loading').modal('hide');
-				$('#content').load('html/connexion.html');
+				$('#content').load('html/connexion.html', fn_showSwitch);
 				$('#erreur_connexion').show();
 			}
 		});
@@ -351,7 +350,7 @@ function refresh_shoutlist(loading) {
 		},
 		error: function (responseText) {             
 			$('#loading').modal('hide');
-			$('#content').load('html/connexion.html');
+			$('#content').load('html/connexion.html', fn_showSwitch);
 			$('#erreur_connexion').show();
 		}
 	});
@@ -379,7 +378,7 @@ function stopRefresh() {
 
 function fn_show_config() {
 
-  stopRefresh();
+  	stopRefresh();
 
 	var vibration_msg = window.localStorage.getItem("vibration_msg");
 	var msg_size = window.localStorage.getItem("msg_size");
@@ -390,7 +389,8 @@ function fn_show_config() {
 
 	$('input:radio[name="msg_size"]').filter('[value="' + msg_size + '"]').next().click();
 	$('#vibration_msg').val(vibration_msg);
-	$('#vibration_msg').slider('refresh');
+	
+	window.localStorage.setItem("prevPage", "config");
 
 }
 
@@ -459,7 +459,7 @@ function fn_show_ShoutboxList(event, data) {
 
 	var nbShoutboxs = $("#ULShoutboxList li").size();
 
-	if ( prevPage != "ShoutList" || nbShoutboxs == 0 ) {
+	if ( prevPage != "shoutslist" || nbShoutboxs == 0 ) {
 
 		// get shoutbox list
 		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutboxlist',
@@ -485,11 +485,14 @@ function fn_show_ShoutboxList(event, data) {
 			},
 			error: function (responseText) {
 				$('#loading').modal('hide');
+				$('#content').load('html/connexion.html', fn_showSwitch);
 				$('#erreur_connexion').show();
 			}
 		});
 
 	}
+	
+	window.localStorage.setItem("prevPage", "shoutboxslist");
 
 }
 
@@ -551,6 +554,8 @@ function fn_show_ShoutList(event, data) {
 		startRefresh();
 
 	}
+	
+	window.localStorage.setItem("prevPage", "shoutslist");
 
 }
 
@@ -596,7 +601,7 @@ function fn_sendshout(e) {
 			},
 			error: function (responseText) {
 				$('#loading').modal('hide');
-				$('#content').load('html/connexion.html');
+				$('#content').load('html/connexion.html', fn_showSwitch);
 				$('#erreur_connexion').show();
 			}
 		});
@@ -658,7 +663,7 @@ function fn_confirmDeleteShout() {
 			},
 			error: function (responseText) {             
 				$('#loading').modal('hide');
-				$('#content').load('html/connexion.html');
+				$('#content').load('html/connexion.html', fn_showSwitch);
 				$('#erreur_connexion').show();
 			}
 		});
