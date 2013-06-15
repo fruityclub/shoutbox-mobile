@@ -312,6 +312,7 @@ function refresh_shoutlist(loading) {
 
 			$(".linkInMessage").each(function() {
 
+				var url = $(this).attr("href");
 				var hostname = $(this).prop('href', url).prop('hostname');
 				$(this).text(hostname);
 
