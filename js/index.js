@@ -86,8 +86,8 @@ function fn_show_Connexion1() {
 
 function fn_showSwitch() {
 	// ????
-	//$('.switch').bootstrapSwitch();
-	$('#autolog').bootstrapSwitch();	
+	$('.switch').bootstrapSwitch();
+	//$('#autolog').bootstrapSwitch();	
 }
 
 function fn_submitconnexion(e) {
