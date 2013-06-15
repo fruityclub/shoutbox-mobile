@@ -500,8 +500,8 @@ function fn_show_ShoutboxList(event, data) {
 function fn_click_LIShoutboxList() {
 	console.log('fn_click_LIShoutboxList');
 	var id_shoutbox = $(this).attr('data-name');
-	window.localStorage.setItem("id_shoutbox", id_shoutbox);
-	$.mobile.changePage($('#ShoutList'));	
+	window.localStorage.setItem("id_shoutbox", id_shoutbox);	
+	$('#content').load('html/shoutslist.html', fn_show_ShoutList);
 }
 
 
