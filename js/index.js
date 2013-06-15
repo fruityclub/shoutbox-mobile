@@ -79,12 +79,15 @@ function fn_show_Connexion1() {
 	
 	} else {
 		console.log('auto connexion ko');
-		$('#content').load('html/connexion.html');	
+		$('#content').load('html/connexion.html', fn_showSwitch);	
 	}
 	
+}
+
+function fn_showSwitch() {
 	// ????
 	$('.switch').bootstrapSwitch();
-	$('#autolog').bootstrapSwitch();
+	$('#autolog').bootstrapSwitch();	
 }
 
 function fn_submitconnexion(e) {
