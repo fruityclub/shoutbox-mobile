@@ -18,6 +18,8 @@ $(document).on('click', '#ULsmileyslist', fn_click_ULsmileyslist);
 $(document).on('click', '#btn_confirmDeleteShout', fn_confirmDeleteShout);
 $(document).on('click', '#btn_closeSmileyslist', fn_click_btn_closeSmileyslist);
 
+var baseApiUrl = "https://api.fruityclub.net/index.php/";
+
 // Functions
 function onDeviceReady() {
 	var deviceReady = true;	
@@ -60,13 +62,13 @@ function fn_show_Connexion1() {
 		
 		if ( email.length > 0 && password.length > 0 ) {
 		
-			var serviceURL = 'https://www.fruityclub.net/api/index.php/connexion/email';
+			var serviceURL = baseApiUrl + 'connexion/email';
 			var local = 1;
 			checkmembername(serviceURL, email, password, secretkey, local);			
 			
 		} else if ( secretkey.length > 0 ) {
 		
-			var serviceURL = 'https://www.fruityclub.net/api/index.php/connexion/secretkey';
+			var serviceURL = baseApiUrl + 'connexion/secretkey';
 			var local = 1;
 			var email = '';
 			checkmembername(serviceURL, email, password, secretkey, local);
@@ -99,14 +101,14 @@ function fn_submitconnexion(e) {
 		if ( email.length > 0 && password.length > 0 ) {
 			
 			console.log('connexion email');
-			var serviceURL = 'https://www.fruityclub.net/api/index.php/connexion/email';
+			var serviceURL = baseApiUrl + 'connexion/email';
 			var local = 0;
 			checkmembername(serviceURL, email, password, secretkey, local);	
 			
 		} else if ( secretkey.length > 0 ) {
 			
 			console.log('connexion cle');
-			var serviceURL = 'https://www.fruityclub.net/api/index.php/connexion/secretkey';
+			var serviceURL = baseApiUrl + 'connexion/secretkey';
 			var local = 0;
 			var email = '';
 			checkmembername(serviceURL, email, password, secretkey, local);
@@ -201,11 +203,11 @@ function checkmembername(serviceURL, email, password, secretkey, local) {
 	
 	} else {
 	
-		$.ajax({url: 'https://www.fruityclub.net/api/index.php/connexion/membername',
+		$.ajax({url: baseApiUrl + 'connexion/membername',
 			data: {'email': email},
 			type: 'post',
 			async: true,
-			dataType: "jsonp",
+			dataType: 'jsonp',
 			beforeSend: function() {
 				$('#miniloader').show();
 			},
@@ -265,7 +267,7 @@ function get_shoutbox_infos(id_shoutbox) {
 	var id_member = window.localStorage.getItem("id_member");
 	var auth_token = window.localStorage.getItem("auth_token");
 
-	$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutboxinfos',
+	$.ajax({url: baseApiUrl + 'shoutbox/shoutboxinfos',
 		type: 'post',
 		data: {'auth_token': auth_token, 'id_member': id_member, 'id_shoutbox': id_shoutbox},
 		async: true,
@@ -304,7 +306,7 @@ function refresh_shoutlist(loading) {
 	var msg_size = window.localStorage.getItem("msg_size");
 
 	// get shoutbox list
-	$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutlist',
+	$.ajax({url: baseApiUrl + 'shoutbox/shoutlist',
 		type: 'post',
 		data: {'auth_token': auth_token, 'id_member': id_member, 'id_shoutbox': id_shoutbox, 'last_update': last_update1},
 		async: true,
@@ -440,7 +442,7 @@ function fn_show_ShoutboxList(event, data) {
 	if ( nbShoutboxs == 0 ) {
 
 		// get shoutbox list
-		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutboxlist',
+		$.ajax({url: baseApiUrl + 'shoutbox/shoutboxlist',
 			type: 'post',
 			data: {'auth_token': auth_token, 'id_member': id_member},
 			async: true,
@@ -543,7 +545,7 @@ function fn_sendshout(e) {
 
 	if ( shouttext.length > 0 ) {
 
-		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutpost',
+		$.ajax({url: baseApiUrl + 'shoutbox/shoutpost',
 			type: 'post',
 			data: {'auth_token': auth_token, 'id_member': id_member, 'real_name': real_name, 'id_shoutbox': id_shoutbox, 'msg_txt': shouttext},
 			async: true,
@@ -607,7 +609,7 @@ function fn_confirmDeleteShout() {
 		
 		$('#confirmDeleteShout').modal('hide');
 
-		$.ajax({url: 'https://www.fruityclub.net/api/index.php/shoutbox/shoutdelete',
+		$.ajax({url: baseApiUrl + 'shoutbox/shoutdelete',
 			type: 'post',
 			data: {'auth_token': auth_token, 'id_member': id_member, 'id_shout': id_shout, 'id_shoutbox': id_shoutbox},
 			async: true,
