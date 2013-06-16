@@ -205,6 +205,7 @@ function checkmembername(serviceURL, email, password, secretkey, local) {
 			data: {'email': email},
 			type: 'post',
 			async: true,
+			dataType: "jsonp",
 			beforeSend: function() {
 				$('#miniloader').show();
 			},
