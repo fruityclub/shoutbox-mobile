@@ -40,7 +40,7 @@ function fn_show_Connexion1() {
 	var msg_size = window.localStorage.getItem("msg_size");
 	
 	if ( !vibration_msg ) { window.localStorage.setItem('vibration_msg', 0); }
-	if ( !msg_size ) { window.localStorage.setItem('msg_size', 12); }
+	if ( !msg_size ) { window.localStorage.setItem('msg_size', 14); }
 	
 	var email = window.localStorage.getItem("email");
 	var password = window.localStorage.getItem("password");
