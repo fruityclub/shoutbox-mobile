@@ -225,7 +225,7 @@ textarea {
 
 body {
   margin: 0;
-  font-family: Georgia, Utopia, Palatino, 'Palatino Linotype', serif;
+  font-family: 'Cuprum', 'Verdana', 'Arial', 'Helvetica', sans-serif;
   font-size: 15px;
   line-height: 20px;
   color: #ece9d7;
@@ -741,7 +741,7 @@ h4,
 h5,
 h6 {
   margin: 10px 0;
-  font-family: 'Cuprum', sans-serif;
+  font-family: 'Cuprum', 'Verdana', 'Arial', 'Helvetica', sans-serif;
   font-weight: bold;
   line-height: 20px;
   color: #e36b23;
@@ -1067,7 +1067,7 @@ input,
 button,
 select,
 textarea {
-  font-family: Georgia, Utopia, Palatino, 'Palatino Linotype', serif;
+  font-family: 'Cuprum', 'Verdana', 'Arial', 'Helvetica', sans-serif;
 }
 
 label {
@@ -6175,7 +6175,7 @@ h4 small,
 h5 small,
 h6 small,
 h6 {
-  font-family: 'Cuprum', sans-serif;
+  font-family: 'Cuprum', 'Verdana', 'Arial', 'Helvetica', sans-serif;
   color: #e36b23;
   text-shadow: -1px 1px 0 #612c0c;
 }
@@ -6217,14 +6217,14 @@ blockquote.pull-right {
 
 .navbar .brand {
   padding: 25px 20px 15px;
-  font-family: 'Cuprum', sans-serif;
+  font-family: 'Cuprum', 'Verdana', 'Arial', 'Helvetica', sans-serif;
   font-size: 30px;
   text-shadow: -2px 2px 0 #612c0c;
 }
 
 .navbar .nav > li > a {
   padding: 23px 20px 13px;
-  font-family: 'Cuprum', sans-serif;
+  font-family: 'Cuprum', 'Verdana', 'Arial', 'Helvetica', sans-serif;
   font-size: 22px;
   line-height: 30px;
   text-shadow: -2px 2px 0 #612c0c;
@@ -6252,7 +6252,7 @@ blockquote.pull-right {
 
 .navbar .navbar-text {
   padding: 23px 20px 13px;
-  font-family: 'Cuprum', sans-serif;
+  font-family: 'Cuprum', 'Verdana', 'Arial', 'Helvetica', sans-serif;
   font-size: 22px;
   line-height: 30px;
   text-shadow: -2px 2px 0 #555555;
@@ -6263,7 +6263,7 @@ blockquote.pull-right {
 }
 
 .navbar .navbar-search .search-query {
-  font-family: Georgia, Utopia, Palatino, 'Palatino Linotype', serif;
+  font-family: 'Cuprum', 'Verdana', 'Arial', 'Helvetica', sans-serif;
   font-size: 15px;
   line-height: 20px;
   -webkit-box-shadow: none;
@@ -6687,11 +6687,11 @@ input,
 button,
 select,
 textarea {
-  font-family: 'Cuprum Text', serif;
+  font-family: 'Cuprum', 'Verdana', 'Arial', 'Helvetica', sans-serif;
 }
 
 legend {
-  font-family: 'Cuprum', sans-serif;
+  font-family: 'Cuprum', 'Verdana', 'Arial', 'Helvetica', sans-serif;
   color: #e36b23;
   text-shadow: -2px 2px 0 #612c0c;
   border-bottom: none;
