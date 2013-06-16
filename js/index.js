@@ -17,6 +17,7 @@ $(document).on('click', '#smileyslist', fn_click_smileyslist);
 $(document).on('click', '#ULsmileyslist', fn_click_ULsmileyslist);
 $(document).on('click', '#btn_confirmDeleteShout', fn_confirmDeleteShout);
 $(document).on('click', '#btn_closeSmileyslist', fn_click_btn_closeSmileyslist);
+$(document).on('click', '#btn_cancelDeleteShout', fn_click_cancelDeleteShout);
 
 var baseApiUrl = "https://api.fruityclub.net/index.php/";
 
@@ -629,6 +630,10 @@ function fn_confirmDeleteShout() {
 		});
 
 	}	
+}
+
+function fn_click_cancelDeleteShout() {
+	$('#confirmDeleteShout').modal('hide');
 }
 
 function fn_click_smileyslist() {
